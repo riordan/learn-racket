@@ -1,0 +1,353 @@
+<html><head><title>Classes in PLT</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="index.html">CS 5010 F '09</a></td></tr><tr><td><a href="general.html">General</a></td></tr><tr><td><a href="http://www.ccs.neu.edu/home/wand/cs5010/"><ax>Lectures/Wand</ax></a></td></tr><tr><td><a href="syllabus.html">Syllabus</a></td></tr><tr><td><font color="black"><b>Classes</b></font></td></tr><tr><td><a href="Assignments/index.html">Assignments</a></td></tr><tr><td><a href="presentations.html">Presentations</a></td></tr><tr><td><a href="officehours.html">Drill Club</a></td></tr><tr><td><a href="communication.html">Communication</a></td></tr><tr><td><a href="blog.html">Blog</a></td></tr><tr><td><a href="readings.html">Texts</a></td></tr><tr><td><a href="faq.html">FAQ</a></td></tr><tr><td><a href="http://www.drscheme.org/"><ax>DrScheme</ax></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Classes in PLT</h3></td><td valign="top" align="right" rowspan="2"><img src="Images/class.png" alt="logo" /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><h4>Class Syntax</h4><p>
+ Creating a class is like creating a function. While 
+<pre><small>  (lambda (NAME ...) EXPRESSION)</small></pre>
+ creates a function, a definition of the shape 
+<pre><small>  (define FUNC-NAME (lambda (NAME ...) EXPRESSION))</small></pre>
+ introduces a name for a function. For the latter, you mostly use the
+ shorthand 
+<pre><small>  (define (FUNC-NAME NAME ...) EXPRESSION)</small></pre>
+ but this really is just an abbreviation. The rest of this section
+introduces the syntax for creating classes. For naming classes, use
+<small>define</small>. 
+</p><p>
+ In the following explanations, whenever you see <small>X ...</small> read
+ "a possibly empty sequence of Xs". 
+</p><p>A <small>CLASS</small> is one of: 
+ <ul><li><pre><small>(class CLS 
+   (init-field VRL ...)
+   ELT ...)
+   </small></pre></li><li><pre><small>(class* CLS (INAME ...)
+   (init-field VRL ...)
+   ELT ...)</small></pre></li></ul>
+ where <small>CLS</small> and <small>INAME</small> are the names of classes
+ and interfaces, respectively. By convention all class names end in
+ <small>%</small> and all interface names end in <small>&lt;%&gt;</small>. 
+</p><p>A <small>VRL</small> is one of: 
+ <ul><li><small>NAME</small></li><li><small>(NAME EXPRESSION)</small></li></ul>
+ where <small>NAME</small> is a variable name. 
+</p><p>A <small>FLD</small> is <small>(NAME EXPRESSION)</small> where <small>NAME</small> is
+  the name of an <small>init-field</small> in the instantiated class. 
+</p><p>An <small>ELT</small> is one of: 
+ <ul><li><small>(super-new FLD ...)</small></li><li><small>(define/public (NAME NAME ...) EXPRESSION)</small></li><li><small>(define/private (NAME NAME ...) EXPRESSION)</small></li><li><small>(field VRL ...)</small></li></ul>
+ where <small>NAME</small> is a variable name. 
+</p><h4>Interface Syntax</h4><p>A <small>INTERFACE</small> is: 
+ <pre><small>(interface (INAME ...) NAME)</small></pre>
+ where <small>INAME</small> is the name of an interface and <small>NAME</small>
+ is the name of a method. 
+</p><h4>Expression Syntax</h4><p>
+ Classes are used to create objects, which are first-class values just
+ like functions. In contrast to functions, objects can be called in many
+ different ways, one per <small>public</small> method in its class. This two
+ new forms of syntax are specified in this section. 
+</p><p>An <small>EXPRESSION</small> is one of: 
+ <ul><li>... all the things you know</li><li><small>(new CLS FLD ...)</small></li><li><small>(send EXPRESSION NAME EXPRESSION ...)</small></li><li><small>(is-a? EXPRESSION CLS)</small></li></ul>
+ where <small>CLS</small> is a class name (actually, an expression that
+ evaluates to a class) and <small>NAME</small> is the name of a public
+ method. 
+</p><hr /><h4>Pragmatics</h4><p>Until now, we have represented a Cartesian point as an instance of posn.
+Now we can use classes for the same purpose. </p><table align="center" border="1"><tr><th colspan="3">a data representation for Cartesian points</th></tr><tr><td>
+ structure and class definitions 
+</td><td valign="top"><pre><small>(define-struct posn (x y))
+</small></pre></td><td valign="top"><pre><small>(define posn%
+  (class object%
+    (init-field x y)
+    
+    (define/public (get-x) x)
+    
+    (define/public (get-y) y)
+
+    (super-new)))
+</small></pre></td></tr><tr><td>
+ data definitions 
+</td><td valign="top"><pre><small>(define-struct posn (x y))
+;; Posn = (make-posn Number Number)
+;; interpretation: (make-posn x y) 
+;;  is x pixels from the left
+;;  and y pixels from the top 
+</small></pre></td><td valign="top"><pre><small>;; a point on a 2D canvas 
+(define posn%
+  (class object%
+    (init-field 
+      x  ;; Number, pixels from left 
+      y) ;; Number, pixels from top 
+
+    (define/public (get-x) x)
+    
+    (define/public (get-y) y)
+
+    (super-new)))
+</small></pre></td></tr><tr><td>creating examples</td><td valign="top"><pre><small>(define ex-s 
+  (make-posn 3 4))
+ </small></pre></td><td valign="top"><pre><small>(define ex-c 
+  (new posn% [x 3][y 4]))
+ </small></pre></td></tr><tr><td rowspan="2">extracting values</td><td><small>(posn-x ex-s)</small></td><td><small>(send ex-c get-x)</small></td></tr><tr><td><small>(posn-y ex-s)</small></td><td><small>(send ex-c get-y)</small></td></tr><tr><td>predicates</td><td><small>(posn? ex-s)</small></td><td><small>(is-a? ex-c posn%)</small></td></tr><tr><td>adding functionality</td><td valign="top"><pre><small>;; Posn Posn -&gt; Posn 
+;; add the given Posns, pointwise 
+(define (posn+ this p)
+  (make-posn
+    (+ (posn-x this) (posn-x p))
+    (+ (posn-y this) (posn-y p))))
+</small></pre></td><td valign="top"><pre><small>(define posn% 
+  (class object%
+    (init-field x y)
+
+    (define/public (get-x) x)
+
+    (define/public (get-y) y)
+
+    ;; posn% -&gt; posn%
+    ;; add this to p, pointwise 
+    (define/public (posn+ p)
+      (new posn%
+	[<font color="blue">x</font> (+ <font color="red">x</font> (send p get-x))]
+	[<font color="blue">y</font> (+ <font color="red">y</font> (send p get-y))]))
+    
+    (super-new)))
+</small></pre></td></tr><tr><td>testing</td><td valign="top"><pre><small>(check-expect 
+  (posn+ ex-s (make-posn 0 0)) 
+  ex-s)
+</small></pre></td><td valign="top"><pre><small>(define O 
+  (new posn% [x 0][y 0]))
+
+(check-expect
+ (send
+   (send ex-c posn+ O)
+   get-x)
+ (send ex-c get-x))
+
+(check-expect
+  (send
+    (send ex-c posn+ O)
+    get-y)
+  (send ex-c get-y))
+
+;; abstract to: 
+
+(check-expect 
+ (local ((define n 
+	   (send ex-c posn+ O)))
+   (list
+    (send n get-x)
+    (send n get-y)))
+ (list 
+  (send ex-c get-x)
+  (send ex-c get-y)))
+</small></pre></td></tr></table><p>
+ Some comments on this code, starting with the row dubbed "data
+ definitions". Just like the teaching languages, the Module language does
+ not impose any restrictions on what values a variable may represent. To
+ design programs it is therefore necessary to explain to future readers
+ how classes should be used. Here we see that the creation of an object
+ from <small>posn%</small> must supply two numbers, one for the
+ <small>x</small> field and one for the <small>y</small> field. The
+ interpretation of the fields is supplied as a comment, too. 
+</p><p>
+ The creation of object examples (also called "instances" of the class)
+ employs a by-label protocol, meaning the values for the fields of an
+ object are specified via a label not via a position in some argument
+ list. While this protocol is more verbose than by-position, it is
+ definitely easier to understand--especially when some fields come with 
+ default values and aren't even mentioned in the argument list. 
+</p><p>
+ In a class-based world of design, you use <strong>methods</strong> not
+ functions to express functionality. It is understood that methods always
+ consume one <strong>implicit argument</strong>, dubbed this, and however
+ many additional explicit arguments as needed. For these additional
+ arguments, you must specify a contract--just as before in BSL/ISL.  The
+ purpose statement is always formulated in terms of <strong>this</strong>
+ object, its fields, and the remaining arguments. A method accesses the
+ field values of the implicit <strong>this</strong> argument via the names
+ of the fields. See the red <small>x</small> and <small>y</small>. For the
+ additional arguments, the method must use method calls (also known as
+ "send a message") to obtain knowledge about the internals. Here the
+ <small>posn+</small> method uses the <small>get-x</small> and
+ <small>get-y</small> methods to obtain the coordinates. Last but not least,
+ notice the blue occurrences of <small>x</small> and <small>y</small>. These
+ are NOT variables, but the externally visible labels for the initial
+ fields of <small>posn%</small> objects. 
+</p><p>
+ When it comes to testing, class-based programming occasionally imposes an
+ additional overhead. You might expect that 
+<pre><small>(check-expect (send ex-c posn+ O) ex-c)</small></pre>
+ might work as before, but this is not the case. It is impossible (for you)
+ to compare objects in this straightforward manner. You must instead
+ use methods to extract basic values (numbers, booleans, strings, symbols,
+ images, or instances of structs) and then compare those. 
+</p><p>
+ Last not but least, the above code doesn't run in Module per se. You also
+ need to require the unit testing library explicitly: 
+<pre><small>(require test-engine/scheme-tests)</small></pre>
+ and then call 
+<pre><small>(test)</small></pre>
+ at the end of the file explicitly. To see which parts of your module the
+ tests (don't) cover, open the Language Dialog, look at the Details and
+ click the check box for "syntactic test suite coverage". 
+</p><hr /><h4>Design I</h4><p>
+ The basic purpose of a class system is to combine structures and functions
+ on structures into one coherent whole. It is thus orthogonal to the design
+ of programs per se. When you develop a data representation, you still need
+ to understand whether 
+<ul><li>it represents basic forms of data</li><li>or simple compounds, like structures</li><li>or itemizations of different sub-classes of data</li><li>or mutually referential/self-referential itemizations</li></ul>
+ and so on. Let's quickly check how to deal with itemizations of
+ subclasses of data, first the simple case and then the self-referential
+ case. 
+</p><p>
+ Consider a data representation for geometric shapes, which should include
+ circles and squares and possibly other forms of shapes. In addition, say
+ we wish to compute the area of these shapes and render them into
+ pre-existing scenes. A representation appropriate for programming with
+ classes looks like this: 
+<pre><small>
+;; all geometric shapes support these methods in all contexts 
+(define shape&lt;%&gt; 
+  (interface ()
+    area ;; -&gt; Number
+    ;; compute the area of this shape
+
+    render ;; Scene -&gt; Scene
+    ;; add this shape to the given scene 
+    ))
+
+;; a circle 
+(define circle%
+  (class* object% (shape&lt;%&gt;)
+    (init-field x  ; Number, x pixels of center from left
+                y  ; Number, y pixels of center from top
+		r  ; Number, radius
+		c) ; ColorString 
+
+    (define/public (area) (* pi r r))
+
+    (define/public (render s) (place-image IMG x y s))
+    (field [IMG (circle r "solid" c)])
+
+    (super-new)))
+
+;; a square parallel to sides of canvas 
+(define square%
+  (class* object% (shape&lt;%&gt;)
+    (init-field x  ; Number, x pixels of upper-left from left
+                y  ; Number, y pixels of upper-left from top
+		l  ; Number, length of one side 
+		c) ; ColorString 
+
+    (define/public (area) (* l l))
+
+    (define/public (render s) (place-image IMG x y s))
+    (field [IMG (rectangle l l "solid" c)])
+    
+    (super-new)))
+
+(define s1 (new circle% [x 10][y 20][r 40][c "red"]))
+(define s2 (new square% [x 10][y 20][l 40][c "red"]))
+
+(check-within (send s1 area) (* pi 1600) .1)
+(check-expect (send s2 area) 1600)
+</small></pre>
+ Note the purpose statements of the interfaces and classes as well as the
+ methods in the interfaces. The method definitions per se do not need such
+ comments anymore. Because of the "implements" specification of the
+ <small>class*</small> form, a reader knows that the contract and purpose
+ statement are found in the interface. Do run this code in drscheme and
+ determine for yourself what the tests cover. 
+</p><p>
+ One kind of data you may wish to represent composites of geometric
+ shape. This could take many forms, so let's focus here on one where one
+ geometric shape is superimposed graphically onto another. In an HtDP-style
+ data definition, you would write something akin to this: 
+<blockquote>
+A shape is one of: 
+<ul><li>a circle</li><li>a square</li><li>a combination of two shapes, with one specified as the "top" and the
+  other one to be the "bottom" shape. 
+</li></ul></blockquote>
+ To implement it you would translate this description of information into 
+ structure definitions with a data definition that expresses the above with
+ your chosen constructors. The self-reference from above would become a
+ self-reference in the semi-formal English definition. 
+</p><p>
+ In the world of classes and interfaces, some of this relationship is
+ expressed via the "implements" clause and with some more English: 
+<pre><small>
+;; two overlapping shapes
+(define overlay%
+  (class* object% (shape&lt;%&gt;)
+    (init-field top  ; shape&lt;%&gt;, the shape on top 
+                bot) ; shape&lt;%&gt;, the shape underneath
+    
+    (define/public (render s)
+      (send top render (send bot render s)))
+    
+    (define/public (area)
+      (+ (send top area) (send bot area)))
+    
+    (super-new)))
+</small></pre>
+ As you can see, we no longer have a data definition in one place, but the
+ comments on the <code>init-field</code>s tells readers that the data
+ representation is self-referential. Not surprisingly, the two methods in
+ this class are recursive in that they use the <code>render</code> and
+ <code>area</code> methods, respectively, for their fields to compute the
+ appropriate results. We know that the values in the fields (are expected
+ to) have such methods from the data definition comments on the fields. 
+</p><p>
+ You may also have noticed that the addition of <code>overlay%</code> did
+ not require any modification of either the data representation per se or
+ the methods in other classes. This property of a class-based
+ object-oriented organization of programs--design as before with a
+ structural strategy--is dubbed "extensibility" and is often touted as an
+ advantage of object-oriented programming. It is the result of two
+ properties of class-based languages: 
+<ol><li>
+ the packaging of data definitions with structures and functions as
+ classes; and</li><li>
+ the encapsulation of the "selection" process in the <code>send</code>
+ command. That is, <code>send</code> checks the kind of object on which a
+ method is invoked and then evaluate the appropriate method directly. In a
+ functional approach, this selection is a part of the conditional
+ expression that a function from shapes to areas or scenes would have to
+ include. 
+</li></ol>
+ For details on these ideas, see "How to Design Classes", which presents
+ the very same ideas using the Java notation. 
+</p><hr /><h4>Design II</h4><p>Why it matters to think about immutability: </p><blockquote><myblockquote>
+The functional approach may appear unnatural if you're not familiar with
+it, but it enables immutability, which has many advantages.  Immutable
+objects are simple.  An immutable object can be in exactly one state, the
+state in which it was created.  If you make sure that all constructors
+establish class invariants, then it is guaranteed that these invariants
+will remain true for all time, with no further effort on your part or on
+the part of the programmer who uses the class.  Mutable objects, on the
+other hand, can have arbitrarily complex state spaces.  If the
+documentation does not provide a precise description of the state
+transitions performed by mutator methods, it can be difficult or impossible
+to use a mutable class reliably.
+</myblockquote></blockquote><p align="right">
+ Joshua Bloch, item 15, entitled "Minimize Mutability" (page 75).<br />
+ Bloch is the architect of the Java API. 
+</p><p>
+ stateful classes, imperative methods 
+</p><hr /><h4>Design III</h4><p><pre><small>
+(define segment%
+  (class object%
+    (init-field color x y) ;; Color Nat Nat 
+    ;; Scene -&gt; Scene
+    ;; add an image of this segment to the given scene s 
+    (define/public (render s)
+      (place-image (send this shape color) x y s))
+    ;; Color -&gt; Image
+    ;; create an image of this segment 
+    (define/public (shape c)
+      (error 'shape "is an abstract method in segment%"))
+    (super-new)))
+</small></pre><pre><small>
+(define head%
+  (class segment%
+    (super-new [color 'red])
+    (define/override (shape c)
+      (circle 3 'solid c))))
+</small></pre><pre><small>
+(define body%
+  (class segment%
+    (super-new [color 'green])
+    (define/override (shape c)
+      (rectangle 3 3 'solid c))))
+</small></pre></p></div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Dec  2 12:06:07 EST 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

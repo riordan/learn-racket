@@ -1,0 +1,895 @@
+<html><head><title>Blog</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../index.html">Home</a></td></tr><tr><td><a href="../teaching.html">Teaching</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">G7400 F'11</a></td></tr><tr><td><a href="general.html">General</a></td></tr><tr><td><font color="black"><b>Blog</b></font></td></tr><tr><td><a href="texts.html">Texts</a></td></tr><tr><td><a href="syllabus.html">Schedule</a></td></tr><tr><td><a href="Assignments/index.html">Assignments</a></td></tr><tr><td><a href="project.html">Project</a></td></tr><tr><td><a href="Lectures/index.html">Lectures</a></td></tr><tr><td><a href="http://www.drracket.org/"><ax>DrRacket</ax></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Blog</h3></td><td valign="top" align="right" rowspan="2"><img src="../Images/blog.jpg" alt="logo" /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><h3>Important Messages from the Instructor</h3><p><div><hr /><p><b>Wednesday, December 14th, 2011</b></p><blockquote style="color:black"><div time="1323914375">
+
+<center><strong>  The End. </strong></center>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 14th, 2011</b></p><blockquote style="color:black"><div time="1323914322">
+
+<p>
+ The graded project appendices are in the mail. The grade consists of five parts,
+ worth 10 points each. Here are the very rough guidelines: 
+<ol>
+<li>effort: does the code meet the expectations of your proposal memos/conversations?</li>
+<li>correctness: are the functions (e.g., subst) and relations correct?</li>
+<li>presentation: do you explain the project, the file, the functions? is it presented top-down?</li>
+<li>testing: do you have test suites for functions and relations? do you use redex-chec as appropriate?</li>
+<li>usability: can I get simple programs to run in a short amount of time? is the model accessible to a third person?</li>
+</ol>
+ Keep in mind that these guidelines are rough and that I cannot possibly
+ check every corner of the code. 
+</p>
+
+<p>
+ The average percentage was 88 on this part of the project, which is a pretty
+ impressive A- level grade. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, December 2nd, 2011</b></p><blockquote style="color:black"><div time="1322831213">
+
+<center>
+ <a href="http://xkcd.com/982/" style="text-decoration: none">
+   <img alt="set theory" src="set_theory.png" />
+ </a>
+</center>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 23rd, 2011</b></p><blockquote style="color:black"><div time="1322107577">
+
+<p>
+ I returned the graded versions of homework 9. Look for 'mf:' in your file
+ and study my remarks on your code. Converting a CEK machine to a CESK
+ machine is, in principle, a straightforward task and is covered
+ extensively in the course text. Hence, the only interesting detail
+ concerns the idea that the CESK machine "must use the store to safe-keep
+ all values."  In other words, all allocations go into the store.  Since
+ <code> cons</code> allocates storage (like <code> new</code> in Java), it
+ must reserve a new location in the store and stick a pair into it. All
+ other changes--in data representation and processing--follow from this
+ insight. 
+</p>
+
+<p>In addition: 
+<ol>
+<li>
+  When an instructor blogs about common problems with homework files, 
+  please do pay attention. It is unhelpful to have to correct the same 
+  mistake over and over again. Your advisor won't like it either. 
+</li>
+
+<li>
+ The other big problem concerned the management of environments, which is
+ still wrong in about a third of the solutions. 
+</li>
+
+<li>
+ Finally, I once again urge all of you to pay close attention to logical
+ consistency.  Logical consistency is critical to programming and modeling
+ in computer science, no matter which sub-discipline you choose. 
+</li>
+</ol>
+</p>
+</div></blockquote></div><div><hr /><p><b>Sunday, November 13th, 2011</b></p><blockquote style="color:black"><div time="1321223260">
+
+<p><strong>Handing in your project:</strong> Remember your project is due
+  on <font color="red">Wednesday, November 16 (midnight)</font>. Please
+  submit it as two files with the same naming conventions as your homework
+  solutions: one file should be the required PDF document and the other one
+  the Redex model. 
+</p>
+
+<p><strong>Preparing your lecture:</strong> As with all presentations, you
+  must start from a model of your target audience when you prepare your
+  presentation.  You need to figure out what they know, what "culture" you
+  share with them, and what you want them to take away. The key is to
+  develop a path from the former to the latter. This path typically starts
+  with the problem and its motivation and the overall focus is on insights
+  not technicalities. -- I cannot review your presentations before you
+  deliver them, but if you have questions, see me. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, November 12th, 2011</b></p><blockquote style="color:black"><div time="1321144690">
+
+<p>
+ I returned the graded versions of homework 8. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions.
+ The average score is 79, with one perfect score. 
+</p>
+
+<p>Here are general points: 
+<ol>
+<li>
+ CEK machine with lists: Since values may contain free variables, your
+ 'closure' representation for pairs must contain an environment for each
+ part. Otherwise you lose variables. 
+</li>
+
+<li>
+ The addition of exception handlers to the CEK mechanism exploits the <code>K</code>
+ register. Raising an exception just means chopping off a part of <code>K</code>. 
+ If you instead "bubble" <code>raise</code> expressions through syntactic
+ portions of the <code>C</code> register, you are not taking advantage of
+ the essential elements of the machine. See the CC machine on page
+ 136. From there, the standard machine transformations take you to a
+ standard homework solution. The best solution would actually keep a stack
+ of stacks. 
+</li>
+</ol>
+ In general, when you write down machines or transition systems, you should
+ formulate operations on registers via metafunctions, e.g., extending an
+ environment, looking up a variable in an environment. When you do create a
+ real implementation then, you can keep the machine organization intact but
+ replace the operations with efficient versions. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 8th, 2011</b></p><blockquote style="color:black"><div time="1320807257">
+
+<p>
+ Some of you noticed that some failures are due to "not in domain"
+ exceptions. I have modified "8provided.rkt" to provide a new construct
+ called <code>not-in-domain.</code> Please see the definition of
+ <code>eval*-s</code> for a sample use. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, November 5th, 2011</b></p><blockquote style="color:black"><div time="1320528290">
+
+<p>
+ I returned the graded versions of homework 7. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions.
+ The average score is 81, with one perfect score. The grade distribution is
+ truly bi-modal. 
+</p>
+
+<p>Here are general points: 
+<ol>
+<li>
+ Task 1: When you abstract over two functions, the test is to define new
+ versions of the old functions in terms of the abstraction and to re-run
+ the tests for the original versions. In addition you can test 
+<pre><code>  (test-equal (sum.v1 l) (sum.v2 l))</code></pre> 
+ for any list l, etc.
+</li>
+
+<li>
+ Task 2: As much as you may dislike "Algol" syntax by now, when it comes to
+ type signatures for methods and functions, it works just fine: 
+<pre><code>  (rec t_ran x_fun(t_dom x_para) e)</code></pre>
+ e.g., 
+<pre><code>  (rec int f(int x) (if0 x 0 (+ 1 (f (- x 1)))))</code></pre>
+</li>
+
+<li>
+ Task 3: Since your task is to implement your specification, do not take a
+ high grade on this task as a good sign. It merely reflects only your
+ approach to programming this task not how appropriate or inappropriate
+ your type checker is. 
+</li>
+
+<li>
+ Task 4: When you admit programs of just numeric type, you know that a
+ number can be the only result; the preservation lemma says so. When you
+ admit programs of arbitrary type, you need an <code>explain</code>
+ function. 
+</li>
+</ol>
+</p>
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 2nd, 2011</b></p><blockquote style="color:black"><div time="1320245004">
+
+<p>
+ Due to popular request, the project is now due November 16, midnight. 
+ In addition, I will switch problem sets 8 and 9. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 2nd, 2011</b></p><blockquote style="color:black"><div time="1320242944">
+
+<p>
+ Please pick up your projects (both partners) between 3:30 and 4:30
+ today. For some that's just a pick-up, for a few I would like to briefly
+ discuss your goals. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 1st, 2011</b></p><blockquote style="color:black"><div time="1320184390">
+
+<p>
+ I have made a small change to assignment 7. You are allowed to use
+ "5provided.rkt" as an import. 
+</p>
+
+<p>Some of you have eliminated the silly specification of <code>if0</code>
+  as an abbreviation and some of you haven't. Here is what I recommend: 
+<pre><code>  (if0 0 e_then e_else) = e_then 
+  (if0 v e_then e_else) = e_else if v != 0
+</code></pre>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 1st, 2011</b></p><blockquote style="color:black"><div time="1320172486">
+
+<p>
+ I returned the graded versions of homework 6. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions.
+ The average score is around <strike>76, a B</strike> 82, a B+.
+</p>
+
+<p>Here are general points: 
+<ol>
+<li>
+ Problem 1 seem to pose two substantial problems. First, several pairs
+ "baked" <code>sum</code> and <code>product</code> into the language. The
+ question asked for ISWIM functions, i.e., functions defined inside the
+ language. Second, several pairs extended the calculus semantics (arbitrary
+ reductions) and did <em>not</em> create a standard reduction semantics. At
+ this point it is impossible to compare the two flavors; they are the same. 
+</li>
+
+<li>
+ Problem 2 posed a lot of smaller problems. The key is to recognize that
+ the addition of new features requires the addition of new syntax (new
+ kinds of <code>lambda</code>), new values (both are values), new
+ application syntax, and new contexts. 
+</li>
+
+<li>I saw a really nice way of explaining <code>mu-lambda</code> without
+  redoing all of the substitution function: 
+<pre><code>    (==&gt; ((mu-lambda x e) v_1 ...)
+         ((lambda (x) e) (create-list v_1 ...)))
+</code></pre>
+</li>
+
+<li>
+ Function application in ISWIM consists of two expressions. In the book and
+ in lecture, I whimsically picked left-to-right evaluation order. With the
+ addition of multi-argument functions, this choice becomes an even more
+ obvious source of potential problems. The addition of assignment
+ statements or non-local jumps would definitely enable the programmer to
+ write programs that determine the order of evaluation. The question is
+ whether programmers can already do so in the flavor of ISWIM you have
+ engineered. Here are two possible answers: 
+<ol>
+<li><strong>externally</strong> If you changed ISWIM in response to
+  problem 1 so that it maps stuck states to error answers, i.e., 
+<pre><code>  (--&gt; (in-hole E (n v)) error)  ;; for n in number</code></pre>
+  an <strong>external</strong> observer can see what is going on
+  <em>assuming you have distinct errors.</em>
+</li>
+
+<li><strong>internally</strong> Even if you changed ISWIM in response to 
+  problem 1 so that it maps stuck states to error answers, a program cannot
+  discover the order of evaluation and exploit it for computations. Doing
+  so requires the ability <em>to recover from errors within the program.</em>
+</li>
+</ol>
+ My grading on the answers was somewhat loose. No pair came close to the
+ above analysis. 
+</li>
+
+</ol>
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 1st, 2011</b></p><blockquote style="color:black"><div time="1320153180">
+
+<p>
+ The project memos are mostly on point. The average grade on this part is
+ 85/100, a low A. While this grade is high, it does not mean the memos are
+ perfect; I do not have the time to give them same treatment I give to the
+ writings of my own PhD students.
+</p>
+
+<p>
+ Your proposal should have either the format of a review (title details
+ paper) or the format of a plain paper (body refers to paper, cited in
+ bibliography section). -- A proposal consists of three sections. The first
+ section summarizes the background, in this case the chosen paper. The
+ second one explains the goal, i.e., the research question, you wish to
+ tackle. The third and final section lays out a plan of attack; it explains
+ methods, tools, and procedures that you wish to use.
+</p>
+
+<p>
+ When you write a public piece of technical prose, you need to use a formal
+ language. Avoid contractions, colloquialisms, bad words such as "thing",
+ etc. Also prefer active verbs over non-descriptive verbs (to be, to have,
+ to do) and passive phrases. -- As for questions, formulate them 
+ <em>indirectly</em> not as <em>direct</em> questions. -- To discuss a 
+ paper, refer to its contents (results, methods, tools) not to its
+ authors. Indeed, avoid mentioning authors other than as part of a
+ citation. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 28th, 2011</b></p><blockquote style="color:black"><div time="1319840811">
+
+<p>
+Here are the new partnerships for the remaining problem sets: 
+<pre><code>  (define ps7/8/9
+    '(("Zahra"     "Aniko")
+      ("Matthew"   "Triet")
+      ("Justin"    "Jonathan")
+      ("Hamidreza" "James")
+      ("Yue"       "Scott")
+      ("Do Hyong"  "Henry")
+      ("Arash"     "Mitesh")
+      ("Liang"     "Travis")
+      ("Maryam"    "Phil")
+      ("Tony"      "Tim")))
+</code></pre>
+You are responsible for contacting your partner this weekend and exchanging
+vital contact information (primary email, phone, facebook,
+etc). <font color="red">You must start working with your new partner as of Tuesday.</font>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 26th, 2011</b></p><blockquote style="color:black"><div time="1319648428">
+
+<p>When you define or extend a programming language, you need to develop
+  two parts: a syntax and a notion of value. The syntax is intended for
+  programmers so that they can write down expressions with the new
+  features. The values are for the programmer and the machine. The former
+  needs it to reason about the meaning of programs, the latter implements
+  it. -- The book and the course covered this idea from week 2 through 5. 
+</p>
+
+<p>Since several solutions for problem set 5 suggest that some of you
+  didn't understand/appreciate this idea, let me sketch the list extension
+  to ISWIM: 
+<pre><font size="-2"><code>  (define-extended-language ISWIM* ISWIM
+    (e .... ;; surface syntax 
+       (cons e e)
+       (cons? e)
+       (first e)
+       (rest e)
+       empty
+       (empty? e))
+    (v .... ;; evaluation syntax 
+       empty
+       (cons v v))
+    ...)
+</code></font></pre>
+ With this definition, for example, the <code>beta-v</code> law
+ <em>automatically</em> applies to lists. There is no need to special-case
+ lists or other values, which -- as the book briefly explains -- produced
+  all kinds of misunderstandings about PLs in the past. 
+</p>
+
+<p>
+ The above extension is only one possible way to add lists correctly to
+ ISWIM. If you have a correct version and you are happy with it, you are
+ welcome to stick to it. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Saturday, October 22nd, 2011</b></p><blockquote style="color:black"><div time="1319334609">
+
+<p>
+ I have modified problem 1 on problem set 7. The modification asks you to
+ explain the precise meaning of the random testing that
+ <code>redex-check</code> performs and thus clarifies the nature of 
+ your task.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 22nd, 2011</b></p><blockquote style="color:black"><div time="1319256052">
+
+<p>
+ I returned the graded versions of homework 5. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions.
+ The average score rose to 82. 
+</p>
+
+<p>Here are general points: 
+<ol>
+<li>
+ Please check your line width. I took of a point when I found lines over
+ the limit (102). 
+</li>
+
+<li>
+ Don't test metafunctions via test--&gt;&gt;. This involves too many moving
+ parts. Unit tests should be simple and easy to read. 
+</li>
+
+<li>
+ Your proofs in problem 1 would have benefited from the equations (lemmas)
+ in 5provided.rkt. 
+</li>
+
+<li>
+ Problem 2 requires eval to map <em>closed</em> terms to answers. Not one
+ term enforced closedness of the given program. I did not deduct points
+ this time. 
+</li>
+
+<li>
+ A number of people had serious problems with problem 3. When you extend a
+ language with a data type, you need to extend the set of operations and
+ the set of values. That is usually enough. In this case, <code>(cons v
+ v)</code> and <code>empty</code> were new values. A typical notion of
+ reduction looks like <code>(first (cons v_1 v_2))</code> relates to
+ <code>v_1</code>. 
+</li>
+</ol>
+</p>
+</div></blockquote></div><div><hr /><p><b>Thursday, October 20th, 2011</b></p><blockquote style="color:black"><div time="1319135072">
+
+<p>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+
+<tr valign="top"><td width="300"><p>Problem 2 requests implementing 
+numeric ISWIM as suggested in the book, which implies the use of 
+integers. But integers aren't closed under exponentation. What should we
+do?</p></td>
+<td><p>You are free to use Racket numbers (reals, complexes) and/or get
+stuck. All I ask for is that your specification is consistent. 
+</p></td></tr>
+
+<tr valign="top"><td width="300"><p>Problem 2 asks for a <em>syntactic
+reduction</em>. Does this mean you want us to use Racket's syntax rules?
+</p></td> 
+<td><p>No. I am asking for a reduction rule that "translates"
+<code>if</code> expressions into something sensible. 
+</p></td></tr>
+
+<tr valign="top"><td width="300"><p>How should <code>eval*-v</code> in
+ Problem 3 deal with lists that contain <code>lambda</code> expressions? 
+</p></td> 
+<td><p>Turn them into <code>'closure</code>.
+</p></td></tr>
+
+</table>
+
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 19th, 2011</b></p><blockquote style="color:black"><div time="1319061791">
+
+<p>
+ Some of you may be planning on traveling. You may count on 12/9 as the end
+ of the semester. 
+</p>
+
+<p>In addition, I have finalized the schedule as much as possible at this
+ point. Each project pair has a presentation slot now. Each slot is 40
+ minutes long, with 20 minutes per person. (I will post details on the
+ presentation later.) If any pair wishes to swap slots with another pair,
+ all four partners must agree before you inform me. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, October 16th, 2011</b></p><blockquote style="color:black"><div time="1318818850">
+
+<p>
+ I sent out graded versions of homework 4. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions.
+ The average score rose to 87. 
+</p>
+
+<p>Here are a few general points: 
+<ol>
+<li>
+ When you communicate a small model to someone/anyone, running a short
+ (300-400line) file shouldn't take a minute. Four minutes are boderline
+ polite. Twenty and more minutes is rude. I subtracted three points for these
+ cases. 
+</li>
+
+<li>
+ If one or two lines are overly widely and difficult to read, I ignored it
+ this time. If you had a bunch of these, I subtracted points. 
+</li>
+
+<li>
+ As the book explains, a normal form is a term that does not contain any
+ redexes. A term such as <code>(if0 x (1 + 1) (1 / 0))</code>, however, does
+ contain redexes, and I expect a compiler to reduce them as much as possible. 
+ Furthermore, <code>(if0 error x x)</code> propagates <code>error</code>,
+ while <code>(if0 x error 1)</code> does not. 
+</li>
+
+<li>
+ Several defined metafunctions instead of LC encodings for stacks. 
+ If you do not understand the difference, ask in class. 
+</li>
+
+<li>
+ Almost all of you defined a single-path reduction to reduce the running
+ time. I was really hoping for some more algorithmic thinking here. -- Then
+ again, this course is not about algorithms, and the tricks you would learn,
+ aren't essential. I therefore did not deduct points. -- In the real world,
+ you would have to justify this point. 
+</li>
+</ol>
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 11th, 2011</b></p><blockquote style="color:black"><div time="1318381050">
+
+<p><strong>Some clarifications on problem set 4:</strong>
+
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+
+<tr valign="top"><td width="300"><p>How should we represent numbers in problem 2? Should we leave
+them in an encoded form since we can't escape to racket?  </p></td>
+<td><p>You may escape to Racket for small things---such as numbers 
+and perhaps adding numbers---but that's it. Nothing else is needed.
+</p></td></tr>
+
+<tr valign="top"><td width="300"><p>What does "another test must demonstrate that you can predict
+the outcome only up to &alpha; equivalence" mean?</p></td> 
+<td><p>If you experiment with <code>subst-n</code>, you will see that it
+renames bound variables as needed -- just as illustrated in class. Hence, 
+when you formulate a reduction test you may not get the exact term but 
+a term that is a different representative of the same &alpha; equivalence
+class. Fortunately Redex allows you to state "up to some equivalence" in
+reduction tests. Do so for at least one of them and include the same test
+without this option; the former will succeed, and the latter will fail. 
+</p></td></tr>
+</table>
+</p>
+
+<p><strong>Some clarification on the next step for your project:</strong>
+As you have seen over the course of the past few weeks, scientists ask
+questions and try to answer them. Many find such questions while reading
+papers.  When they ask question, they usually do not start with questions
+that go beyond the content of a paper but questions about the content
+itself. It is these kinds of questions that I want you to focus on. You are
+<em>not</em> supposed to conduct research in programming languages; you are
+merely figuring out what the authors could have meant with statements and
+claims in their papers. The one constraint is that you pick questions that
+are amenable to the kind of analysis we study in class and you practice in
+homework assignments. (Naturally once researchers can answer all questions
+about an interesting paper, they move on to novel questions raised by the
+paper.) 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 10th, 2011</b></p><blockquote style="color:black"><div time="1318270785">
+
+<p>
+ I sent out graded versions of homework 3. Look for 'mf:' in your file and
+ study my remarks on your code. They mark noteworthy points and subtractions. 
+ The average score was again 83, with one pair getting a perfect score. 
+</p>
+
+<p>Here are three general points: 
+<ol>
+<li>Include your email addresses on one separate line in the header. </li>
+<li>Keep all the code/text for one problem contiguous. </li>
+<li>Do not use comment boxes or other graphical syntax. </li>
+</ol>
+ Since I have mentioned the first point here and in class, 
+ I subtracted one beauty point this time for failure to live 
+ up to it. 
+</p>
+
+<p>
+ Problem 2a caused some confusion. It demands that nested
+ <em>expressions</em> are reduced to numbers in a certain order, but it
+ does not specify in which order the actual additions happen. As a
+ consequence, the model could reduce expressions in left-to-right order and
+ perform right-to-left addition after the expressions are reduced to
+ numbers. Here is an example:
+<pre><code>      (+ (* 2 2) (* 3 3) (* 4 4))
+  --&gt; (+ 4 (* 3 3) (* 4 4))
+  --&gt; (+ 4 9 (* 4 4))
+  --&gt; (+ 4 9 16)
+  --&gt; (+ 4 25)
+  --&gt; 29
+</code>
+</pre>
+ As a matter of fact, for part c, it is possible to argue that there is no
+ distinction.  If your model reduces <em>expressions</em> left-to-right and
+ right-to-left but sums up/multiplies all fully numeric operations in a
+ fixed order, you can't see a difference. 
+</p>
+
+<p>
+ More generally, just because a problem statement (paper) says, conjecture
+ X should hold and readers should figure out how to prove it, does not mean
+ that X is true.
+</p>
+</div></blockquote></div><div><hr /><p><b>Friday, October 7th, 2011</b></p><blockquote style="color:black"><div time="1318020341">
+
+<p>
+You should have received email introducing you electronically to your
+partner. In case something goes wrong, here are the partnerships: 
+<pre><code>  (define ps4/5/6
+    '(("Zahra"     "Justin")
+      ("Matthew"   "Aniko")
+      ("Yue"       "Mitesh")
+      ("Hamidreza" "Maryam")
+      ("James"     "Jonathan")
+      ("Do Hyong"  "Travis")
+      ("Arash"     "Scott")
+      ("Liang"     "Tim")
+      ("Triet"     "Henry")
+      ("Phil"      "Tony")))
+</code></pre>
+You are responsible for contacting your partner this weekend and exchanging
+vital contact information (primary email, phone, facebook, etc). 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, October 2nd, 2011</b></p><blockquote style="color:black"><div time="1317612577">
+
+<p>
+ I sent out graded versions of homework 2. Look for 'mf' in your file and
+ study my remarks on your code. They also mark my subtractions. 
+</p>
+
+<p>In general, pay attention to the following: 
+<ol>
+<li>Include your email addresses on one-line in the header. </li>
+
+<li>Do not include any templates.</li>
+
+<li>Stick to a width of at most 102 chars.</li>
+
+<li>
+ Label problems and subproblems in a distinctive manner. Comments with 99
+ dashes or large letters work well. 
+</li>
+
+<li>Comment out <code>traces</code> and <code>redex-check</code> examples
+  with #; comments. 
+</li>
+
+<li>Keep (some) tests with functions to illustrate functionality.</li>
+
+<li>Present functions top-down.</li>
+
+</ol>
+ This time I allocate 2 points to style and next time it will be 4. 
+</p>
+
+<p>
+ Here is a sample solution to problem 4, which many of you got wrong. 
+<pre><font size="-2"><code>  #lang racket
+  (require redex)
+
+  (define-extended-language vStacks Stacks
+    (vS mtS
+	(push vS n)))
+
+  (define-metafunction vStacks 
+    evalS : S -&gt; vS 
+    [(evalS mtS) mtS]
+    [(evalS (push S e)) (push (evalS S) (e-eval e))]
+    [(evalS (pop S))    (popF (evalS S))])
+
+  (define-metafunction vStacks 
+    e-eval : e -&gt; n
+    [(e-eval n) n]
+    [(e-eval (add1 e)) ,(+ 1 (term (e-eval e)))]
+    [(e-eval (top S))   (topF (evalS S))]
+    [(e-eval (depth S)) (how-deep (evalS S))])
+
+  (define-metafunction vStacks 
+    how-deep : vS -&gt; n
+    [(how-deep mtS) 0]
+    [(how-deep (push S n)) ,(+ 1 (term (how-deep S)))])
+
+  (define-metafunction vStacks 
+    topF : vS -&gt; vS
+    [(topF (push S n)) n])
+
+  (define-metafunction vStacks 
+    popF : vS -&gt; vS
+    [(popF (push S n)) S])
+
+  (test-equal (term (evalS ,ex1)) (term (push mtS 1)))
+  ... more tests ...
+</code></font></pre>
+ The key is that two mutually inductive data definitions are processed by
+ two mutually recursive functions with recursions and cross-recursions as
+ in the data definitions. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, September 29th, 2011</b></p><blockquote style="color:black"><div time="1317313042">
+
+<p>
+ Please submit your homework electronically as a single file, using the
+ same naming protocol as last time. 
+</p>
+
+<p>
+ You do not need to submit the Book exercises, labeled "finger exercises"
+ on homework set 2. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, September 26th, 2011</b></p><blockquote style="color:black"><div time="1317060882">
+
+<p>
+ Please visit the new project page and carefully read it over. 
+ Start checking out the papers to get a sense of what you might
+ find an interesting project. The first milestone is due in two weeks from
+ now. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, September 25th, 2011</b></p><blockquote style="color:black"><div time="1317008274">
+
+<p>
+ I sent out graded versions of homework 1. Look for 'mf' in your file and
+ study my remarks on your code. They also mark my subtractions. In general,
+ please pay attention to the following: 
+<ol>
+<li>A header must include your email addresses. </li>
+
+<li>Use 
+<pre><code>  #lang racket 
+  (require redex)
+</code></pre>
+</li>
+ to start your file. 
+
+<li>
+There is no need to spell out the steps of the design recipe. They exist to
+help you find solutions. If you're stuck, be sure to use them.  If you ever
+teach programming, be sure to remember them. See sample solution below. 
+
+<p>
+ You need to practice formulating concise (one line, 100 chars) purpose
+ statements. 
+</p>
+
+<p>
+ You also need to practice the concise formulation of accumulator
+ statements. 
+</p>
+</li>
+
+<li>Label problems and subproblems in a distinctive manner.</li>
+
+<li>
+ Mimic the Redex style from the book to make it look pretty. Many of you
+ had extremely ugly style. Here are some hints: 
+
+<ul>
+<li>Don't insert extraneous spaces.</li>
+
+<li>
+ DrRacket has a natural autoindent functionality. 
+ When you hit return, it places your cursor at a 
+ certain spot for a reason. If you think it's wrong, 
+ you program is ugly and/or wrong. 
+ Use the Racket | Indent All menu to format your file. 
+</li>
+
+<li>Limit yourself to 102 character-wide lines.</li>
+
+<li>Put all closing parentheses on one line.  No extraneous white
+   space. </li>
+</ul>
+</li>
+</ol>
+</p>
+
+<p>
+ Here is a sample solution to problem 5:
+<pre><font size="-2"><code>  #lang racket
+  (require redex)
+
+  (define-language Problem5
+    (XY x
+	(function x XY)
+	(XY XY))
+    (AB natural
+	x
+	(function x AB)
+	(AB AB))
+    (x variable)
+    (n natural)
+    ;; auxiliary result
+    (LL (x ...)))
+
+  (define ex1 (term (function x ((function y (function x (x y))) x))))
+  (define re1 (term (function x ((function y (function x (0 1))) 0))))
+
+  (define ex2 (term (x ((function x y) x))))
+  (define re2 ex2)
+
+  (define ex3 (term ((function x (x (function y (function z x)))) x)))
+  (define re3 (term ((function x (0 (function y (function z 2)))) x)))
+
+  ;; replace variables by static distance 
+  (define-metafunction Problem5 
+    sd : XY -&gt; AB
+    [(sd XY_0) (aux XY_0 ())])
+
+  ;; accumulator: l is the variables encontered between XY_0 and XY  
+  (define-metafunction Problem5 
+    aux : XY LL -&gt; AB
+    [(aux x LL_0) 
+     (distance x LL_0 0)]
+    [(aux (function x XY) LL)
+     (function x (aux XY ,(cons (term x) (term LL))))]
+    [(aux (XY_f XY_a) LL)
+     ((aux XY_f LL) (aux XY_a LL))])
+
+  ;; determine the distance of the x to its first occurrence in LL plus n
+  ;; accumulator: the number of variables between LL_0 and LL 
+  (define-metafunction Problem5 
+    ; distance : x LL n -&gt; n or x
+    [(distance x (x x_1 ...) n) 
+     n]
+    [(distance x (x_0 x_1 ...) n) 
+     (distance x (x_1 ...) ,(+ (term n) 1))]
+    [(distance x () n)
+     x])
+
+  (test-equal (term (sd ,ex1)) re1)
+  (test-equal (term (sd ,ex2)) re2)
+  (test-equal (term (sd ,ex3)) re3)
+  (test-equal (term (sd ,ex4)) re4)
+</code></font></pre>
+</p>
+
+<p>
+Here is an alternative formulation of distance that relies on the 
+full power of Redex pattern matching:
+<pre><font size="-2"><code>  (define-metafunction Problem5
+    ; distance : x LL -&gt; n or x
+    [(distance.v2 x (x_1 ... x x_2 ...))
+     ,(length (term (x_1 ...)))
+     (side-condition (not (member (term x) (term (x_1 ...)))))]
+    [(distance.v2 x (x_1 ...)) x])
+
+  (test-equal (term (distance.v2 x (y z x w x r s))) 2)
+  (test-equal (term (distance.v2 x (y z b w a r s))) (term x))
+</code></font></pre>
+I will introduce some of this power in lecture. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, September 23rd, 2011</b></p><blockquote style="color:black"><div time="1316793711">
+ The creators of Simula 67 were Messrs. Dahl and Nygaard, two Norwegian
+ computer scientists. The company that runs ECCOP has named two awards
+ after the two, and they are considered the two European pioneers of 
+ OO programming. 
+</div></blockquote></div><div><hr /><p><b>Thursday, September 22nd, 2011</b></p><blockquote style="color:black"><div time="1316742633">
+
+<p>
+ Note: I have slightly revised the syllabus. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 21st, 2011</b></p><blockquote style="color:black"><div time="1316631992">
+
+<p>The third part of the lecture notes is released.</p>
+
+<p>Homework 2 is in near-final shape.</p>
+
+<p>
+ Send me your solutions for homework 1 as a single Racket (.rkt) file
+ attached to an email that CCs your partner. The name of your file should
+ consist of your two first names separated by a dash: 
+<pre>
+       <tt>firstname1-firstname2.rkt</tt>
+</pre>
+ For those of you who work alone, use 
+<pre>
+       <tt>firstname.rkt</tt>
+</pre>
+ The file must have a proper header (homework, names, emails) and must be
+ properly organized. Check out "large letters" in the Insert menu.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, September 18th, 2011</b></p><blockquote style="color:black"><div time="1316360718">
+
+<p>
+ Notes for the second lecture on the design of Redex metafunctions are now
+ available. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 14th, 2011</b></p><blockquote style="color:black"><div time="1315998241">
+ <p>
+  Please note two corrections to Problem 1, marked in red. (HTML isn't
+  perfect and neither am I.) 
+ </p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 13th, 2011</b></p><blockquote style="color:black"><div time="1315952312">
+
+<p>
+ Note the new Lectures tab on the left. These notes are not a substitute
+ for your own notes but a <em>supplement</em>. Also, I will provide notes
+ only for the Redex programming part of the course. Otherwise the text book
+ is your best resource. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, August 31st, 2011</b></p><blockquote style="color:black"><div time="1314843524">
+
+<p>
+ Welcome to the PhD-level course on programming languages.
+</p>
+
+<p>
+ Our organizational meeting will take place on Friday 9/9. 
+<strike>
+ Enrollment permitting I will move the course to WVH to 
+ make it convenient for all of us. Stay tuned to announcements.
+</strike>
+</p>
+
+</div></blockquote></div></p></div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Wed Dec 14 21:00:57 EST 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

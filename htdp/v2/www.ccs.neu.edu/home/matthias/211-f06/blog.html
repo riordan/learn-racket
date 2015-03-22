@@ -1,0 +1,973 @@
+<html><head><title>Blog</title></head><body bgcolor="#e5e5e5" background="../Images/sandston.gif"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0" background="../Images/sandston.gif"><tr><td><a href="../index.html" style="text-decoration: none"><font color="#9900CC"><b>Home</b></font></a></td></tr><tr><td><a href="../teaching.html" style="text-decoration: none"><font color="#9900CC"><b>Teaching</b></font></a></td></tr><tr><td><font color="#9966CC"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html" style="text-decoration: none"><font color="#9900CC"><b>U211 F '06</b></font></a></td></tr><tr><td><a href="general.html" style="text-decoration: none"><font color="#9900CC"><b>General</b></font></a></td></tr><tr><td><a href="readings.html" style="text-decoration: none"><font color="#9900CC"><b>Texts</b></font></a></td></tr><tr><td><a href="syllabus.html" style="text-decoration: none"><font color="#9900CC"><b>Syllabus</b></font></a></td></tr><tr><td><a href="reading-schedule.html" style="text-decoration: none"><font color="#9900CC"><b>Readings</b></font></a></td></tr><tr><td><a href="Assignments/index.html" style="text-decoration: none"><font color="#9900CC"><b>Assignments</b></font></a></td></tr><tr><td><a href="communication.html" style="text-decoration: none"><font color="#9900CC"><b>Communication</b></font></a></td></tr><tr><td><font color="#9966CC"><b>Blog</b></font></td></tr><tr><td><a href="labs.html" style="text-decoration: none"><font color="#9900CC"><b>Labs</b></font></a></td></tr><tr><td><a href="officehours.html" style="text-decoration: none"><font color="#9900CC"><b>Ofc Hrs</b></font></a></td></tr><tr><td><a href="advice.html" style="text-decoration: none"><font color="#9900CC"><b>Advice</b></font></a></td></tr><tr><td><a href="contract.html" style="text-decoration: none"><font color="#9900CC"><b>Contract</b></font></a></td></tr><tr><td><a href="http://www.drscheme.org/" style="text-decoration: none"><font color="#9900CC"><b>DrScheme</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Blog</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><h3>Important Messages from the Instructors</h3><div><hr /><p><b>Monday, December 11th, 2006</b></p><blockquote><div time="1165863346">
+
+<center>The End.</center>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, December 7th, 2006</b></p><blockquote><div time="1165517395">
+
+<p>
+ The grades for the last homework set will appear some time tomorrow
+ (FRIDAY: 12/8) on the server. 
+</p>
+
+<p>
+ Please check all your grades one more time over the weekend.
+ Make sure that all promised corrections are up. If anything looks wrong,
+ see Ryan Culpepper and/or your instructors immediately. 
+</p>
+
+<p>
+ We will determine your final grades early next week. Changing them after
+ that will probably drag on for a while.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, December 7th, 2006</b></p><blockquote><div time="1165517394">
+
+<p>The printed part of homework 13 is due today (12/7), 5pm, on Carl's desk.</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, December 7th, 2006</b></p><blockquote><div time="1165503236">
+
+Over the past couple of weeks, some of your email has taken up to 12 hours
+to arrive in our accounts. I had our systems people track this down and
+they found the following: 
+<blockquote>
+<p>
+We've noticed that one of their mail servers that delivers outgoing mail
+ (they have several) had managed to be listed on one of the Real Time
+ Blacklists as a spammer: ...
+</p>
+
+<p>
+This led that server to be treated as a spammer. Their server dealt poorly
+ with the protection we have in place from spam blasts  (namely that we
+ only allow one connection at a time from that spammer to go through after
+ being throttled) which potentially could have led to problems with getting
+ mail to us. 
+</p>
+
+<p>
+It looks like they have since dealt with their listing. Just in case this
+ happens again, we've whitelisted all of the NEU.edu domain. This was
+ something we were initially hesitant to do because we had reason to
+ believe that compromised machines in places like ResNet and other NUnet
+ segments could be used to dump spam on us. Given the recent concerns,
+ we're going to bite the bullet and just whitelist the entire University's
+ network. 
+</p>
+</blockquote>
+
+<p>
+ If you are a computer science major, I urge you to use your CCS.NEU.EDU
+ mail account to communicate with faculty. The College's mail system isn't
+ without faults but, in my five-year experience, far more reliable than the
+ University's. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, December 4th, 2006</b></p><blockquote><div time="1165290579">
+
+For the stress test in Problem 13.A1, do <em>not</em> use graphs with more
+than 20-30 nodes and 100-300 edges. Your data representations and algorithms 
+are too naive to do well on anything larger than that. 
+
+</div></blockquote></div><div><hr /><p><b>Sunday, December 3rd, 2006</b></p><blockquote><div time="1165204791">
+
+<p>Here are two clarifications concerning homework problem 13.A1: 
+<ol>
+<li>
+ To implement the graph interface twice means to develop two data 
+ representations and to design the interface functions for <em>both</em>
+ data representations. -- You have seen this before with
+ <code>sets</code>. 
+
+<p>
+ You may wish to give these functions names such as <code>neighbor/1</code>
+ and <code>neighbor/2</code>. 
+</p>
+
+</li>
+
+<li>
+ To design <code>route</code> in a way that "assumes nothing about the
+ construction of the graph" means that the <em>same</em> definition should
+ work for <em>both</em> implementations of the interface. That is, you can
+ use the functions from the graph interface but you may assume nothing else
+ about the graph as you define <code>route.</code> -- Again, you have done so
+ for the implementation of <code>sets</code>.
+
+<p>
+ You may wish to define two <code>route</code> functions that differ in
+ the names of the interface functions (see above). If you do so, abstract
+ over the two definitions and create one that works for both
+ implementations. 
+</p>
+</li>
+</ol>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 29th, 2006</b></p><blockquote><div time="1164831003">
+
+<p>
+Matthias Felleisen's office hours for Thursday (11/30) are canceled,
+because he lectures in Olin Shivers's class. 
+</p>
+
+<p>
+In general: the staff will stop holding office hours this Friday
+evening. If you have any last-minute questions on Homework 13, see someone
+before the weekend. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 27th, 2006</b></p><blockquote><div time="1164646837">
+
+Concerning exam grades and final grades: 
+<ol>
+<li>The exam grade is a numeric score and is factored into the overall
+  picture. It gives you an idea of whether you improved, kept up, or
+  slacked off; it is <em>not</em> an indication whether you're a star
+  programmer or not suited for CS. If you did slack off, work on your
+  design skills over the break. CS2 picks up from where CS1 left off; it
+  just uses Java notation instead. 
+
+  <p>For disputes about the exam grade, see post from last Wednesday.</p>
+</li>
+
+<li>The final grade is a composite of exam grades, homework grades, quiz
+  grades and whimsicality [as explained in class]. The weights are
+  explained in the <a href="general.html">General</a> notes on the
+  course. 
+</li>
+
+<li>To compute the final grade, we compute N candidates grades where N is
+  the number of homework assignments. For each computation, we drop
+  <em>one</em> homework grade. We then take the <em>best possible</em>
+  grade from this bunch as your final grade. 
+</li>
+
+<li>The final score is translated into a letter grade as follows: 
+
+<blockquote>
+<table align="center" border="1">
+<tr><td>100 ~ 85</td><td>85 ~ 70</td><td>70 ~ 60</td><td>60 ~ 50</td><td>50 and less</td></tr>
+<tr><td align="center">    A   </td><td align="center">   B   </td><td align="center">   C   </td><td align="center">   D   </td><td align="center">F</td></tr>
+<tr><td align="center" colspan="4">             P                              </td><td align="center">F</td></tr>
+</table>
+</blockquote>
+</li>
+
+<li>There is one final homework assignment left. It will appear on Wednesday.</li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 21st, 2006</b></p><blockquote><div time="1164152100">
+
+The rubric for the second exam is <a href="http://www.ccs.neu.edu/home/matthias/211exams/">available
+on-line</a>. Before you complain about the grading, you must read and understand the
+solution. Then you approach the responsible grader (the first solution of each problem
+mentions the grader for the entire problem, except for problem 5, which was split). If you
+and the grader can't settle a dispute, the two of you should see your instructor. 
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 20th, 2006</b></p><blockquote><div time="1164040964">
+
+Upon request from several students, the due date of the 11th homework has
+been postponed to <font color="red">Monday, November 27, 6:00pm.</font>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, November 16th, 2006</b></p><blockquote><div time="1163692830">
+
+A colleague sent this today: 
+<blockquote>
+Grandiose software projects rarely succeed, and when government's involved
+the long odds get even longer. In the new Baseline, Laton McCartney
+chronicles the disintegration of the vast, multibillion-dollar project
+aimed at overhauling England's health system. Four years into the 10-year
+effort, called the National Program for Information Technology, the
+original $12 billion budget has already ballooned to at least $24 billion,
+which is more than it cost to dig the tunnel under the English Channel. Two
+members of parliament recently wrote that the project "is currently
+sleepwalking toward disaster. It is far behind schedule. Projected costs
+have spiraled. Key software systems have little chance of ever working
+properly. Clinical staff is losing confidence in it."
+</blockquote>
+
+<a href="http://www.roughtype.com/archives/2006/11/stop_them_befor.php">
+ Nick Carr's column
+</a>
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 14th, 2006</b></p><blockquote><div time="1163550481">
+
+<p>
+Several people have sent inquiries concerning the schedule of 211. So here
+it is in black and white: the second and final midterm is taking place on
+Monday (11/20) evening; we will be grading the exam on Tuesday (11/21);
+there is no lab scheduled for that Tuesday; we will hand back the graded
+exam on Wednesday (11/22); on Tuesday after Thanksgiving (11/28), we will
+conduct the last lab session and hand back the exams to those who missed
+the Wednesday (11/21) lecture.
+</p>
+
+<p>
+As for grades: while the second exam doesn't seal your fate, the remaining
+two problem sets and the two remaining quizzes are at most worth some 6% of
+your final grade. So if you know that you have an average of 0 from the two
+exams, it'll be too late to get A. Conversely, if you have an average of a
+100% from the first ten problem sets, ten quizzes, and two exams, you can't
+get less than an A anymore. -- The last two weeks are really intended for
+those students who have understood that "college" is about learning as much
+as possible and not about getting a grade.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 12th, 2006</b></p><blockquote><div time="1163389296">
+
+<p>
+ Due to a mishap, one of the graders didn't return his batch of graded
+ homework assignments. He will upload them as soon as feasible. To address
+ this mistake, we're extending the deadline for homework 10 by 48 hours. 
+ Apologies from the management. 
+</p>
+
+<p>
+ Also, upon request, the language for the homework has been uped to
+ "Intermediate Student Language with lambda".
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 10th, 2006</b></p><blockquote><div time="1163203831">
+
+The upcoming Tuesday (11/14) lab is canceled. We will run the lab on
+Tuesday after Thanksgiving (11/28). 
+
+</div></blockquote></div><div><hr /><p><b>Thursday, November 9th, 2006</b></p><blockquote><div time="1163103334">
+
+<p>
+  <em>Joel on Software</em> is a blog/column on "painless software
+  management". Joel is a software consultant, working on large systems. On
+  August 1, 2006 -- just as you were getting ready for your first semester in college he wrote a column entitled
+  <a href="http://www.joelonsoftware.com/items/2006/08/01.html">"Can your
+  programming language do this"</a>, which you can read and enjoy now. If
+  you ever wondered how fundamentals can be useful in your everyday life as
+  a programmer or someone who has to supervise programmers, he provides you
+  with a concrete reason. 
+</p>
+
+<p>
+  <em>Joel</em> also has strong opinions about the education of future
+  programmers. A year ago, he discussed
+  <a href="http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html">the
+  Perils of JavaSchools</a> to his (wide) audience. Read and reflect on the
+  chances you're getting here at CCIS/Northeastern. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 7th, 2006</b></p><blockquote><div time="1162941680">
+
+<p>"God created the integers, all the rest is the work of Man."</p>
+<p align="center">Leopold Kronecker (Mathematician, 1823-1891)</p>
+
+<p>Oh, and by the way: Even
+<a href="http://labs.google.com/papers/mapreduce.html">Google</a> has
+discovered map and reduce (aka fold) by now.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 7th, 2006</b></p><blockquote><div time="1162911686">
+
+<a href="http://www.ccs.neu.edu/home/matthias/211-f06/Assignments/10.html">Problem set 10</a> is now complete. The
+additional problem A2 is based on problem 9.A2.
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 6th, 2006</b></p><blockquote><div time="1162850037">
+
+<ol>
+ <li>Re-read page 313 in "How to Design Programs."</li>
+ <li>Deliver your cover page, receipt, and news exercise to Carl's desk by
+ NOON tomorrow.</li>
+ <li>The code from today's lecture is <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/27.html">online</a> now. </li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 5th, 2006</b></p><blockquote><div time="1162780254">
+
+<a href="http://www.ccs.neu.edu/home/matthias/211-f06/Assignments/9.html">Homework set 9</a> was ill-formatted and
+contained a typo-level mistake in problem A2. I have re-written the problem
+statements and released them just now. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 31st, 2006</b></p><blockquote><div time="1162309861">
+
+<p>Turn in your homework 8 cover pager at Christos's desk by tomorrow NOON.</p>
+
+<p>A student raised a question concerning the hand-in instructions of
+ <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Assignments/8.html#a1">Problem A1 on homework set 8</a>:
+<blockquote>
+You must turn in your marked up copy with the cover page to get any
+credit for this problem. 
+</blockquote>
+ Meaning: you and your partner had to choose from which homework set 6
+ solution you want to start. You must print the marked up solution from the
+ homework server and add it to your cover page, so that the graders know
+ your starting point. Failure to do so will result in 0 points for this
+ problem.  
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 30th, 2006</b></p><blockquote><div time="1162231149">
+
+<p>
+Dan Gover sent us a wonderful question yesterday, a page long but easily
+ boiled down to
+<blockquote>
+ How does one arrange a large program such as the UFO game? 
+</blockquote>
+ We discussed an answer to this question in class, and even blogged the
+ code, but here is another, general take. 
+</p>
+
+<p>
+ When you design a program that consists of more than a single function
+ (or a couple of them), you proceed in three stages: 
+<ol>
+<li>You plan the program in a <em>top-down</em> fashion. You design your
+  representation for the world: things that stay the same, things that
+  change. Based on that and the interface to the Operating System in your
+  beloved programming language (world.ss), you also create a wish list of
+  functions. That's your plan.
+</li>
+
+<li>Then you program, i.e., you design your functions according to the
+  recipe, using the data definition and the wish list. Do it well. 
+</li>
+
+<li>
+ Finally, you must arrange your program so that others can easily figure
+ out what it is about and how to find things (constants, functions, tests,
+ data, etc) in it. Here is how I go about it: 
+
+<pre>
+<code>
+#| War of the Worlds 
+   Matthias Felleisen
+   30 October 2006
+   Language: Intermediate
+   Teachpack: world.ss
+
+   This program implements a "War of the Worlds" ..
+   ... a brief (one paragraph) purpose statement .. 
+|#
+
+;; --------------------------------------------
+;; Data Definitions 
+;; -- (global relevance, local go where needed)
+;; 
+;; World is (make-world UFO AUP Charges Shots)
+;; ... 
+
+... structure definitions ... 
+
+;; data examples are good here: 
+
+(define WORLD0 ...)
+
+;; --------------------------------------------
+;; World Constants 
+(define WIDTH 800)
+
+;; --------------------------------------------
+;; The Main Function 
+
+;; Number -&gt; true
+;; .. fire tick events at frame-rate fr ..
+(define (main fr)
+  (and (big-bang WIDTH HEIGHT (/ 1 fr) WORLD0)
+       (on-tick-event world-next)
+       (on-key-event world-change)
+       (on-mouse-event world-stop)))
+
+;; --------------------------------------------
+;; WORLD FUNCTIONS: 
+;; .. all functions that process worlds ..
+
+;; In general: 
+;; .. functions grouped by data collection ..
+
+;; Choose names systematically. 
+
+;; LAST: library functions 
+;; .. (those with many masters) ..
+
+;; --------------------------------------------
+;; TESTS
+... group all tests together, bottom up,
+... separated via symbols 
+
+;; --------------------------------------------
+;; RUN, PROGRAM, RUN
+(main 28)
+</code>
+</pre>
+</li>
+</ol>
+Over the next week or two, you will get to know a fourth stage: editing a
+program. This involves using existing abstractions and inventing
+additional abstractions to improve your program. 
+</p>
+
+<p>
+ When you organize your thoughts, think of your program as a book. It has
+ chapters and sections. Organizing it well means others can comprehend
+ it. Use "Special | Insert Large Letters" and "Program Contour" for an
+ overview. The "(define ...)" drop-down menu is also helpful to navigate
+ books; it's like an index. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 27th, 2006</b></p><blockquote><div time="1161980394">
+
+Your graded homework sets #6 are now available via 
+<a href="https://winooski.ccs.neu.edu:9779/servlets/status.ss">the homework
+server</a>. Log in using your username and password. View your graded
+homework and use the markups to fix it for homework set
+#8. 
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 27th, 2006</b></p><blockquote><div time="1161965761">
+
+Here is an email from a recent NU/CCIS graduate who found out about PLT
+Scheme in a junior-level course and created bindings for the Allegro gaming
+platform: 
+
+<blockquote att="aka workmin@ccs.neu.edu">
+<pre>
+<code>
+	From: Jon Rafkind 
+	Subject: Beta of game framework
+	Date: 	October 27, 2006 1:27:28 AM EDT
+
+I have been working on a simple game framework for
+use with my allegro.plt planet package, an
+all-in-one media library mostly for writing games
+in. The framework removes most of the work in
+deciding how to structure a game leaving only the
+most basic routines to be coded by the user: logic
+and drawing. Its pretty fresh and maybe not that
+useful yet but I just wanted to get it out there in
+case anyone has any comments.
+
+Planet package: <a href="http://www.rafkind.com/jon/tar/scheme/allegro/1/5/allegro.plt">allegro.plt</a>
+Documentation: <a href="http://www.rafkind.com/jon/tar/scheme/allegro/1/5/doc.txt">doc.txt</a>
+Example game using this: <a href="http://www.rafkind.com/jon/tmp/simple.ss">simple.ss</a>
+
+Video of that game: <a href="http://www.rafkind.com/jon/tmp/simple.mpg">simple.mpg</a>
+Or on youtube: <a href="http://www.youtube.com/watch?v=RV7ClMSOZp4">www.youtube.com ...</a>
+
+The video playback is choppy because my video
+capturing software is cruddy, but on my machine the
+game runs very smoothly.
+</code>
+</pre>
+</blockquote>
+
+Look for PLaneT. And one of the tutors is working next to Jon as an
+intern. 
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 26th, 2006</b></p><blockquote><div time="1161877502">
+
+<p>
+ Turn in your cover page and newsreports at Theo's desk by Friday
+ (10/27) NOON. 
+</p>
+
+<p>On today's lecture: 
+<blockquote>
+ Programmers are not to be measured by their ingenuity
+ and their logic but by the completeness of their case analysis.
+</blockquote>
+<p align="center"><a href="http://www.cs.yale.edu/quotes.html">Alan Perlis, Epigram #32:</a></p>
+</p>
+
+<p>On tomorrow's homework: 
+<blockquote>
+ Today in class we designed the function 
+<blockquote>
+ <code>
+  ;; drscheme-junior : AE -&gt; Number 
+ </code>
+</blockquote>
+ Tomorrow's homework (the HtDP section) is about designing the function 
+<blockquote>
+ <code>
+  ;; drscheme : AE DefWindow -&gt; Number 
+ </code>
+</blockquote>
+ After all, when drscheme evaluates an expression in the Interactions
+ Window, it also knows about the Definitions Window. The book's exercises
+ help you develop an appropriate data definition for <code>DefWindow.</code> 
+</blockquote>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 24th, 2006</b></p><blockquote><div time="1161710419">
+
+Carl will swap office hours with Christos on Thursday and Friday (this week
+only): 
+<ul>
+<li>Carl: Thursday morning, 10:30-12:00am</li>
+<li>Christos: Friday afternoon, 3:00-4:30pm.</li>
+</ul>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 23rd, 2006</b></p><blockquote><div time="1161625835">
+
+The due day for Homework Set 7 has been pushed back to Thursday (10/26). 
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 20th, 2006</b></p><blockquote><div time="1161368287">
+
+<p>As of next week, we will not accept excuses about the homework
+submission process. Here is some basic advice concerning the process: </p>
+
+<p><blockquote>
+ Basic advice: <font color="red">Submit early and submit often.</font>
+ There is no penalty for uploading your solution every time you improve
+ it. Do so, just in case something evil happens between your homework and
+ your dog. 
+</blockquote></p>
+
+<table>
+<tr><td>Question/Problem:</td><td>Solution:</td></tr>
+<tr valign="top">
+<td> The server rejected my homework. It said a line was longer than 79 characters.</td>
+<td> Make sure all of your lines are 79 characters or shorter and try again.</td>
+</tr>
+
+<tr valign="top">
+<td> The server rejected my homework. It said there was an
+error in my code.</td> 
+
+<td> Click on RUN before you submit! If DrScheme complains, the server will
+complain, too. It just will not accept homework that doesn't run
+cleanly. You shouldn't either. 
+</td>
+</tr>
+
+<tr valign="top">
+<td> The server said it timed out running my homework or it uses too much memory.</td>
+
+<td> Click on RUN before you submit! Does it finish? Make sure your tests
+  complete. (You may also comment out any calls to big-bang, on-tick-event,
+  etc.)</td>
+</tr>
+
+<tr valign="top">
+<td> The server rejected my homework because it was too big.</td>
+<td> Use smaller images in your program. If you use the same image
+  multiple times, give it a name rather than inserting multiple copies of
+  the image into your definitions window.</td> 
+</tr>
+
+<tr valign="top"><td> I forgot my partner's homework server ID.</td>
+<td> Your partner is sitting next to you ask him. If he isn't,
+you are violating your contract.  Pair programming means both people
+working together in the same room at the same computer. -- Failing that, your
+partner's homework ID should be in your blue book along with everything
+else you know about him.
+</td> 
+</tr>
+
+<tr valign="top">
+<td> I forgot my password.</td>
+<td> Make an appointment to see Ryan to get it reset. Immediately.</td>
+</tr>
+</table>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 20th, 2006</b></p><blockquote><div time="1161356448">
+
+The rubric for the first exam is now <a href="http://www.ccs.neu.edu/home/matthias/211exams/f06-1/rubric1.html">on-line.</a>
+Even if you have a solid A, I encourage you to read this over. If you do wish to complain
+about the grading of a problem, you must read the rubric, compare with your solution, and
+then approach the grader of the problem. If you and the grader don't agree, see an
+instructor. 
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 19th, 2006</b></p><blockquote><div time="1161280491">
+
+<p>
+ The cover sheet and news report/summary are due tomorrow at NOON on Dale's desk.
+</p>
+
+<p>
+ The deadline for homework set 7 has been pushed back to Wednesday, 6pm. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 17th, 2006</b></p><blockquote><div time="1161133176">
+
+A student asks: 
+<blockquote>
+<p>
+In my game, for instance, I have a function that is called by the success?
+function that determines if two images have collided.  After testing my
+success? function, I note that there is no red in the helper function,
+indicating that all branches of the code were tested.
+</p>
+
+<p>Since the tests all return true, is it necessary for me to still write
+tests for the helper function, or may I assume that the function works
+properly based on success?'s behavior?</p>
+</blockquote>
+
+We answered: 
+<blockquote>
+<p>1. You can prove (and you will learn to do so) that this is not enough to
+cover all possible cases. It's minimal measure of testing. (Good enough for
+211, not in general.)</p>
+
+<p>2. For 211, I recommend testing the auxiliaries, too.</p>
+
+<p>3. For a software engineer (with a few years of experience), I expect him
+to make a judgement call about testing small functions like this or testing
+them in context only. It's something for which you need experience. Quite a
+bit.</p>
+
+<p>P.S. You should <em>never</em> test whether two <em>images</em> collided
+  but whether their representations did (are close enough). Images are
+  nothing; the representation is everything.
+</p>
+</blockquote>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 17th, 2006</b></p><blockquote><div time="1161113811">
+
+<p>
+The second exam will take place on Monday, November 20, 6:30-9:30pm. The
+<a href="general.html">General Notes</a> has been updated. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 16th, 2006</b></p><blockquote><div time="1161051921">
+
+Lecture 18 (Monday 10/16) on the "worm game" is now <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/18.ss">on-line</a>. Study
+it well. We will cover more examples of this kind soon. 
+
+</div></blockquote></div><div><hr /><p><b>Sunday, October 15th, 2006</b></p><blockquote><div time="1160931564">
+
+<p>
+ You may wish to study some of <a href="http://www.ccs.neu.edu/home/matthias/211exams/">the exams from past
+ CSU211 courses</a>. In general, it is important to keep in mind that the
+ exam is not about getting correct code or repeating knowledge; that's why
+ it is an open-book and open-notes exam.
+</p>
+
+<p>The key is that you know how to follow the design recipe so that you can
+ solve problems even if you have never before seen anything like it. A
+ specific example concerns lists. A lot of students copy definitions for
+ list-processing programs and tinker with them, until running them in
+ DrScheme seems to solve the problem at hand. While this may get you enough
+ credit for a B- (and a paying job when programmers are in demand), it
+ won't get you an A and it won't make you a good programmer. 
+
+ We want to train programmers well. Hence, be prepared to find data
+ definitions that do not look like any of those you have seen in class. If
+ you can follow the design recipe, you can solve these problems. If you
+ don't understand the process, you won't solve them.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 13th, 2006</b></p><blockquote><div time="1160762314">
+
+We have noticed <em>extreme collaboration</em> going on for homework and
+consider it unhealthy. It is therefore time to amend the <a href="general.html">General
+Guidelines</a> of the course. <font color="red">From now on, we will
+consider <em>all</em> collaborations outside of your assigned partnership
+<em>cheating</em> and will report it as such to the administration.</font>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 12th, 2006</b></p><blockquote><div time="1160686458">
+
+<p>
+<font color="red">
+ If you have any conflicts with the exams, you must have made alternative
+ arrangements with your instructor by Friday 6:00pm. Make sure you have a
+ dated email that establishes these arrangements. Otherwise you must take
+ the exam at the specified time. 
+</font>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 12th, 2006</b></p><blockquote><div time="1160657856">
+
+<a href="http://www.nytimes.com/2006/10/12/technology/12tube.html?ex=1318305600;en=c8ffdcca26ec29b1;ei=5088;partner=rssnyt;emc=rss">YouTube acquired by Google. Founder is quiet MS student at Stanford U.</a>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 11th, 2006</b></p><blockquote><div time="1160586968">
+
+<p>John Mendelweski and Michael Morgano will hold a last-minute
+  question-and-answers session in the Living-Learning Center (20 Stetson
+  East) on Sunday evening (10/15th) from 7-9pm.
+</p>
+
+<p>John Mendelweski will not hold his office hours tomorrow (Thursday)
+  evening.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 11th, 2006</b></p><blockquote><div time="1160586748">
+
+<p>The <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/5.html">grading rubric for assignment 5</a> is now
+  on-line. Study it for the upcoming exam so that you understand how we use
+  the design recipe to grade your homework solutions. 
+</p>
+
+<p>An example of a multi-billion dollar story on software: It sounds too
+simple to be true. Airbus' A380 megajet is now a full two years behind
+schedule—and the reason, CEO Christian Streiff admitted on Oct. 3, is that
+design software used at different Airbus factories wasn't compatible.</p>
+
+<p>
+See
+<a href="http://www.businessweek.com/globalbiz/content/oct2006/gb20061005_846432.htm?campaign_id=rss_daily">story
+  in Business Week</a>. It is for that reason that future business majors
+should understand what programming really is and that good programming is
+not a commodity but a deep, logical and scientific activity. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 9th, 2006</b></p><blockquote><div time="1160430917">
+
+<p>
+Two problems with the homework submission process have come to our
+attention: 
+<ol>
+<li>The server will not accept lines that are wider than 80
+  characters. SOLUTION: Break program lines according to the guidelines
+  that the book displays in every figure. And write concise purpose
+  statements. 
+</li>
+
+<li>The server will not accept homework solutions that are larger than
+  500Mb. DIAGNOSTIC: An overly large homework solution is usually due to
+  one of two things: your Definitions Window contains large images or your
+  Definitions Window contains the same picture several times. SOLUTION: in
+  the latter and common case, make sure to give the picture a name and use
+  the name instead of the many occurrences of the picture instead. In the
+  former case, find smaller pictures than the one you want to use. 
+</li>
+</ol>
+</p>
+
+<p>Remember that the homework must be uploaded this week. You must turn in
+  the electronic receipt and the news and a cover page by Wed NOON at
+  Ryan's desk. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 6th, 2006</b></p><blockquote><div time="1160155738">
+
+<p>Problem A3 contains a typo in one of the data definitions: 
+<pre>
+<code>
+(define-struct txt (content x y))
+;; Str = (make-txt <font color="red">Number</font> Number <font color="red">String</font>)
+</code>
+</pre>
+
+The correct definition is: 
+<pre>
+<code>
+(define-struct txt (content x y))
+;; Str = (make-txt <font color="blue">String</font> Number <font color="blue">Number</font>)
+</code>
+</pre>
+
+</p>
+
+<p>I have made up some practice problems concerning <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/ex2.html">
+structures and data definitions</a>. -- Matthias</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 6th, 2006</b></p><blockquote><div time="1160153371">
+
+<p><center>Warning</center></p>
+
+<p>
+ Do <font color="red"><em>not</em></font> follow the design recipe
+ blindly when you tackle problems. The purpose of the design recipe is to
+ guide your thinking and to focus your efforts on the creative part of the
+ process. Whenever you apply such guidelines blindly, however, you are
+ likely to mess up at some point. 
+</p>
+
+<p>
+ To illustrate this effect, I include always include at least one problem
+ with the fifth week problem set that leads to a dead-end if you don't
+ think before you apply the design recipe. And yes, this year's problem set
+ contains one of those problems, too. 
+</p>
+
+<p>
+ Do not forget the guidelines. We rarely mention them in class because the
+ in-class problems are "one task" problems. Homework problems, however, go
+ beyond such simple stuff.
+</p>
+
+<p><center>In short, think first then use guidelines.</center></p>
+
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 4th, 2006</b></p><blockquote><div time="1160006737">
+
+Some of you approached TAs with problems in understanding the
+material. After watching some of these interactions, I have made up
+<a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/ex1.html">some practice exercises on designing "atomic"
+functions on "atomic" data</a> and I know that at least one third of you
+should do those <font color="red"><em>as soon as possible</em></font>.
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 4th, 2006</b></p><blockquote><div time="1159963313">
+
+The signature exercise didn't go as well as we had hoped. So we have
+dropped it from this week's grading rubric and add it, in revised form, to
+next <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Assignments/5.html">Tuesday's homework assignment.</a>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 2nd, 2006</b></p><blockquote><div time="1159820021">
+
+Today, Christos is collecting the homework solutions of the week. You can
+turn in your homework until 6pm. 
+
+</div></blockquote></div><div><hr /><p><b>Monday, September 25th, 2006</b></p><blockquote><div time="1159188128">
+
+<p>
+This coming week Erin McLaughlin will hold her "Tu 5:30-7:00pm" office hour
+on Wednesday from 4:30-6:00pm. 
+</p>
+
+<p>
+Carl Eastlund is responsible for today's homework assignments. He won't
+accept solutions after 5pm. 
+</p>
+
+<p>The code from today's lecture is <a href="http://www.ccs.neu.edu/home/matthias/211-f06/Tmp/9modified.ss">
+available on-line.</a>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, September 22nd, 2006</b></p><blockquote><div time="1158962259">
+When the teaching assistants grade your news summary, they will evaluate
+one of the following three aspects of your writing: 
+
+<ul>
+<li>
+  typos: they will mark every typo up to some number, say 5, and if your
+  summary has more typos than that, you get a 0. 
+</li>
+
+<li>
+ sentence-level problems: they will look for incomplete sentences, missing
+ nouns, verbs, articles, bad word order, etc. Again, if they find too many
+ of those, they will stop reading and cross out the rest. 
+</li>
+
+<li>
+ paragraph organization: does your paragraph have a thesis? do the
+ remaining sentences support the thesis? is there a natural transition from
+ sentence to sentence (old-new rule)? 
+</li>
+</ul>
+ We will use one of these three rules per week, and we will rotate through
+ them over the course of the semester. If a TA is <em>generous</em>, he may mark up
+ additional problems as he sees fit but this won't affect your grade. 
+</div></blockquote></div><div><hr /><p><b>Thursday, September 21st, 2006</b></p><blockquote><div time="1158863668">
+
+<p>Someone writes: 
+<blockquote>
+"I was looking over the homework for Fundimentals, and wanted to know if we
+had to do all six steps for each of the problems in our homework."
+</blockquote>
+The answers are "Yes!" and "Absolutely!" and "You better get used to it."
+and "Think of this as finger exercises in piano lessons" because in a week
+or two, you won't be able to solve the problems at all if you don't get in
+the habit of following the design recipe <em><font color="red">now</font></em>. 
+</p>
+
+<p>
+ Starting next week, the CSU 212 lab sessions will also use short
+ quizzes to test your preparedness. These quizzes will cover lecture
+ material. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 20th, 2006</b></p><blockquote><div time="1158800000">
+
+During Olin's and my absence, the second section of the class covered a bit
+more ground than the first, especially covering Cartesian points/structs:
+<ul>
+<li>
+ develop a function that measures the "Manhattan distance" to the
+ origin. In Manhattan, you can only walk square blocks. So a house at 3rd
+ street and 10th avenue is 13 blocks away from the origin of Manhattan (and
+ that is?). 
+</li>
+
+<li>
+ develop a function that measures the Euclidean distance to the origin. See
+ HtDP and instances of <code>posn</code>. Given a point <code>(x,y)</code>,
+ its Euclidean distance to the origin is measured as the square root of the
+ sum of the squares of <code>x</code> and <code>y</code>. (This follows
+ from Pythagoras's law concerning rectangular triangles. Why?) Look up
+ square in HelpDesk. 
+</li>
+
+<li>
+ develop a function that measures the distance between two Cartesian
+ points. For good practice, develop two versions: one that uses just
+ primitive operations and another one that uses the "distance to origin"
+ from the previous bullet.  
+</li>
+</ul>
+ Recall the structure definition: 
+<blockquote>
+<code>
+ (define-struct cartesian (x y))
+</code>
+</blockquote>
+ The constructor function <code>make-cartesian</code> is always applied to
+ numbers. 
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 31st, 1969</b></p><blockquote><div time="4">
+The sentence 
+"Formulate the formulas from Problems 2, 3, and 4 on Set 1 as Scheme
+programs." in Problem A1 on Problem Set 2 should have read 
+"Formulate the formulas from Problems 2 and 3 on Set 1 as Scheme programs."
+In other words, you do not have to create a program for Problem 1(4). 
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 31st, 1969</b></p><blockquote><div time="3">
+
+<p>
+ Your lab partner is your homework partner. You will solve all problems
+ jointly: programming and writing up the news summary. 
+</p>
+
+<p>
+ You and your partner may ask others a question or two as you are solving
+ your problems. If you do so, list their names on the "credits page"
+ (cover). 
+</p>
+
+<p>
+ Do <font color="red">NOT</font> solve the problems in a big large group of
+ 20 people. Do <font color="red">NOT</font> turn in a copy of someone
+ else's solution. Even if we don't catch you, I promise you will fail the
+ course.  
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 31st, 1969</b></p><blockquote><div time="2">
+This could be a bit over your head, but hey, it's never too late to get
+inspired! 
+
+<center>
+   Biology-Inspired Agile Autonomous Micro Air Vehicle Research 
+<br />
+     Johnny Evers
+<br />
+September 20, 2006 at 11:30 - 1:00 @ 333 Curry Student Center
+</center>
+
+<blockquote>
+<p>The demonstrated effectiveness of UAVs in combat motivates us to 
+consider the development of a much smaller class of UAVs, so called 
+micro air vehicles (MAVs), that would be capable of autonomous operation 
+in confined airspace such as urban canyons or forest edges.  As 
+engineers, we naturally look to precedent for the development of new 
+capabilities and we find an almost endless number of potential analogs 
+for MAVs in living bats, birds, and insects.  Among the more obvious 
+technology challenges, we find that our training as engineers, 
+emphasizing construction of systems from the interface of distinct 
+functional components, presents a barrier to developing an understanding 
+of biological flight appropriate to the development of new design 
+concepts for MAVs.  This lack of understanding cuts both ways: 
+biologists are trained in scientific inquiry rather than engineering 
+design and, therefore, often do not appreciate engineering approaches.  
+So we first have to answer the question "How do we facilitate a 
+productive dialogue with biologists?" before we can broach the "What can 
+we learn from biology?" question.</p>
+
+<p>In this talk, I will attempt to present a vision, somewhat personal, on 
+how engineers and biologists can collaborate on leveraging an 
+understanding of bats, birds, and insects to develop new classes of MAVs 
+with unprecedented autonomous aerial agility.  I will highlight several 
+interdisciplinary research projects which I believe are demonstrating 
+successful approaches to biology-inspired engineering.  Finally, I will 
+suggest several areas of research that will particularly benefit from an 
+interdisciplinary approach.</p>
+</blockquote>
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 31st, 1969</b></p><blockquote><div time="1">
+ Welcome to the fall 2006 edition of CSU211 and to my co-instructor, Olin
+ Shivers, who has just joined the Northeastern University <em>Programming
+ Research Lab</em>. 
+</div></blockquote></div></div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sat May 30 14:15:17 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

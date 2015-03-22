@@ -1,0 +1,29 @@
+a {
+    color: grey;
+    text-decoration: none;
+  }
+
+ax {
+    color: darkblue;
+    text-decoration: none;
+  }
+
+.ax {
+    color: darkblue;
+    text-decoration: none;
+  }
+
+.rsection {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+small { 
+    font-size: small;
+    font-family: "Courier New"; 
+}
+
+.redq { 
+    color: red;
+}

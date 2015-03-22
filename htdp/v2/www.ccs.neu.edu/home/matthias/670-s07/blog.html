@@ -1,0 +1,1129 @@
+<html><head><title>Blog</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../index.html">Home</a></td></tr><tr><td><a href="../teaching.html">Teaching</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">670 S '07</a></td></tr><tr><td><a href="general.html">General</a></td></tr><tr><td><a href="readings.html">Texts</a></td></tr><tr><td><a href="syllabus.html">Syllabus</a></td></tr><tr><td><a href="communications.html">Communications</a></td></tr><tr><td><font color="black"><b>Blog</b></font></td></tr><tr><td><a href="log.html">Journal</a></td></tr><tr><td><a href="Lectures/index.html">Lectures</a></td></tr><tr><td><a href="Projects/index.html">Projects</a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Blog</h3></td><td valign="top" align="right" rowspan="2"><nbsp /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><h3>Important Messages from the Instructors</h3><div><hr /><p><b>Monday, April 23rd, 2007</b></p><blockquote><div time="1177354497">
+
+<p><center><font color="red" size="+1">Good Bye</font></center></p>
+
+<p>
+ Richard will grade the remaining projects (12 and 13) this week; I have
+ graded a select subset of your final code-walk memos. Friday morning,
+ after I return from a quick trip, we will determine the final grades for
+ this course.
+</p>
+
+<p>
+ I have enjoyed the semester a lot, and I hope you have, too. Some of the
+ lessons may have sunk in now, and some will only reveal themselves in the
+ future when you're out there, working on real projects. (I know you had
+ little time to read the suggested reading. Take notes and find the
+ chapters and papers when you'll need them.) 
+</p>
+
+<p>Keep us in mind; keep us posted; and good luck to you all.</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, April 16th, 2007</b></p><blockquote><div time="1176768556">
+
+<p>
+ For your final code walk (Tues and Wedn), you will need to run your game
+ administrator so that it can hook up with my players, and three of your
+ players to work with my game administrator. You will find out what the IP
+ number for my game administrator is right before the code walk, and you
+ will determine your IP number so that I can fire up my players to look for
+ your port. Show up 5-10 minutes early so that you have plenty of time to
+ get things to run. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, April 16th, 2007</b></p><blockquote><div time="1176765100">
+
+<p>
+ The deadline for Project 13 was extended by two hours. 
+</p>
+
+<p>
+ I have also made cosmetic changes to Project 13, and I have spelled out a
+ hint concerning the client side. (See red text) -- 
+ Use case 1 was changed only as a hint. You're welcome to implement it in
+ any way you know how to fire up a TCP recipient. 
+</p>
+
+<p>
+ When you turn in Project 13, be sure to include scripts that compile/run the
+ server and client programs independently. 
+</p>
+
+<p>
+ For test fest "Project 10", my transmission routines inserted comments
+ into non-empty elements with the intention of finally breaking programs
+ based on regular-expression. The following is a legitimate
+ <code>END</code> message: 
+<pre><code><font size="-2">
+&lt;END&gt;&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" /&gt;&lt;LIST /&gt;&lt;/END&gt;
+</font></code></pre>
+ Adding a comment to this message is legitimate according to the rules: 
+<pre><code><font size="-2">
+&lt;END&gt;&lt;!--are you reg-exp-ing for &lt;/END&gt;--&gt;&lt;AIRCRAFT NAME="Bell P-39D" TAG="2" /&gt;&lt;LIST /&gt;&lt;/END&gt;
+</font></code></pre>
+ The embedded <code>&lt;END&gt;</code> text causes problems if you base the
+ legitimacy test of tree-structured data on regular-expression matching. --
+ I mentioned this fact time and again during code walks and also reminded
+ you that this fact is the subject of the first and key part of CS U 390, 
+ the only true prerequisite of the course. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, April 15th, 2007</b></p><blockquote><div time="1176659428">
+
+<p><img alt="[new]" src="new.gif" width="70" /> The
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/tf10/results/index.html">numeric results results for test
+fest "Project 10"</a> are now available. Please be suspicious of those test
+cases for which my player fails. While I won't pretend that my code is
+perfect, you have plenty of other test cases to worry about. </p>
+
+<p>For two teams (bcawley-roner and jdg-khanh), the entries are 0/0/0 and the
+test result doesn't exist (404 error for links) due to their programs
+crashing our machine. We are investigating. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, April 14th, 2007</b></p><blockquote><div time="1176565854">
+
+<a href="http://www.mercurynews.com/news/ci_5667003?nclick_check=1">Another
+example</a> why software quality from the hardware to the top-tier matters.
+
+
+</div></blockquote></div><div><hr /><p><b>Friday, April 13th, 2007</b></p><blockquote><div time="1176473837">
+
+After trying to run test fest 10 for the week, we still haven't succeeded
+to get through the whole matrix. [The unix clean-up actions don't seem to
+kill off run-away administrator processes.] For now, we are posting the
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/tf10/index.html">test cases from test fest 10</a> and links
+so that you can run them on your own.
+
+</div></blockquote></div><div><hr /><p><b>Monday, April 9th, 2007</b></p><blockquote><div time="1176151140">
+
+<p>
+ The results of the test fest for project 9 are now
+ <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/test-fest-9/index.html">available on-line.</a> The most
+ important use for you is to check out all available test cases and to get
+ your administrative routines (interaction with player) to pass these
+ tests.
+</p>
+
+<p>
+ <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/13.html">Project 13</a> is available now. I need to add
+ one transaction still; otherwise it's in shape.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, April 9th, 2007</b></p><blockquote><div time="1176132893">
+
+Also see below: For project 12, your run script must run a single game,
+without displaying the Player UI.  This script's output should be the same
+as in project 11, except that it should also print out a one-line
+notification whenever a player exchanges a wildcard.
+
+</div></blockquote></div><div><hr /><p><b>Friday, April 6th, 2007</b></p><blockquote><div time="1175862919">
+
+Here are Richard's directions for turning in Project 12: 
+<p>
+Create a Memos/Project12 directory, as specified in the blog post from Jan
+23.  For task 1, create a Task1 directory within Memos/Project12.  Put all
+of your design documents here, in portable document formats: HTML, PS, PDF,
+JPG, GIF, PNG, TXT.
+</p>
+
+<p>
+Your Task1 directory should also contain a file named Task1.html, which
+provides an overview of your design changes -- the kind of thing you might
+start with, should you happen to give a code walk for your project.  This
+document should also explain what the rest of the files in the Task1
+directory represent.  See the blog post from 2/13 for formatting guidelines
+for this memo.
+</p>
+
+<p>
+For task 3, simply submit a memo according to the standard directions (see
+blog posts from 1/23 and 2/13).
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, April 3rd, 2007</b></p><blockquote><div time="1175635218">
+
+I have moved the due date for <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/12.html">Project 12</a>
+from Good Friday to Monday. This also means that I will not publish Project
+13 until then. 
+
+</div></blockquote></div><div><hr /><p><b>Sunday, April 1st, 2007</b></p><blockquote><div time="1175468009">
+
+Andrew S. requested a clarification to the new
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/12.html">game rule of Project 12</a> concerning the use
+of "discarded squadron with wildcard."
+
+</div></blockquote></div><div><hr /><p><b>Thursday, March 29th, 2007</b></p><blockquote><div time="1175193693">
+
+People have asked how the run-script should work for Project 11. There are
+two parts to the answer: 
+
+<ol>
+<li>
+ Do *not*, by default, display the player UIs from project 8.
+ We will <em>penalize</em> people for opening windows. 
+</li>
+
+<li>
+After each <em>game</em>, print out a brief report that contains the
+(cumulative) score for each player and also indicates whether players were
+removed for cheating, contract violations, or other problems.  All reports
+should be written to stdout and look something like this for a successful
+game:
+<pre><code>  the war took 2 battles
+
+  Matthew : 465
+  Robby : 300
+  Shriram : 10</code></pre>
+and more like that when bad things happen: 
+<pre><code>  the war took 2 battles
+
+  Robby: CHEATED
+  Matthias: BROKE CONTRACT
+  Shriram : 0</code></pre>
+Your run-script should use between three and six players to run two or
+three games.  
+
+<p>
+ Optionally, you may also print such reports after each <em>battle.</em>
+ [No credit!] 
+</p>
+
+</li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, March 28th, 2007</b></p><blockquote><div time="1175083171">
+
+<h3>On Trusting Players</h3>
+
+<p>
+ After watching the code walks yesterday and after receiving several
+ inquiries on "trusting players", I have decided to provide some 
+ additional design suggestions. 
+</p>
+
+<p>
+ When a Project specification requests that you check the player's
+ actions for attempted cheating, you definitely may <em>not</em> assume
+ that players are trustworthy. You can't trust the player's hand; its
+ designer may have added code to add cards in between turns. You can't
+ trust the player's scoring of course; why not add a few points here and
+ there while the "dealer" isn't looking. So no, don't trust the player for
+ anything. Just imagine an open competition where friends and classmates
+ program to the same interface and plug in players with the only goal of
+ winning the Squadron Scramble tournament at all costs. 
+</p>
+
+<p>
+ When a Project specification requests that you develop an automated
+ Squadron Scramble player with a decent strategy, then imagine yourself
+ playing the game -- with the information that you get through the 
+ specified interface. Is it useful to keep track of your score? Is it
+ useful to keep track of your discards? Your attacks? The discards of the
+ rest of the players? In other words, does it help your planning efforts if
+ you know that almost all cards have been discarded, i.e., you're nearing
+ the end of a battle? Well, if it is, your automated player should keep
+ track of these items. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, March 26th, 2007</b></p><blockquote><div time="1174952901">
+
+On Mar 26, 2007, at 7:33 PM, someone wrote:
+
+<blockquote>
+<p>
+1. Are there any restrictions to what our player implementations are
+allowed to know about the game? I know the specified interfaces are
+intentionally limited but shouldn't our players be able to know things like
+scores, size of other player's hands, and any card that is discarded to the
+Stack? More specifically, can they keep track of anything that they would
+be able to if the game was played in real life?  
+</p>
+
+<p><font color="red">
+These sound like great suggestions for future extensions. For now, your
+player should know what it can find out through the functions/methods in
+the given interface. For everything else, you would need more guarantees.
+</font></p>
+
+<p>
+2. Related to 1, can our player keep track of every card placed on the
+discard stack? Once again, this is limited by the interface but it's
+something that could conceivably happen in real life.
+</p>
+
+<p><font color="red">
+Since the player can inspect the entire stack during a turn, the answer is
+yes. Can it see cards that are played and disappear between turn n and turn
+n+1? No. 
+</font></p>
+
+<p>
+3. What happens when a player requests to register in the middle of the game? 
+</p>
+
+<p><font color="red">
+Impossible. 
+</font></p>
+
+<p>
+Are they queued for a turn (and dealt a fresh 7 once they're reached) or
+are they forced to wait for the next battle before entering? I could make
+arguments for either approach. 
+</p>
+
+<p><font color="red">
+No.
+</font></p>
+
+<p>
+4. When a player is caught cheating what happens to their hand? Placed
+aside before the nextBattle/newDeck? 
+</p>
+
+<p><font color="red">
+Their hand is ignored. But again, this sounds like a great idea for a future change request. 
+</font></p>
+
+On Mar 26, 2007, at 6:24 PM, someone else wrote:
+
+<p>
+ For task 3, you want the optimal strategy, is this for a human player,
+ knowing everything ... or ... is it for a squadron scramble computer
+ player, where all they know about is ...
+</p>
+
+<p><font color="red"> 
+This should be "describe your best strategy" meaning the automated player
+that does best in your tournaments. Keep in mind that the interfaces are
+given. You may not assume any additional knowledge on the side of the
+player. 
+</font></p>
+
+</blockquote>
+Just in case: my answers are in red. 
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, March 21st, 2007</b></p><blockquote><div time="1174498494">
+
+Richard writes that from now on, "the run-harness script should
+<em>NOT</em> display the Player GUI from project 8". (I bet he'll be
+unhappy and subtract points if you do.)
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, March 20th, 2007</b></p><blockquote><div time="1174437500">
+
+Several pairs have emailed me with the following question: 
+<blockquote>
+ Does <code>play-one-turn</code> know about the first hand that the player
+ is handed? Doesn't it need the information to determine whether the player
+ is cheating? 
+</blockquote>
+ As you may have noticed, by this time in the semester, I leave it to you
+ to organize your classes and methods. In a sense this is 213/370 material
+ and you're capable of designing/implementing it. As you do so, keep in
+ mind today's hint, i.e., Tester and Administrator are really one
+ conceptual unit. So you can create one huge method, but then it becomes
+ difficult to create internal unit tests. Or you can create two methods
+ plus one that combines them; in this case, you need to figure out where to
+ keep all the state. Choose wisely. 
+
+</div></blockquote></div><div><hr /><p><b>Monday, March 19th, 2007</b></p><blockquote><div time="1174333215">
+
+Andrew S. and Andrea M-M. have independently discovered the lack of a test
+case element for cheating. I have modified MESSAGES4.txt to remedy this
+flaw. 
+
+</div></blockquote></div><div><hr /><p><b>Saturday, March 17th, 2007</b></p><blockquote><div time="1174158165">
+
+Richard has installed administrators for Projects 6 and 7 that respect the
+one-message per line protocol. 
+
+</div></blockquote></div><div><hr /><p><b>Saturday, March 17th, 2007</b></p><blockquote><div time="1174147555">
+
+The mid-term grades are now <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/mid-term-grades.html">available
+on-line.</a>. Read the "Overall" average as a predictor for the final grade
+as follows: 
+<ul>
+<li>"ok+" is between an A+ and a B+;</li>
+<li>"ok" is between a B+ and a C;</li>
+<li>"ok-" is between a C and a D-; and</li>
+<li>"0" is failing.</li>
+</ul>
+Keep in mind that these are projections based on past performance.
+
+</div></blockquote></div><div><hr /><p><b>Friday, March 16th, 2007</b></p><blockquote><div time="1174058142">
+
+<p>The results of the test fest for Project 7 are finally
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/test-fest-7/index.html">on-line</a> again. Now 
+that I have fixed my XTRN vs TURN confusion, the results are 
+three-times as good as before. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Friday, March 16th, 2007</b></p><blockquote><div time="1174056789">
+<p>Richard writes: 
+As part of grading, I ran everyone's harness against a very simple test
+case (based on one of those used for the test fest).  The actual input was 
+provided as specified in the blog post from yesterday.
+</p>
+
+<p>
+In this stage, I was only checking whether your harness completed the test
+case, not whether it produced the expected results.  So, if your feedback
+report indicates that your harness ran successfully against this input,
+this means only that it did not crash, and that it produced output that
+looks vaguely syntactically valid given the project's specification.  This
+statement does <em>not</em> guarantee that your system performed correctly
+against the test case.
+</p>
+
+<p>
+Also, many teams lost a point for not documenting that the fourth argument
+to <code>playOneTurn</code> means: is it all of the discarded squadrons, or
+only the bombers?  This was indeed up to you for this project, so you could
+choose either.  Of course, your Administrator's client needs to know, so
+your choice needs to be documented in the Administrator interface.
+Further, your use of this argument must be consistent with its description:
+since <code>Turn</code>'s constructor expects a list of the other players'
+discarded bombers as its 4th argument, then if you define
+<code>playOneTurn</code> to accept a list of <em>all</em> discarded
+squadrons, then you have to filter it accordingly before creating the
+turn.
+</p>
+</div></blockquote></div><div><hr /><p><b>Friday, March 16th, 2007</b></p><blockquote><div time="1174046911">
+
+On the lighter side of things, Ventz Petkov writes
+<a href="http://www.ahajokes.com/com087.html">"It's a little funny because
+  it holds a lot of truth."</a> 
+
+</div></blockquote></div><div><hr /><p><b>Thursday, March 15th, 2007</b></p><blockquote><div time="1174003018">
+
+Someone asked: 
+<blockquote>
+ Suppose the harness receives an ill-formed turn. In that case, it will
+ send a CONTRACT message and close its input port <em>before</em> the
+ administrator can send the GET-CARDs requests. Is this acceptable? 
+</blockquote>
+The answer is that this is <em>not</em> in the spirit of the assignment
+which says that "[t]he goal of these contracts is to prevent ill-behaved
+players from crashing the server or from upsetting its basic internal
+invariants." In this case, a bad test case designer would crash the test
+harness, and that's not what you wish to test. Instead you want to guard
+against this. 
+
+<p>
+ If you submit such a test case with an ill-formed test, my administrator
+ will discover this flaw and throw it out. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, March 15th, 2007</b></p><blockquote><div time="1173995821">
+
+<font color="red">Never mind! This was a bogus test fest. Thanks to Andrea
+  for noticing the bug (eliminated).
+</font>
+
+<p>
+The results of the test fest for Project 7 are now
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/test-fest-7/index.html">on-line.</a> 
+</p>
+
+<font color="red">You <em>can</em> run your test harness for the "play one round"
+  method manually using the mechanism below.
+</font>
+
+
+<p>
+To check how your players are doing directly, I recommend that you
+reorganize the test cases and run them manually as follows. Say case1 is in
+file case1.xml and looks like this: 
+</p>
+<font size="-3">
+<pre>
+<code>
+&lt;TURN name="a"&gt;&lt;STACK /&gt;&lt;STACK&gt;&lt;AIRCRAFT NAME="..." TAG="2" /&gt;&lt;/STACK&gt;&lt;LIST /&gt;&lt;LIST /&gt;&lt;/TURN&gt;
+&lt;TURN-GET-CARDS-FROM-STACK no="1" /&gt;
+&lt;END&gt;&lt;AIRCRAFT NAME="..." TAG="2" /&gt;&lt;LIST /&gt;&lt;/END&gt;
+</code>
+</pre>
+</font>
+
+<p>Then run the test case as follows, assuming your test script is called
+  <code>harness-for-interact</code>: 
+</p>
+
+<font size="-3">
+<pre>
+<code>
+cat TestInteract/case1.xml | ./harness-for-interact
+&lt;TRUE /&gt;
+&lt;AIRCRAFT NAME="..." TAG="2" /&gt;
+&lt;LIST /&gt;
+&lt;STACK NO="1" /&gt;
+&lt;ATTACKS /&gt;
+</code>
+</pre>
+</font>
+You can now inspect the output and determine whether it is as expected. 
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, March 14th, 2007</b></p><blockquote><div time="1173910148">
+
+Richard writes that "I've put (a version of) the test-fest administrator
+into everyone's SVN directory" and: 
+<blockquote>
+<p>
+Since several teams have asked about why their test cases failed, we have
+made our test fest administrator available to you to run.  While you can't
+inspect the administrator (it's in compiled form), you can still instrument
+your own code to get additional information about exactly what's happening.
+</p>
+<p>
+The test fest administrator is now in SVN, in your submission directories
+for projects 6 and 7.  Within those directories, I've added several things:
+</p>
+<font size="-1">
+<pre>
+    run-admin-6
+    run-admin-7
+    compiled/
+    utils/
+    aircrafts/ (if you didn't already have this directory)
+</pre>
+</font>
+<p>
+The administrator will only work on the CCIS Solaris network.  To run it:
+<ol>
+<li>
+  If you still have copies of these turnin directories checked out, then
+     update them.  Otherwise,
+<font size="-1">
+<pre>
+ svn co http://svn.barzilay.org/670/**TEAM**/turnin/Project6
+ svn co http://svn.barzilay.org/670/**TEAM**/turnin/Project7
+</pre>
+</font>
+     making the obvious replacement for **TEAM**.
+</li>
+
+<li>
+  cd to Project6 or Project7, as appropriate.
+</li>
+
+<li>
+  Invoke the run-admin-6 or run-admin-7 script.  Each script expects two
+     command line arguments: the script that starts your test harness
+     (run-harness, if you followed our submission directions), and the
+     directory containing the test cases (Tests/Project6 or tests/Project7,
+     if you followed our directions).
+</li>
+</ol>
+</p>
+
+Caveat: 
+<p>
+Unfortunately, it's not the same one that we ran, so the
+students may see different error messages -- I'm pretty sure I made this
+tarball up before you added the various contracts to the codebase.
+</p>
+</blockquote>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, March 13th, 2007</b></p><blockquote><div time="1173835714">
+
+Four remarks on Project 9: 
+<ol>
+<li>
+  Ventz discovered an incomplete sentence in the problem statement. That's
+  fixed.
+</li>
+<li>
+  I have fixed the IO3 part, as discussed in class. For a regular
+  <code>esac</code> case, your harness for the administrator must produce
+  the specified outputs. For a <code>TIMING</code> case, it must send back
+  a <code>TIMING</code> response and for a <code>CONTRACT</code> it must
+  send back a <code>CONTRACT</code> response. 
+</li>
+<li>
+  I contemplated the requested change to <code>TIMING</code> cases, i.e.,
+  dropping the <code>done</code> part. I have decided against it. There is
+  no harm in specifying a <em>random</em> result for the turn, but I do
+  recommend keeping it short. 
+</li>
+<li>
+ Robyn asked an interesting question after class. Suppose you are
+ specifying a <code>TIMING</code> case, but your second message is a
+ request for too many cards from the stack. Which of these two violations
+ should we expect? There are two answers: 
+<ol>
+<li>
+ A timing error can only be discovered if the execution of a second request
+ for cards is about to execute. Before your program can do this, however,
+ your contract system must determine that the second call is
+ legitimate. During this phase, it will discover a problem with the "entry"
+ part of the behavioral contract (too many cards requested) and signal a
+ <code>CONTRACT</code> error. The timing error will never be discovered. 
+</li>
+<li>
+ You should ponder the following question then: Is the testing language of
+ Project 9 rich enough to express this case? 
+</li>
+</ol>
+</li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Monday, March 12th, 2007</b></p><blockquote><div time="1173735856">
+
+The results of the test fest for project 6 are now <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/test-fest-6/index.html">available on-line.</a>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, March 10th, 2007</b></p><blockquote><div time="1173575871">
+
+As of Project 9 your XML facilities must deal with two common elements: 
+<ol>
+<li>
+  COMMENTS. The test cases from Projects 6 and 7 have shown that people
+  need comments in their test cases so that they can create a pattern with
+  comments and fill in the gaps for the specific cases. 
+</li>
+
+<li>
+ ABBREVIATIONS. Your XML readers and parsers must tolerate both forms of
+ elements without sub-elements, i.e., both &lt;LIST&gt; &lt;/LIST&gt; as
+ well as &lt;LIST /&gt; must work for the XML representation of the empty
+ list. 
+</li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, February 28th, 2007</b></p><blockquote><div time="1172685016">
+
+Ventz P. sent me this blog entry on <a href="http://www.codinghorror.com/blog/archives/000781.html">Why
+ Programmers Can't Program</a>. This shouldn't happen to you, but just in case, I have included
+ FizzBuzz in first-year coding style: 
+
+<p>CS U 211, assignment 6/7/8:</p>
+<font size="-1">
+<code>
+<pre>
+  (define hundred (build-list 100 add1))
+  
+  ;; Nat Nat -&gt; Boolean 
+  ;; is n a multiple of m? 
+  (define (multiple? n m) 
+    (zero? (remainder n m)))
+  
+  (map (lambda (n) 
+         (cond
+           [(and (multiple? n 3) (multiple? n 5)) "FizzBuzz"]
+           [(multiple? n 3) "Fizz"]
+           [(multiple? n 5) "Buzz"]
+           [else n]))
+       hundred)
+</pre>
+</code>
+</font>
+
+<p>CS U 213:</p>
+<font size="-1">
+<code>
+<pre>
+  class Main {
+      public static void main(String argv[]) {
+	  for(int i = 1; i &lte; 100; i++) { 
+	      if (multiple(i,3) &amp;&amp; multiple(i,5))
+		  System.out.println("FizzBuzz");
+	      else if (multiple(i,3)) 
+		  System.out.println("Fizz");
+	      else if (multiple(i,5)) 
+		  System.out.println("Buzz");
+	      else 
+		  System.out.println(i);
+	  }
+      }
+
+      // is m a multiple of n? 
+      public static boolean multiple(int m, int n) { 
+	  return (m % n) == 0; 
+      }
+  }
+</pre>
+</code>
+</font>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, February 27th, 2007</b></p><blockquote><div time="1172630645">
+
+Richard found this
+<a href="http://codemines.blogspot.com/2007/02/what-was-that.html">little
+  story on the importance of test harnesses.</a> It's worth reading. 
+
+</div></blockquote></div><div><hr /><p><b>Monday, February 26th, 2007</b></p><blockquote><div time="1172516184">
+
+<p>Brian G. points out that last week's "fiasco" is possibly an instance of Joel's
+<a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">Law of
+Leaky Abstractions</a>. Well, I admit that abstractions over physical things are
+often "leaky"; the underlying hardware shows through in some ways or others. But at
+the same time, I also think that what Joel really perceives here is a fact that
+some of us call the "51%" solution: the fact that working programmers are
+undereducated and produce software that just barely performs and then think that
+this is "okay."</p>
+
+<p>In the spirit of testing, contracts and fighter planes: Slashdot has a great
+story today on the <a href="http://it.slashdot.org/it/07/02/25/2038217.shtml">
+Raptor (F22)'s first flight south</a>. Sadly enough this problem plagued the
+development of previous fighter planes, as you may recall from a lecture on bugs
+and testing etc a short while back.
+</p>
+
+<p>Three blog posts in one day is enough. Really.</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, February 26th, 2007</b></p><blockquote><div time="1172506819">
+
+<p>Andrea and Andrew have discovered an omission from the
+  <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/MESSAGES.txt">MESSAGES.txt</a> file: the fighter squadron
+  must proceed the bomber squadron in the attack. The MESSAGE file is fixed
+  now. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, February 26th, 2007</b></p><blockquote><div time="1172506540">
+
+<p>
+As some of you have discovered, entering LARGE test cases is nearly
+impossible in Unix terminals. (I was unaware of this limit and hadn't
+encountered this problem in previous editions of the course.) So you
+must either give up on large test cases or implement the test
+administrator(s). 
+</p>
+
+<p>
+If you are interested in "purchasing" such a test administrator from
+Richard, please drop him a line. He will then place a test administrator
+(for Solaris) into your SVN directory (where we expected the
+administrator). The cost is 5 POINTS.
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Sunday, February 25th, 2007</b></p><blockquote><div time="1172451019">
+
+Richard writes: "In the past, we've specified that we run your process in an
+environment containing settings only for the PATH &amp; TERM variables.  Since
+project 8 requires you to create a graphical display, you may assume an
+appropriate setting for the DISPLAY variable."
+
+</div></blockquote></div><div><hr /><p><b>Sunday, February 25th, 2007</b></p><blockquote><div time="1172417678">
+
+Richard writes: 
+<ol>
+ <li>the "run-harness" script should execute your test harness from Task 2;
+    it should expect no command-line arguments and should perform *NO*
+    input/output to stdin/stdout beyond that specified in the task.  (I/O
+    to other places is fine.)</li>
+
+ <li>Any test cases you write for Task2a should be in Tests/Project7.  We'll
+    continue this convention for later assignments; I won't mention this
+    again.</li>
+
+ <li><p>
+    WARNING: we were fairly lenient the first time around on handing files
+    in the wrong location for Project6.  Going forward -- and this includes
+    your resubmission for project 6 -- your files *must* be in the
+    specified locations, as of the deadline, or you will not receive credit
+    for the relevant tasks.</p>
+
+   <p>
+    (If you're having SVN problems with submitting, let me know *BEFORE*
+    the deadline, and I'll work with you to get those addressed.  But if
+    you don't say anything until after the deadline, there's nothing I can
+    do.)</p>
+ </li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Friday, February 23rd, 2007</b></p><blockquote><div time="1172251672">
+
+Only <em>one</em> of the pairs in class was able to communicate properly
+ with the test fest harness over standard input and output. I have therefore
+ decided
+<ol>
+<li>to extend the deadline for projects 6 and 7 until Tuesday 6pm,</li>
+<li>and to guarantee you a NEWLINE at the end of each protocol message.</li>
+</ol>
+ This is only one bad part of the existing projects. In addition, many of
+ you did not adhere to the specified XML grammar for writing test
+ cases. Many of your test cases are missing elements; others include bogus
+ characters at the beginning of the file. We conjecture that these
+ characters were generated by XML editing tools and recommend that you
+ check your XML in plain text editors before you submit. 
+</div></blockquote></div><div><hr /><p><b>Wednesday, February 21st, 2007</b></p><blockquote><div time="1172077827">
+
+Richard has written up two suggestions that are "must reads": 
+<ol>
+ <li><a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/svn-error.html">how to deal with a common and obscure SVN error message;</a></li>
+ <li><a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/blog-post-02-21.html">how to deal with the "runnable scripts" grading policy.</a></li>
+</ol>
+Both are important for both your grade and your learning/preparation for
+the workplace. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, February 20th, 2007</b></p><blockquote><div time="1172007798">
+
+The specification for <code>FROM</code> messages is now included with <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/MESSAGES2.txt">MESSAGES2.txt</a>.
+
+</div></blockquote></div><div><hr /><p><b>Thursday, February 15th, 2007</b></p><blockquote><div time="1171577534">
+
+<p>
+ As most of you remember from lecture or are discovering on your own, the
+ special-purpose programming language for testing the player allows only a
+ limited range of scenarios. 
+</p>
+
+<p>
+ It isn't as inflexible as some of you may think though. In particular, it
+ is legal to place the <em>same</em> card on the stack, on the deck, and in
+ the player's hand.
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, February 13th, 2007</b></p><blockquote><div time="1171399277">
+
+<p>
+ <font color="red">Read <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/670-submission-notes.html">Richard's
+ turn-in guidelines.</a> Now. Or else. </font>
+</p>
+
+<hr />
+
+Also, concerning project 6, he adds: 
+<ul>
+  <li>
+    <p>
+      The test cases that you write should be placed in
+      <code>Tests/Project6</code>; the <code>Tests</code> directory should
+      be at top-level within your submission directory.  (That is,
+      <code>Tests</code> should be a sibling of <code>README</code>.)
+    </p>
+
+    <p>
+      Each test case should be stored in a separate file, with the
+      <code>.xml</code> extension, and a filename that suggests the purpose
+      of the test case.  <strong>DO NOT PUT SPACES IN THE TEST CASE
+      FILENAMES.</strong>
+    </p>
+
+    <p>
+      You may put other files in this directory (e.g., notes to yourself
+      about the test cases), but they must not have <code>.xml</code>
+      extensions.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      For task 1, you must include a <code>run-harness</code> script that
+      will start your test harness (<em>not</em> your test-case
+      administrator).  This script is subject to the same requirements as
+      your other scripts.  Further, it must expect <em>no</em> command-line
+      arguments (optional arguments for your own purposes are fine), and it
+      must perform no input-output beyond that specified by the project.
+    </p>
+
+    <p>
+      This script should run a single test case, which it reads from stdin,
+      write the test's output to stdout, and then terminate.
+    </p>
+
+    <p>
+      In most cases, this script will simply start your test harness.
+      (Since a Unix child process, by default, inherit its parent's open
+      file descriptors, your test harness will have the same stdin/stdout
+      as the script.)
+    </p>
+  </li>
+
+  <li>
+    <p>
+      If you attempt Task 2, your <code>run</code> script must accept one
+      command-line parameter, the name of the test case to run.  (You may
+      support additional parameters if you desire, as long as they are not
+      required.)
+    </p>
+  </li>
+</ul>
+</div></blockquote></div><div><hr /><p><b>Saturday, February 10th, 2007</b></p><blockquote><div time="1171133530">
+
+<p>
+ The <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/presentations.html">description of design/code
+ walks</a> now contains information on how we evaluate the quality of the
+ presentation, the panelists, and the memo from the secretary to the
+ presenters. I urge you to read it carefully.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, February 7th, 2007</b></p><blockquote><div time="1170875895">
+
+<b>Turning in Project 5/Task 0:</b> Please create a Project5a directory
+under turnin (in SVN), with the diagram in Memos/Project5 as normal. Add
+text files there, if needed. Use ASCII or PDF for the diagram. Richard has
+no obligation to grade any other format. So, if you plan on using a drawing
+tool, including a UML tool (no need to do so!), make sure it can export
+PDF.
+
+</div></blockquote></div><div><hr /><p><b>Friday, February 2nd, 2007</b></p><blockquote><div time="1170433190">
+
+<p>
+In response to those questions that revealed problems with the
+<a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/squadron.html">rules of Squadron Scramble</a>, I have
+altered the description in two ways. When a question deserved mention, the
+revised description contains an explicit Q/A part (questions are in blue,
+answers in purple). When a question could be answered with a small change
+to the wording of a paragraph, I did that (in purple). 
+</p>
+
+<p>
+Please study the game again. On Tuesday, I will conduct a five-minute
+Q-and-A session for last-minute questions on the rules. After that, you
+will have to "pay" to get answers. Specifically, for every question that we
+answer, you will sacrifice two homework points from the specific homework. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, January 31st, 2007</b></p><blockquote><div time="1170298477">
+
+<p>
+ Richard asked me to post <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Blog/zz-notes.html">some guidelines about
+ submitting code. </a>
+</p>
+
+<p>Here are answers to questions that we are receiving repeatedly: </p>
+
+<blockquote>
+<ol>
+<li>Does the completes function take into account wildcards when determining complete squadrons?</li>
+
+<li>... but a squadron must be at least 2 aircraft cards and at most 1 wildcard
+  from the game rules.  Which spec should we follow?</li>
+
+<li>For the deck constructor, by directory order of cards, do you mean that
+  we actually import from the xml file and then just use the order of cards
+  as they are in the index.xml file?</li>
+</ol>
+</blockquote>
+The answer is that a squadron is a collection of three cards: at least one
+is an airplane and one or two others are wildcards. Yes, the specs
+contradict the original rules, i.e., your customer has changed his
+(absent-mineded) mind. Oh, and all aircraft cards in a
+squadron must have the same name.  
+
+<p>Someone else also asked: 
+<blockquote>For the deck constructor, by directory order of cards, do you
+  mean that we actually import from the xml file and then just use the
+  order of cards as they are in the index.xml file?
+</blockquote>
+And yes, you are to use the directory with an XML index file and images to
+create the collection of <em>all</em> cards. You may consider this your
+first deck, but recall that you also must provide a function for shuffling
+the deck. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, January 30th, 2007</b></p><blockquote><div time="1170204615">
+
+<p>
+ It is apparently not widely known that a squadron consists of the
+ <em>same</em> kind of airplanes (i.e., airplanes with the same name in
+ this game). Please take this into account. 
+</p>
+
+<p>
+ Also I fixed two more small typo-level details in the specs. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, January 30th, 2007</b></p><blockquote><div time="1170176445">
+
+Someone asked: 
+
+<blockquote>
+<p>Does this mean that we should have all static methods?  In the OO
+course, we learned how to convert non-object-oriented signatures into
+object-oriented methods by using the implicit 'this' for the first argument
+in cases where the that argument was the object that the method belonged
+to.</p>
+
+<p>Is this correct?</p>
+</blockquote>
+
+<p>If you are NOT using an OO PL, you should implement the signature AS IS. </p>
+
+<p>If you are using an OO PL, you should implement the signature IN THE
+  SPIRIT OF 213 (or 370). In other words, you didn't just learn this in
+  370 (OO), you grew up with this from the very first day at NU.</p>
+
+<p>
+The signatures are specified in a true-and-only OO manner. They specify
+that the first argument is THIS or SELF and the remaining arguments are the
+arguments of a method. I don't want to force people, however, to use an OO
+language, which is why I allow for this much variance. Otherwise you are to
+implement the signature as-is, especially the state-less part.  
+</p>
+</div></blockquote></div><div><hr /><p><b>Monday, January 29th, 2007</b></p><blockquote><div time="1170117397">
+
+<h3>A News Story</h3>
+
+<blockquote>
+
+<p><a href="http://thedailywtf.com/Articles/Disjoint_Twins.aspx">Disjoint Twins</a></p>
+<p>Thursday, January 25, 2007 (205 Comments)</p>
+<p>by Alex Papadimoulis</p>
+ 
+<p>I'd imagine that there's a lot involved with bringing a new person into
+  this world. No, no -- I don't mean that part, I mean the whole paperwork
+  side of things. There's Social Security to set up, a .name domain to
+  register, birth certificate, insurance -- especially insurance. With all
+  those people feigning pregnancy and labor just to get a stay at the
+  hospital and a complimentary "It's a Boy!" balloon, insurers need to be
+  extra certain that childbirth claim resulted in a real child.</p> 
+
+<p>As the recent father of twin babies, Philip B. was relieved to learn
+  that his employer's benefit provider, Sun Life Canada, made the insurance
+  process really simple. Adding the little ones on the plan required no
+  more than a phone call to provide birth dates, names, and that sort of
+  thing. All seemed so easy, until the customer service rep realized what
+  Philip was trying to do: "I'm sorry sir, but we need a different birth
+  date for each of your kids."</p> 
+
+<p>"Uhh, er," Philip stuttered, rather puzzled, "they're twins? They were
+  both born on the seventh of May, so they actually do have the same birth
+  date."</p>
+
+<p>"Oh yes, I understand," she said, "but our system cannot handle two
+  people with the same last name born in the same month of the same year on
+  the same plan."</p>
+
+<p>Philip's jaw dropped. He inquired some more with the CSR to try
+  understand how such a technical limitation could occur. It turns out that
+  a new version of their software was installed that tracked each person's
+  budget based on their last name, plan number, and month/year of
+  birth. Hence, having two people born in the same month and year on one
+  plan would cause all claims to be booked against one of the two's budget,
+  risking a premature budget exhaustion.</p> 
+
+<p>We can only hope that, by now, Sun Life has corrected their new
+  insurance system to account for the unfathomable concept of twins. But as
+  of this day, for insurance purposes, Philip's kids are born a month
+  apart, one on April 7 and the other on May 7. That, apparently, is much
+  more fathomable.</p> 
+</blockquote>
+</div></blockquote></div><div><hr /><p><b>Sunday, January 28th, 2007</b></p><blockquote><div time="1170035655">
+
+<p>Richard has discovered two additional small problems concerning
+  <code>Squadron</code>s and <code>completes</code> in
+  <code>Squadron.</code> Fixed in revised release. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, January 27th, 2007</b></p><blockquote><div time="1169914559">
+
+<p>
+ Ventz Petkov pointed out a mistake in the signature of <code>pop</code> for
+ <a href="http://www.ccs.neu.edu/home/matthias/670-s07/Projects/4.html#stack">Stacks in Project 4</a>, which I have fixed
+ now. (This just shows again the dangers of manually porting code to html.)
+</p>
+
+<p>
+ I have also noticed a missing requirement in <code>Squadron</code>, so
+ please take a second look. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, January 24th, 2007</b></p><blockquote><div time="1169664444">
+
+One task of Project 3 is to represent the basic data of Sqaudron Scramble and
+some basic functions on it, e.g., <code>cards-have-same-name</code>. These
+functions perform the tasks that their names suggest. For
+<code>card-&lt;</code> you are to implement a comparison that would help you
+order the cards on your hand (insert a new one at the proper place), just like
+in real life.
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, January 23rd, 2007</b></p><blockquote><div time="1169590285">
+<b>SVN Project Structure:</b>
+
+<p>
+ If we specify a directory name or filename in the SVN repository, your
+ turnin tree must match that name *exactly* -- including case and
+ punctuation.
+</p>
+
+<p>
+  In the notes for lecture 3, we stated that each project statement would
+  contain the name of the directory that you are to create within the
+  <code>turnin</code> directory.  For simplicity, we will simply use the
+  pattern established by the previous assignment: <code>Project2</code>,
+  <code>Project3</code>, <code>Project4</code>, and so on.
+</p>
+
+<p>
+  For project 3 and forwards, your <code>README</code> file and the
+  required scripts (<code>compile</code>, etc.) must appear at top-level
+  within the project directory.  You may structure your code any way you
+  like within the project directory, but your <code>README</code> file must
+  contain a roadmap, as discussed in lecture 3.  So, if you choose to use
+  Java, you may create the directory structure corresponding to your code's
+  packages.
+</p>
+
+<p>
+  Any memos should appear within a <code>Memos/Project<i>N</i></code>
+  directory.  The <code>Memos</code> directory must appear at top-level
+  within the main project directory.  (Rationale: we specify that the
+  project name must appear twice within the path so that you can keep all
+  of the memos you write to us in your <code>work</code> directory, and
+  keep them well-organized, and we can find the memos easily when we
+  grade.)
+</p>
+
+<p>
+  Finally: In lecture 3, we asked that your <code>README</code> file
+  include a list of which parts you attempted.  Since this is information
+  is to be included on the cover page that you submit, you do not need to
+  include this in your <code>README</code>.
+</p>
+
+<p>
+  To summarize:
+<pre>
+<code>
+  ProjectN
+   |
+   +---- Memos
+   |     |
+   |     +---- ProjectN
+   |            |
+   |            +---- memos here as necessary
+   |
+   +---- README
+   +---- compile
+   +---- run
+   +---- run-tests
+   +---- code, in subdirectories as appropriate.
+</code>
+</pre>
+</p>
+</div></blockquote></div><div><hr /><p><b>Thursday, January 11th, 2007</b></p><blockquote><div time="1168548671">
+
+<p>
+ People have sent us inquiries about all kinds of programming
+ languages. You are welcome to choose any programming language that runs on
+ the public UNIX computers in the lab. For handing-in products
+ ("shipping"), you must also provide a script that Richard can invoke from
+ the command line.
+</p>
+
+<p>
+ If the "command-line" restriction represents a hardship for you, please
+ send me a one-page memo (plain text!) and request an exception. Those will
+ be granted on a case-by-case basis.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, January 10th, 2007</b></p><blockquote><div time="1168462948">
+
+We have decided that you are to choose your own partners for now. See
+<em>Projects</em> (tab on left) for details. The deadline is extended until
+Tuesday next week.
+
+</div></blockquote></div><div><hr /><p><b>Thursday, December 14th, 2006</b></p><blockquote><div time="1166126401">
+
+Welcome to CSU 670 for Spring '07.  
+
+<p>
+I will messages about the course, the lectures, the project, and the
+presentations here. Get into the habit of reading this page on a daily
+basis.
+</p>
+
+</div></blockquote></div></div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Aug 30 14:12:07 EDT 2011</font></td><td align="right"><font size="-2">generated with <a href="http://www.racket-lang.org/">Racket</a></font></td></tr></table></body></html>

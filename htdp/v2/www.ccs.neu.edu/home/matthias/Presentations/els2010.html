@@ -1,0 +1,43 @@
+<html>
+<title>Lots of Languages, Tons of Types</title>
+<body bgcolor=white>
+
+<hr>
+<h2>
+<center>
+  Lots of Languages, Tons of Types
+<br><br>
+		      Matthias Felleisen
+</center>
+</h2>
+
+<blockquote width=60%>
+Since 1995 my research team (PLT) and I have been working on a programming
+ language for creating programming languages---small and large. Our code
+ base includes a range of languages, and others contribute additional
+ languages on a regular basis. PLT programmers don't hesitate to pick our
+ lazy dialect to implement one module and to link it to a strict language
+ for another module in the same system. Later they may even migrate one of
+ the modules to the typed variant during some maintenance task.
+<p>
+An expressive macro system is one key to this riches of languages. Starting
+ with the 1986 introduction of hygienic macros, the SCHEME world has worked
+ on turning macros into tools for creating proper abstractions. The first
+ part of my talk will briefly describe this world of modern macros and its
+ key attributes: hygiene, referential transparency, modularity of macros,
+ phase separation, and macro specification. 
+<p>
+The second part of my talk will focus on how to equip LISP-like languages
+ with a sound type systems and that will illustrate the second key idea,
+ namely, monitoring the interactions between different languages. Our
+ approach to type systems allows programmers to stick to their favorite
+ LISP idioms. It mostly suffices to annotate functions and structures with
+ type declarations during maintenance work. To ensure the soundness of this
+ information even when higher-order values flow back and forth between
+ typed and untyped modules, module boundaries are automatically equipped
+ with software contracts that enforce type-invariants at all levels.
+</blockquote>
+<hr>
+
+</body>
+</html>

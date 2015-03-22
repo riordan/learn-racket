@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>Preface: The Little Schemer</title>
+</head>
+<body>
+<h3>Preface: The Little Schemer</h3>
+
+<p> Recursion is the act of defining an object or solving a problem
+in terms of itself.  A careless recursion can lead to an infinite regress.  We
+avoid the bottomless circularity inherent in this tactic by demanding that
+the recursion be stated in terms of some ``simpler'' object, and by
+providing the definition or solution of some trivial base case.  Properly
+used, recursion is a powerful problem solving technique, both in
+artificial domains like mathematics and computer programming, and in real
+life.
+
+<p><em>The goal of this book is to teach the reader to think recursively.</em>
+Our first task, therefore, is to decide which language to use to
+communicate this concept.  There are three obvious choices: a natural
+language, such as English; formal mathematics; or a programming
+language.  Natural languages are ambiguous, imprecise, and sometimes
+awkwardly verbose.  These are all virtues for general communication, but
+something of a drawback for communicating concisely as precise a concept
+as the power of recursion.  The language of mathematics is the opposite of
+natural language: it can express powerful formal ideas with only a few
+symbols.  We could, for example, describe the entire technical content of
+this book in less than a page of mathematics, but the reader who
+understands that page has little need for this book.  For most people,
+formal mathematics is not very intuitive.  The marriage of technology and
+mathematics presents us with a third, almost ideal choice: a programming
+language.  Programming languages are perhaps the best way to convey the
+concept of recursion.  They share with mathematics the ability to give a
+formal meaning to a set of symbols.  But unlike mathematics, programming
+languages can be directly experienced---you can take the programs in this
+book and try them, observe their behavior, modify them, and
+experience the effect of your modifications.
+
+<p>Perhaps the best programming language for teaching recursion is Lisp.
+Lisp is inherently symbolic---the programmer does not have to make an
+explicit mapping between the symbols of his own language and the
+representations in the computer.  Recursion is Lisp's natural
+computational mechanism; the primary programming activity is the
+creation of (potentially) recursive definitions.  Lisp implementations
+are predominantly interactive---the programmer can immediately
+participate in and observe the behavior of his programs.  And, perhaps
+most importantly for our lessons at the end of this book, there is a
+direct correspondence between the structure of Lisp programs and the
+data those programs manipulate.
+
+<p>Lisp is practical.  It is the dominant language for work in
+artificial intelligence: computational linguistics, robotics, pattern
+recognition, expert systems, generalized problem solving,
+theorem proving, game playing, algebraic manipulation, etc.  It has
+had a major influence on most other fields of computer science.
+
+<p>Although Lisp can be described quite formally, understanding Lisp does
+not require a particularly mathematical inclination.  In fact, <em>
+The Little LISPer</em> is based on lecture notes from a two-week
+``quickie'' introduction to Lisp for students with no previous
+programming experience and an admitted dislike for anything
+quantitative.  Many of these students were preparing for careers in
+public affairs.  It is our belief that <em>writing programs
+recursively in Lisp is essentially simple pattern recognition.</em> Since
+our only concern is recursive programming, our treatment is limited to
+the why's and wherefore's of just a few Lisp features: car, cdr, cons,
+eq?, atom?, null?, number?, zero?, add1, sub1, not, and, or, quote,
+lambda, define, and cond.  Indeed, our language is an <em>
+idealized</em> Lisp.  
+
+<p><em>The Little LISPer</em> is not a complete book on Lisp.  However, mastery
+of the concepts in this book is mastery of the foundations of Lisp---after
+you understand this material, the rest will be easy.
+
+<p><em>Acknowledgements</em></p>
+
+<p> Many people made important contributions to the first edition of this
+book.  The following acknowledgement appeared there:
+
+<blockquote>
+Many thanks to John McCarthy, Mike Greenawalt, John 
+Howard, Terry
+Pratt, David Musser, William Gear, Mark Elson, Harold Stone, Jonathan
+Slocum, Juny Armus, Bob Wesson, and Marylin Sealy for their extremely
+helpful comments about <em>The Little LISPer</em>.  Grateful appreciation to Ben
+Shneiderman and Steve Mitchell for believing in this unorthodox approach to
+Lisp.  Thank you to Bill Cohagan who taught me Lisp and to Ann and Frances
+Patterson for their careful typing and proofreading of this manuscript.  
+I am greatly indebted to Patrick Mahaffey for his futuristic ideas of teaching
+Lisp to public affairs graduate students and to John Gronouski, Dean of the
+Lyndon Baines Johnson School of Public Affairs, who was persuaded to try the
+experiment. I want to thank the four public affairs graduate students,
+Phillip S. Blackerby, Robert J. King, David L. Walrath, and Abraham Goldberg
+who not only were students in the ``quickie'' course but also persevered
+with me an additional week for the completion of the first draft.  I
+especially want to thank Abraham Goldberg who contributed his editing
+talents and novice perspective for that week.  Above all, I want to thank my
+wife Mary for her understanding, encouragement, and concern for my well-being
+during the completion of this manuscript.
+</blockquote>
+
+<p> We are indebted to many people for their contributions and assistance
+throughout the development of this book.  We thank Bruce Duba,
+Kent Dybvig, Chris Haynes, Eugene Kohlbecker, Richard Salter, George
+Springer, Mitch Wand, and David S. Wise for countless discussions
+which influenced our thinking while conceiving this book.  Ghassan
+Abbas, Charles Baker, David Boyer, Mike Dunn, Terry Falkenberg, Robert
+Friedman, John Gateley, Mayer Goldberg, Iqbal Khan, Julia Lawall, Jon
+Mendelsohn, John Nienart, Jeffrey D. Perotti, Ed Robertson, Anne
+Shpuntoff, Erich Smythe, Guy Steele, Todd Stein, and Larry Weisselberg
+provided many important comments on the drafts of the book.  We
+especially want to thank Bob Filman for being such a thorough and
+uncompromising critic through several readings.  Finally we wish to
+acknowledge Nancy Garrett, Peg Fletcher, and Bob Filman for
+contributing to the design and TeX-ery. We particularly want to
+thank Nancy for her valiant efforts in correcting errors and entering
+changes in what must have seemed a sea of incomprehensible ASCII.
+
+<p><em>Guidelines for the Reader</em></p>
+
+<p> Do not rush through this book.  Read carefully; valuable hints are
+scattered throughout the text.  Do not read the book in less than three
+sittings unless you are already familiar with Lisp but are not a
+``LISPer.''  Read systematically.  If you do not <em>fully</em> understand
+one chapter, you will understand the next one even less.  The questions
+are ordered by increasing difficulty; it will be hard to answer later ones
+if you cannot solve the earlier ones.
+
+<p><em>Guess</em>!  This book is based on intuition, and yours is as good
+as anyone's.  Also, if you can, try the examples while you read.
+Lisps are readily available.  While there are minor syntactic
+variations between different implementations of Lisp (primarily the
+spelling of particular names and the domain of specific functions),
+Lisp is basically the same throughout the world.  To work with Lisp,
+you may need to modify the programs slightly.  Typically, the material
+requires only a few changes for modern Lisps such as COMMON
+LISP [4] and Scheme [1, 2].  Suggestions about how to try the
+programs in the book are provided in the footnotes.  Footnotes
+preceded by ``L:'' concern Lisp, those by ``S:'' concern Scheme. For
+Scheme, you may have to enter the definitions of <tt> add1</tt>, <tt>
+sub1</tt>, and <tt> atom?</tt> because some implementations do not provide
+these functions:
+<blockquote>
+<pre>
+(define add1 (let ((f +)) (lambda (x) (f x 1))))
+(define sub1 (let ((f -)) (lambda (x) (f x 1))))
+(define atom? (let ((f1 pair?) (f2 not)) (lambda (x) (f2 (f1 x)))))
+</pre>
+</blockquote>
+We have formulated these definitions in such way that they are safe
+from re-definition of built-in functions; this is particularly
+important for Chapter 4 where we discuss versions of <tt> +</tt> and <tt>
+-</tt> in terms of <tt> add1</tt> and <tt> sub1</tt>.
+
+<p>We do not give any formal definitions in this book.  We believe that you
+can form your own definitions and will thus remember them and understand
+them better than if we had written each one for you.  But be sure you know
+and understand the <em>Commandments</em> and <em>Laws</em>
+thoroughly before passing them by.  The key to learning Lisp is ``pattern
+recognition.'' The <em>Commandments </em> point out the patterns that you will
+have already seen.  Early in the book, some concepts are narrowed for
+simplicity; later, they are expanded and qualified.  You should also know
+that, while everything in the book is Lisp, Lisp itself is more
+general and incorporates more than we could intelligibly cover in an
+introductory text.  After you have mastered this book, you can read and
+understand more advanced and comprehensive books on Lisp.
+
+<p>We use a few notational conventions throughout the text, primarily
+changes in font for different classes of symbols.  Programs in notes
+preceded by ``L:'' or ``S:'' are set in <tt> typewriter font</tt>.
+Function definitions are in roman characters, parameters are in
+<em>italic</em>, and data is in sans serif.  The values for true and
+false are in slanted font.  Special symbols such as <bf>
+define</bf> and <bf>cond</bf> are in <bf>boldface</bf>. These distinctions can
+be safely ignored until Chapter 10, when we treat programs as data.
+We have taken certain liberties with punctuation to increase clarity.
+
+<p>Food appears in many of our examples for two reasons.  First, food is
+easier to visualize than abstract symbols.  (This is not a good book to
+read while dieting.)  We hope the choice of food will help you understand
+the examples and concepts we use.  Second, we want to provide you with a
+little distraction.  We know how frustrating the subject matter can be,
+and a little distraction will help you keep your sanity.
+
+<p>You are now ready to start.  Good luck!  We hope you
+will enjoy the challenges waiting for you on the following pages.
+
+<p>
+Bon app&eacute;tit!
+<br />
+<br />
+Daniel P. Friedman<br />
+Matthias Felleisen<br />
+Bloomington, Indiana
+</body>
+</html>

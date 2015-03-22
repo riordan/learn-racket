@@ -1,0 +1,190 @@
+<html>
+
+<title>C Quotes </title>
+
+<body>
+
+<p>
+
+<pre>
+[Risks Digest 21.84] Pointing the finger at buffer overflows
+
+Date: Wed, 26 Dec 2001 21:19:22 -0800
+From: Henry Baker <hbaker1@pipeline.com>
+Subject: "Buffer Overflow" security problems
+
+I'm no fan of lawyers or litigation, but it's high time that someone defined
+"buffer overflow" as being equal to "gross criminal negligence".
+
+Unlike many other software problems, this problem has had a known cure since
+at least PL/I in the 1960's, where it was called an "array bounds
+exception".  In my early programming days, I spent quite a number of unpaid
+overtime nights debugging "array bounds exceptions" from "core dumps" to
+avoid the even worse problems which would result from not checking the array
+bounds.
+
+I then spent several years of my life inventing "real-time garbage
+collection", so that no software -- including embedded systems software --
+would ever again have to be without such basic software error checks.
+
+During the subsequent 25 years I have seen the incredible havoc wreaked upon
+the world by "buffer overflows" and their cousins, and continue to be amazed
+by the complete idiots who run the world's largest software organizations,
+and who hire the bulk of the computer science Ph.D.'s.  These people _know_
+better, but they don't care!
+
+I asked the CEO of a high-tech company whose products are used by a large
+fraction of you about this issue and why no one was willing to spend any
+money or effort to fix these problems, and his response was that "the
+records of our customer service department show very few complaints about
+software crashes due to buffer overflows and the like".  Of course not, you
+idiot!  The software developers turned off all the checks so they wouldn't
+be bugged by the customer service department!
+
+The C language (invented by Bell Labs -- the people who were supposed to be
+building products with five 9's of reliability -- 99.999%) then taught two
+entire generations of programmers to ignore buffer overflows, and nearly
+every other exceptional condition, as well.  A famous paper in the
+Communications of the ACM found that nearly every Unix command (all written
+in C) could be made to fail (sometimes in spectacular ways) if given random
+characters ("line noise") as input.  And this after Unix became the de facto
+standard for workstations and had been in extensive commercial use for at
+least 10 years.  The lauded "Microsoft programming tests" of the 1980's were
+designed to weed out anyone who was careful enough to check for buffer
+overflows, because they obviously didn't understand and appreciate the
+intricacies of the C language.
+
+I'm sorry to be politically incorrect, but for the ACM to then laud "C" and
+its inventors as a major advance in computer science has to rank right up
+there with Chamberlain's appeasement of Hitler.
+
+If I remove a stop sign and someone is killed in a car accident at that
+intersection, I can be sued and perhaps go to jail for contributing to that
+accident.  If I lock an exit door in a crowded theater or restaurant that
+subsequently burns, I face lawsuits and jail time.  If I remove or disable
+the fire extinguishers in a public building, I again face lawsuits and jail
+time.  If I remove the shrouding from a gear train or a belt in a factory, I
+(and my company) face huge OSHA fines and lawsuits.  If I remove array
+bounds checks from my software, I will get a raise and additional stock
+options due to the improved "performance" and decreased number of calls from
+customer service.  I will also be promoted, so I can then make sure that
+none of my reports will check array bounds, either.
+
+The most basic safeguards found in "professional engineering" are cavalierly
+and routinely ignored in the software field.  Software people would never
+drive to the office if building engineers and automotive engineers were as
+cavalier about buildings and autos as the software "engineer" is about his
+software.
+
+I have been told that one of the reasons for the longevity of the Roman
+bridges is that their designers had to stand under them when they were first
+used.  It may be time to put a similar discipline into the software field.
+
+If buffer overflows are ever controlled, it won't be due to mere crashes,
+but due to their making systems vulnerable to hackers.  Software crashes due
+to mere incompetence apparently don't raise any eyebrows, because no one
+wants to fault the incompetent programmer (and his incompetent boss).  So we
+have to conjure up "bad guys" as "boogie men" in (hopefully) far-distant
+lands who "hack our systems", rather than noticing that in pointing one
+finger at the hacker, we still have three fingers pointed at ourselves.
+
+I know that it is my fate to be killed in a (real) crash due to a buffer
+overflow software bug.  I feel like some of the NASA engineers before the
+Challenger disaster.  I'm tired of being right.  Let's stop the madness and
+fix the problem -- it's far worse, and caused far more damage than any Y2K
+bug, and yet the solution is far easier.
+
+Henry Baker <hbaker1@pipeline.com>
+
+</pre>
+
+</p>
+
+<hr>
+
+<p>
+<img src="Images/OS-Wars.gif" alt="[OS-Wars.gif]" align=left>
+"Of course, I am using a browser, Internet Explorer, produced by the 
+ world's most successful supplier of erroneous software, Microsoft Inc.,
+ and that may explain the problem."
+				Michel Joly de Lotbinire
+				MJDL@INTERLOG.COM
+<br><br><br><br><br>
+
+<br>Newsgroups: rec.humor.funny
+<br>From: cazabon@sk.sympatico.ca (Charles Cazabon)
+<br>Subject: Software Requirements
+<br>Date: Wed, 3 Dec 97 19:30:03 EST
+
+<br>
+On the side of the software box, in the "System Requirements" section,
+it said "Requires Windows 95 or better".  So I installed Linux.
+
+[As told to me by a friend...]
+</p>
+
+<hr><p>
+"I have stopped reading Stephen King novels.
+ Now I just read C code instead."
+
+				Richard A. O'Keefe; http://www.cs.rmit.edu.au/%7Eok
+</p>
+
+<hr><p>
+"C program run -- Run program run -- Run, C program, Run! -- (please)"
+					Bumper Sticker
+</p>
+
+<hr><p>
+"The last good thing written in C was Franz Schubert's Symphony number 9."
+
+					Erwin Dieterich
+				        erwin@cvt12.verfahrenstechnik.uni-stuttgart.de
+</p>
+
+<hr><p>
+"When your hammer is C++, everything begins to look like a thumb."
+					Steve Hoflich 
+					compl.lang.c++
+</p>
+
+<hr><p>
+"Being really good at C++ is like being really good at using rocks to sharpen sticks."
+					Thant Tessman <thant@acm.org>
+</p>
+
+<hr><p>
+"So, when you typed in the date, it exploded into a sheet
+ of blue flame and burned the entire admin wing to the
+ ground? Yes, that's a known bug. We'll be fixing it in
+ the next release. Until then, try not to use European
+ date format, and keep an extinguisher handy."
+					slam@pobox.com (Tequila Rapide)
+</p>     
+
+<hr><p>
+> Feel free to post more examples of "Why c++ sucks". ;-)
+</p><p>
+Read through the C++ Public Review Document and look for
+occurences of the phrases "behavior is undefined" and 
+especially "no diagnostic is required".  
+</p><p>
+Or here's an even simpler indicator of how much C++ sucks:
+Print out the C++ Public Review Document.  Have someone 
+hold it about three feet above your head and then drop it.  
+Thus you will be enlightened.
+</p><p>
+-thant
+</p>
+
+<hr><p>
+An old quote from me: "The newest programming language for CS-1 starts with
+C and ends with an incredible amount of debugging."
+
+Rich Pattis ("an old quote of mine")
+</p>
+
+</body>
+</html>
+
+

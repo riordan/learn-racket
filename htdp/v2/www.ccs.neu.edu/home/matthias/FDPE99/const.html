@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>%!PS-Adobe-3.0</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Arial" SIZE=5><P ALIGN="CENTER">Implementing Constructivist
+Ideas in a Functional Programming Curriculum for Secondary School Students</P>
+</B></FONT><I><FONT FACE="Arial"><P ALIGN="CENTER">Tami Lapidot</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Dalit Levy</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">Tamar Paz</P>
+</I></FONT><FONT FACE="Arial" SIZE=3><P ALIGN="CENTER">”Migvan” - Research and Development in Computer-Science Education</P>
+<P ALIGN="CENTER">Department of Education in Science and Technology, </P>
+<P ALIGN="CENTER"> Technion - Israel Institute of Technology, Haifa 32000 ISRAEL<BR>
+972-4-829-2880</P>
+</FONT><FONT FACE="Arial"><P ALIGN="CENTER">lapidot@tx.technion.ac.il</P>
+</FONT><P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P>
+<B><FONT SIZE=3><P ALIGN="LEFT">ABSTRACT</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">Functional Programming includes complex concepts and advanced ideas such as building abstractions with functions, compound data and list processing. Other core concepts, such as lists and evaluation of expressions, might seem simpler yet prove to be complex for some students, as we will show in this paper. Teaching FP issues to secondary school students gave us an opportunity to rethink our beliefs about Computer Science Education, FP courses, and their implementations in schools. As part of a new CS curriculum</FONT><B> </B><FONT SIZE=3>for secondary school students in Israel we developed a FP course, using DrScheme environment, based on recent research in science education that emphasizes the constructivist nature of learning. In this paper we will focus on two of the typical learning obstacles that were found in our field research. One is the</FONT><B> </B><FONT SIZE=3>conceptual conflict between the functional and the imperative paradigms, and the other is the difficulty to capture the functional evaluation process.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">Keywords</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">Constructivism, educational research, functional programming, programming paradigms.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">1.&#9;INTRODUCTION</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">As part of a new Computer Science curriculum for secondary schools in Israel, we chose to develop a Functional Programming course. Inspired by excellent sources such as [1,6,7,8,9,10,12] we looked for our unique recipe that will meet the following requirements:</P><DIR>
+
+</FONT><FONT FACE="Symbol" SIZE=3><P ALIGN="JUSTIFY">·þ&#9;</FONT><FONT SIZE=3>The Israeli CS curriculum is based on Algorithmics via Pascal; </P>
+</FONT><FONT FACE="Symbol" SIZE=3><P ALIGN="JUSTIFY">·þ&#9;</FONT><FONT SIZE=3>Functional programming is learnt after the first module (in grade 10), and in parallel to the</FONT><FONT SIZE=3> second </FONT><FONT SIZE=3>module (in grade 11), both in Pascal;</P>
+</FONT><FONT FACE="Symbol" SIZE=3><P ALIGN="JUSTIFY">·þ&#9;</FONT><FONT SIZE=3>This FP module is one of the electives of the “second</FONT><FONT SIZE=3> </FONT><FONT SIZE=3>paradigm” module, intended to introduce a second programming paradigm that is “conceptually different from the procedural approach adopted in the first two modules” [11].</P>
+</FONT><FONT FACE="Symbol" SIZE=3><P ALIGN="JUSTIFY">·þ&#9;</FONT><FONT SIZE=3>Most CS secondary classes in Israel are heterogeneous with diverse background and student ability. </P></DIR>
+
+<P ALIGN="JUSTIFY">Considering the above requirements we were faced with the challenge to bring constructivist ideas into our functional programming course.</P>
+<P ALIGN="JUSTIFY">This paper will combine curriculum and teaching issues with two typical learning obstacles that were found during our field research. One is the conceptual conflict between the functional and the imperative paradigms, and the other is the students’ difficulty to capture the functional evaluation process. These issues will follow a brief discussion of the course.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">2.&#9;THE FUNCTIONAL PROGRAMMING COURSE FOR SECONDARY SCHOOL</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">Guided by our holistic approach to course development we try to influence the classroom culture as well as develop written materials for the students and the teachers.  Within the culture we wish to foster, we try to “create a supportive climate in the classroom, in which students feel safe to explore, make guesses, and learn from their errors” [13].</P>
+<P ALIGN="JUSTIFY">Our drive to create a constructivist learning environment was influenced by recent research in mathematics and science education [2,3,5,14,15,16]. This view guided our decision to introduce most concepts through concrete learning activities, both in the computer laboratory and in regular class settings. These activities are combined of individual investigations, small-group interactions and whole class discussions. </P>
+<P ALIGN="JUSTIFY">The course is organized around three stages. In the first stage, the students are introduced to the paradigm, the language, and the environment. The second stage is devoted to recursion, while dealing with core concepts like list processing, data abstraction, and higher order functions. The last major part of the course is designed as an integrative phase in which the students work on individual (or group) programming projects. This period serves as a ladder in the spiral</FONT><FONT SIZE=3> </FONT><FONT SIZE=3>structure of knowledge constructing. The students have to review previous concepts, reflect upon their understandings, and face issues such as complexity and abstraction.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">3.&#9;A CASE STUDY: ONE SIMPLE TASK</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">When viewing learning as a gradual construction process, the learning processes become more important than final outcomes and there is a need for the researchers to focus on students’</FONT><FONT SIZE=3> </FONT><FONT SIZE=3>learning processes. In this spirit we wish to share with the readers part of our own learning process as curriculum developers. This process was greatly influenced by our field research. In this section we will demonstrate our work through examining one episode, taken from a lesson on the first month of FP course in 11</FONT><FONT SIZE=3>t</FONT><FONT SIZE=3>grade. This episode is based on utterances of real students from different classes. It was reconstructed here in order to focus our discussion on the two learning obstacles mentioned earlier. We will start with the episode, discuss teacher roles, continue with research remarks and conclude with curriculum implications.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">3.1&#9;The Episode</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">The students were presented with the following simple task:</P>
+<P ALIGN="JUSTIFY">Write a function that inputs a list of numbers and returns the sum of the its first two numbers.</P>
+<P ALIGN="JUSTIFY">Here is the class discourse that followed.</P><DIR>
+<DIR>
+
+<I><P ALIGN="JUSTIFY">Alex: &#9;I know how to do this. You need the plus sign and the first.</P>
+<P ALIGN="JUSTIFY">Teacher: O.K. could you please tell us how?</P>
+<P ALIGN="JUSTIFY">Alex: &#9;[dictates while the teacher writes on the board] open parenthesis, plus sign, open parenthesis, first, open parenthesis, big L, close parenthesis, close again, second  </P>
+<P ALIGN="JUSTIFY">Benny [intervenes]: No, it’s wrong, you can’t do this!</P>
+<P ALIGN="JUSTIFY">Cathy: &#9;Benny is right. I agree. </P>
+<P ALIGN="JUSTIFY">Alex: &#9;But I’m not finished yet. I’m telling you that it works.</P>
+<P ALIGN="JUSTIFY">Teacher: Let Alex finish his suggestion first.</P>
+<P ALIGN="JUSTIFY">Alex: &#9;Open parenthesis and the same with second</P>
+<P ALIGN="JUSTIFY">Teacher: O.K. [writes the following expression on the board  -    ( +  ( first  ( L ) )  ( second  ( L ) ) )  ]</P>
+<P ALIGN="JUSTIFY">Benny: &#9;You see, I told you Alex was wrong. It has to be first again. </P>
+<P ALIGN="JUSTIFY">Teacher: Please tell me what to write.</P>
+<P ALIGN="JUSTIFY">Benny: &#9;Erase the second and write first instead [the teacher writes   ( +  ( first  ( L ) )  ( first  ( L ) ) )  ]</P>
+<P ALIGN="JUSTIFY">Cathy: &#9;But this is the same as Alex’s solution. You will get an application error.</P></DIR>
+</DIR>
+
+</I><P ALIGN="JUSTIFY">There are at least two issues here. First, Benny and Cathy refer to different problems in Alex’s suggestion. Second, the simple task turned out to be problematic at least for two of the students. </P>
+<P ALIGN="JUSTIFY">What is the students’ model of the evaluation process? How do they understand the concept of list? What should the teacher do in this situation? What can we, as researchers, learn from this episode? And how can this discourse influence the curriculum development? In what follows we will briefly discuss these questions. </P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">3.2&#9;The Teachers’ Role</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">Since “we construct our understandings through our experiences” [5], the constructivist teacher will try to give Alex and Benny, as well as other students in the class, the opportunity to reconstruct their own understandings.</P>
+<P ALIGN="JUSTIFY">The teacher is faced with two problematic suggestions on the board:</P>
+<P ALIGN="JUSTIFY">Alex: ( +  ( first  ( L ) )  ( second  ( L ) ) )</P>
+<P ALIGN="JUSTIFY">Benny: ( +  ( first  ( L ) )  ( first  ( L ) ) )</P>
+<P ALIGN="JUSTIFY">There are at least five starting points from here.</P>
+<P ALIGN="JUSTIFY">1. The teacher could ask for more solutions from other students or ask for more comments on the previous solutions.</P>
+<P ALIGN="JUSTIFY">2. The teacher could send the students to check these expressions on the computer and use the error messages as a trigger for a joint discussion. </P>
+<P ALIGN="JUSTIFY">3. The teacher might decide to deal with one problem at a time. In this case, the teacher will have to decide which suggestion should be treated first. Since Benny missed Alex’s real problem, his solution embodies both Alex’s and his own problems. Therefore Benny’s solution is more complex and the teacher might prefer to start with Alex’s suggestion.</P>
+<P ALIGN="JUSTIFY">4. The teacher could take a didactic interrupt and set the task aside for a few minutes in order to deal with the evaluation model or other FP issues.</P>
+<P ALIGN="JUSTIFY">5. The teacher could ask Cathy to elaborate on her last comment, hoping that her utterance reveals a good understanding of the evaluation model and could seas a basis for a new taken-as-shared understanding [4].</P>
+<P ALIGN="JUSTIFY">All these are possible starting points for teaching routes based on the belief that “concepts cannot simply be transferred from teachers to students - they have to be conceived” [16].</P>
+<P ALIGN="JUSTIFY">Choosing any one of these routes does not discharge the teacher from a keen effort toward a better understanding of his students’ cognitive models. This type of effort will be discussed in the next section.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">3.3&#9;Research Issues</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">For us, as educational researchers, the simple sum task turned out to be a rich source of investigations in order to unpack the complexity of the learning situation.</P>
+<P ALIGN="JUSTIFY">In order to understand what Alex and Benny were thinking about we need to hear their authentic voice. Let us look at their explanations (taken from later interviews). </P>
+<P ALIGN="JUSTIFY">Alex who suggested (+ (first (L)) (second (L))) explained</FONT><FONT SIZE=3> </FONT><FONT SIZE=3>that <I>“I have to tell the computer that L is a list and lists have to come in parenthesis”</I>.</P>
+<P ALIGN="JUSTIFY">We want to suggest that Alex, being in the middle of a conceptual conflict between the functional and the imperative paradigms, is trying to reconstruct Pascal’s rules concerning variable declaration in this FP environment.</P>
+</FONT><FONT SIZE=3><P ALIGN="JUSTIFY">Benny who suggested (+ (first (L)) (first (L))) explained </FONT><FONT SIZE=3>that <I>“after we used first, the list gets shorter so the second item is now the first”.</P>
+</I><P ALIGN="JUSTIFY">Here we can assume that Benny has difficulties with the functional evaluation process and lacks some understanding of basic mathematics. Like Alex, he is probably influenced by the imperative paradigm and thinks that L’s value is changed by a ‘virtual assignment’ L<FONT FACE="Symbol">&#172;</FONT>
+(rest L). Another explanation could be that Benny has a strong perception of sequential linearity while the functional model requires some understanding of quasi parallelism. Benny does not realize that the same parameter L is given autonomously to all expressions of the ‘same level’ and he seeks for dependence between the first and the second evaluations. This difficulty comes as an addition to the fact that Benny did not notice the problem in Alex’s suggestion.</P>
+<P ALIGN="JUSTIFY">What can we, as researchers, learn from this episode?</P>
+<P ALIGN="JUSTIFY">Evidently it is difficult for some students to overcome the paradigm changes. It is also evident that when faced with uncertainty students build their own models of understanding. It is our objective, as researchers, to strive for a better understanding of these models in order to make sense of the learning process. Such an effort could also prove to be useful for curriculum design purposes, as we will suggest in the next section.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">3.4&#9;Curriculum</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">We believe that the difficulties some students have might be common among others. We also believe that confronting errors and different models can help students with their own models.  </P>
+<P ALIGN="JUSTIFY">Once we witness such rich episodes, we think of them first as researchers and then as curriculum developers, trying to bring into the course our ‘new understandings’. The development process is spiral as each insight we gain in the field serves as a potential starting point for another development cycle of the improved curriculum.</P>
+<P ALIGN="JUSTIFY">The above episode can influence the course in several directions. First, we can create a learning activity in which the students will be presented with Alex’s and Benny’s suggestions. They will be asked to determine their opinion and justify it. Second, concerning the issue of evaluation we feel that the students need more help with the model of functional evaluation. Third, we are faced with a considerable amount of findings concerning the issue of the paradigm shift. The sum episode is just one example</FONT><FONT SIZE=3> </FONT><FONT SIZE=3>for this phenomenon. We will need further research in order to get a better understanding of this problem, which in time will help us treating the students’ cognitive obstacles in a better way.</P>
+<P ALIGN="JUSTIFY">In addition to the course materials we feel that our findings should be shared with the teachers in order to strengthen the connection between researchers and practitioners in the CS teaching field. The knowledge gained in research might also help convince teachers in the importance of being attentive to students’ voice, models and understandings.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">4.&#9;CONCLUDING REMARKS</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">In this paper we tried to highlight a small portion of our course development process, through a close look at two learning obstacles. </P>
+<P ALIGN="JUSTIFY">Thanks to its simplicity, functional programming is often recommended as an appropriate paradigm to start Computer Science learning. Although we share this belief, our findings show that this simplicity can turn out to be complex for secondary school students. This does not mean that we should abandon our efforts since Pascal has it’s own problems and obstacles, and we find FP worth fighting for. Further research is needed in order to locate the cognitive factors related to the difficulties here described. Such research can be done by carefully observing and interpreting learning and teaching situations as these naturally happen in the real classroom. The latter refers not just to the research on learning and teaching functional programming but to the educational research of Computer Science in general.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">5.&#9;ACKNOWLEDGMENTS</P>
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">We wish to thank Uri Leron for his comments on earlier drafts of this paper. Our special thanks to Matthias Felleisen, for the enlightening remarks and suggestions.</P>
+</FONT><B><FONT SIZE=3><P ALIGN="LEFT">6.&#9;REFERENCES</P><DIR>
+
+</B></FONT><FONT SIZE=3><P ALIGN="JUSTIFY">[1]&#9;Abelson, H., Sussman, G.J., and Sussman, J. Structure and Interpretation of Computer Programs. MIT Press, 1985.</P>
+<P ALIGN="JUSTIFY">[2]&#9;Ball, D.L. With an eye on the mathematical horizon: dilemmas of teaching elementary school mathematics. The Elementary School Journal, 93 (4), 373-397, 1993.</P>
+<P ALIGN="JUSTIFY">[3]&#9;Cobb, P., and Steffe, L.P. The Constructivist researcher as teacher and model builder. Journal for Research in Mathematics Education, 14 (2), 83-94, 1983. </P>
+<P ALIGN="JUSTIFY">[4]&#9;Cobb, P., Yackel, E., and Wood, T. A Constructivist alternative to the representational view of mind in mathematics education. Journal of Research in Mathematics Education 23 (1), 2-33, 1992.</P>
+<P ALIGN="JUSTIFY">[5]&#9;Conferey, J. A theory of intellectual development. For the Learning of Mathematics, 15 (2), 36-45, 1995.</P>
+<P ALIGN="JUSTIFY">[6]&#9;Eisenberg, M., and Abelson, H. Programming in SCHEME. The Scientific Press, 1988.</P>
+<P ALIGN="JUSTIFY">[7]&#9;Felleisen, M., Findler, R.B., Flatt, M., and Krishnamurti, S. How to Design Programs. Rice University, Houston, Texas. 1998.</P>
+<P ALIGN="JUSTIFY">[8]&#9;Ferguson, I., Martin, E., and Kaufman, B. the Schemer’s Guide. Schemers Inc., 1995.</P>
+<P ALIGN="JUSTIFY">[9]&#9;Ferguson, I., Martin, E., and Kaufman, B. the Scheming Teacher’s Resource Pack. Schemers Inc., 1995.</P>
+<P ALIGN="JUSTIFY">[10]&#9;Friedman, D.P., and Felleisen, M. the Little Schemer. MIT Press, 1996.</P>
+<P ALIGN="JUSTIFY">[&#254;11&#254;]&#9;Gal-Ezer, Y., Beeri, K., Harel, D., and Yehudai, A. A High school program in computer science. Computer, 28 (10) 73-80, 1995.</P>
+<P ALIGN="JUSTIFY">[12]&#9;Harvey, B., and Wright, M. Simply Scheme – Introducing Computer Science. MIT Press, Cambridge, Mass., 1993.</P>
+<P ALIGN="JUSTIFY">[13]&#9;Leron, U. Can we follow what we preach: Teaching according to constructivist principles. CMESG ad hoc discussion group, Regina, Sask., June 1994.</P>
+<P ALIGN="JUSTIFY">[14]&#9;Pirie, S., and Kieren, T. Creating constructivist environments and constructing creative mathematics. Educational Studies in Mathematics, 23, 505-528, 1992.</P>
+<P ALIGN="JUSTIFY">[15]&#9;Smith, J.P., diSessa, A.A., and Roschelle, J. Misconceptions reconceived: a constructivist analysis of knowledge in transition. The Journal of the Learning Sciences, 3 (2), 115-163, 1993.</P>
+<P ALIGN="JUSTIFY">[16]&#9;Von Glasersfeld, E. A Constructivist approach to teaching, in Steffe, L.P., and Gale, J. (eds.), Constructivism in Education, 3-17. Lawrence Erlbaum Associates, Hillsdale, NJ, 1995.</P></DIR>
+
+</FONT><B><FONT SIZE=5><P ALIGN="CENTER"></P></B></FONT></BODY>
+</HTML>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><title>Python for asset-backed securities</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Thoughts</a></td></tr></table></div><div class="tocviewsublistonly" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="How_do_I_get_a_PhD.html" class="tocviewlink" data-pltdoc="x">How do I get a Ph<span class="mywbr"> &nbsp;</span>D</a></td></tr><tr><td align="right"></td><td><a href="Racket_is____.html" class="tocviewlink" data-pltdoc="x"><span style="font-style: italic">Racket</span> is ...</a></td></tr><tr><td align="right"></td><td><a href="why-pl2.html" class="tocviewlink" data-pltdoc="x">Why teach Ph<span class="mywbr"> &nbsp;</span>D core courses, with programming languages</a></td></tr><tr><td align="right"></td><td><a href="Danger__unsafe_languages.html" class="tocviewlink" data-pltdoc="x">Danger:<span class="mywbr"> &nbsp;</span> unsafe languages</a></td></tr><tr><td align="right"></td><td><a href="What_should_the_core_achieve_.html" class="tocviewlink" data-pltdoc="x">What should the core achieve?</a></td></tr><tr><td align="right"></td><td><a href="python.html" class="tocviewselflink" data-pltdoc="x">Python for asset-<wbr></wbr>backed securities</a></td></tr><tr><td align="right"></td><td><a href="Measuring_education.html" class="tocviewlink" data-pltdoc="x">Measuring education</a></td></tr><tr><td align="right"></td><td><a href="More_on_conferences.html" class="tocviewlink" data-pltdoc="x">More on conferences</a></td></tr><tr><td align="right"></td><td><a href="_Non_refereed_conferences.html" class="tocviewlink" data-pltdoc="x">(Non)refereed conferences</a></td></tr><tr><td align="right"></td><td><a href="what-is-pl.html" class="tocviewlink" data-pltdoc="x">Why teach programming languages</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="What_should_the_core_achieve_.html" title="backward to &quot;What should the core achieve?&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Measuring_education.html" title="forward to &quot;Measuring education&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._python)"></a>Python for asset-backed securities</h3><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>26 Apr 2010</p></blockquote></blockquote></blockquote><p><span style="font-style: italic">This "thought" is a <a href="http://www.sec.gov/comments/s7-08-10/s70810.shtml" class="plainlink">comment</a> to
+the SEC&rsquo;s <a href="http://www.sec.gov/rules/proposed/2010/33-9117.pdf" class="plainlink">proposal</a> to use Python
+for the specification of asset-backed securities.</span></p><p>Dear Members of the SEC:</p><p>I am a researcher in the area of programming languages.  My first degree is
+a dual MBA/MEng degree (Dipl. Wirtsch.ing., Techn. Univ. Karlsruhe, Ger.).</p><p>I welcome the idea of specifying the meaning of asset-backed securities via
+computer programs. In 2001, Jean-Marc Eber and Simon Peyton Jones
+demonstrated the usefulness of specifying financial contracts as executable
+programs. Mr. Eber has since founded a company based on this idea; his
+company sells these services across Europe. Others have founded similar
+companies in Germany and Norway. In short, the idea has precedent, and it
+is timely.</p><p>Having said that, I strongly disagree with your choice of programming
+language. While Python is currently popular for a range of applications, it
+comes with serious problems. These problems aren&rsquo;t just superficial and
+easily removed; they are the result of problems at the very core of the
+language. For one simple example &ndash; there are many others &ndash; consider
+Python&rsquo;s numbers, which simply aren&rsquo;t like anything that anyone with a high
+school degree knows. In some other programming languages, notably Scheme, a
+formally specified programming language with many different
+implementations, they are. Here is a simple informal illustration of the
+idea:</p><p><div class="SIntrapara"><ul><li><p>Q: Is negative 5/3 equal to -5/3
+<br/>
+A: Not in Python, though in a language such as Scheme they are</p></li><li><p>Let c stand for .1</p></li><li><p>Q: Does printing c produce .1
+<br/>
+A: Not in Python, and not in Scheme either. Both print 0.1</p></li><li><p>Q: What happens if you ask for the value of c
+<br/>
+A: Python says it&rsquo;s 0.1000000001 while Scheme responds with 0.1</p></li></ul></div><div class="SIntrapara">For full-fledged interactions with the interpreters, see end of letter.</div></p><p>Although my team is responsible for one such an implementation of Scheme, I
+do not advertise it as a Python replacement. All existing languages come
+with problems as far as modeling asset-backed securities is concerned.  The
+proper solution is to design and implement a domain-specific language (DSL)
+that satisfies the following criteria:</p><ol><li><p>Programs should look as much as possible like the business mathematics
+we know from text books and from practical applications in the context
+of asset-backed securities.</p></li><li><p>Programs should have the intended mathematical meaning.</p></li><li><p>The language specification should come as a public document, with an
+open-source license, accompanied by a comprehensive test suite and a
+formal machine-processable model of the language&rsquo;s meaning.</p></li></ol><p>I conjecture that a month would suffice to create a prototype of such a
+language that satisfies these criteria modulo a practicality test.  A
+semester should be enough to collect feedback for a revision that then
+meets the standard for practical usefulness.  (I am also convinced that my
+team would willingly suspend its research to work on such a project.) &ndash;
+After that, companies could use the open-source version, or they could
+implement their own and validate that it meets the specification.
+Additionally software vendors could produce and sell alternative and
+validated implementations. In parallel, programming language researchers
+could focus on the formal verification of the DSL.</p><p>In order to accommodate unforeseen situations, the language specification
+may incorporate provisions for an interaction between the DSL and a widely
+available general-purpose programming language (dubbed host language) such
+as Python. While such an interaction would somewhat reduce the guarantees
+of the DSL, the impact could be lessened with the use of so-called software
+contracts that govern the flow of values between the program in the DSL and
+libraries of the host language.  Consumers could then understand the
+program with respect to the software contracts while paying little or no
+attention to the host language.</p><p>Matthias Felleisen
+   <br/>
+Trustee Professor
+   <br/>
+Northeastern University Programming Research Lab (NUPRL)
+   <br/>
+Boston, Massachusetts</p><p>Here is a sample interaction with a Python interpreter:</p><p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt;&gt;&gt; -(5/3)==(-5/3)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">False</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt;&gt;&gt; c = .1</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt;&gt;&gt; print c</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">0.1</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt;&gt;&gt; c</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">0.10000000000000001</span></p></td></tr></table></p><p>And here are the equivalent interactions with a Scheme implementation:</p><p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt; (equal? (- 5/3) -5/3)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">#t</span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">;; Scheme's response is short for 'true'</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt; (define c .1)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt; (printf "~s\n" c)</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">0.1</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&gt; c</span></p></td></tr><tr><td><p><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">0.1</span></p></td></tr></table></p><p>Acknowledgments: Thanks to Joe Marshall for the illustrative examples and
+thanks to Jay McCarthy for additional feedback.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="What_should_the_core_achieve_.html" title="backward to &quot;What should the core achieve?&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Measuring_education.html" title="forward to &quot;Measuring education&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

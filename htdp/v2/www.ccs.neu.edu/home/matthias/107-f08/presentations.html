@@ -1,0 +1,86 @@
+<html><head><title>Presentations</title><link rel="stylesheet" type="text/css" href="http://www.ccs.neu.edu/home/matthias/107-f08/all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="index.html" style="text-decoration: none"><font color="grey"><b>G107 F '08</b></font></a></td></tr><tr><td><a href="general.html" style="text-decoration: none"><font color="grey"><b>General</b></font></a></td></tr><tr><td><a href="syllabus.html" style="text-decoration: none"><font color="grey"><b>Syllabus</b></font></a></td></tr><tr><td><a href="Assignments/index.html" style="text-decoration: none"><font color="grey"><b>Assignments</b></font></a></td></tr><tr><td><font color="black"><b>Presentations</b></font></td></tr><tr><td><a href="officehours.html" style="text-decoration: none"><font color="grey"><b>Ofc Hrs</b></font></a></td></tr><tr><td><a href="communication.html" style="text-decoration: none"><font color="grey"><b>Communication</b></font></a></td></tr><tr><td><a href="blog.html" style="text-decoration: none"><font color="grey"><b>Blog</b></font></a></td></tr><tr><td><a href="readings.html" style="text-decoration: none"><font color="grey"><b>Texts</b></font></a></td></tr><tr><td><a href="faq.html" style="text-decoration: none"><font color="grey"><b>FAQ</b></font></a></td></tr><tr><td><a href="http://www.drscheme.org/" style="text-decoration: none"><font color="grey"><b>DrScheme</b></font></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Presentations</h3></td>&nbsp;</tr><tr><td /><td valign="top" align="left" colspan="3"><div><div><p>
+ For your lectures, focus on the high-level parts of the assigned
+ material. Illustrate it with illustrative examples <em>of your own
+ choice.</em> The examples will demonstrate how well you have understood
+ the material and how well you can explain it to others. 
+</p><hr /><p>
+ The homework presentations have the following general structure. The two partners
+ must show up together at the schedule time. For each partner, the TAs will
+ randomly choose a solution for a required problem and open it with
+ DrScheme: 
+<ol><li>
+ A solution that runs and achieves 100% syntactic test coverage gets 10% of
+ the weekly score. 
+</li><li>
+ Once the TAs have established whether the solution is executable and how
+ much of the code is covered by your test cases, you will present the
+ solution using the appropriate design recipe. The TAs will receive a
+ scoring sheet that explains how to use the structure of the recipe to
+ assign partial credit. This part of the meeting accounts for 80% of the
+ weekly score. 
+</li><li>
+ The remaining 10% of the weekly score are "partner points." If one of the
+ two partners is not able to score a minimum of 30% of the total score (one
+ third of the above), his or her partner will not get the remaining 10%. 
+
+<p>Just like in the real world, you are carrying some responsibility for
+  your assigned partner (or employee). For a company to function, everyone
+  -- including the weakest -- must perform at some reasonable level. It is
+  your task to help meet this criteria. 
+</p></li></ol></p><hr /><p>
+During our first meeting, two TAs presented the solution for the 'reveal'
+problem from HtDP (page 78). Their solution contained far more comments
+than we expect from you for your solutions. In particular, there is no
+need to include the templates in the solution files. An ideal student
+solution is appended below.
+</p><p>
+While their presentation was excellent and insightful for your current
+status, the TA's code suffered from two flaws: 
+<ol><li> 
+  The ordering of the functions was inappropriate. Functions and
+  their examples should not be separated by auxiliary definitions. 
+  See for a fix below. (-2pt) 
+ </li><li>
+  The contract of one of the auxiliary function was wrong, as discussed in class
+  (-1pt). 
+ </li></ol>
+ Given that I would assign a problem like this one a score of 8 plus 1 for
+ a perfect run and 1 for complete understanding by both partners, their
+ overall score would have been <font color="red">7 out of 10.</font></p><pre><font size="-1">
+;; -----------------------------------------------------------------------------
+(define-struct word (a b c))
+;; Word = (make-word Letter Letter Letter)
+;; Letter is one of: 'a ... 'z '_
+
+;; -----------------------------------------------------------------------------
+;; Word Word Letter -&gt; Word 
+;; does the guess occur anywhere in the guess word? reveal via new status word
+
+(check-expect (reveal (make-word 'c 'a 't) (make-word '_ 'a '_) 'c) 
+              (make-word 'c 'a '_))
+
+(check-expect (reveal (make-word 'c 'a 't) (make-word '_ 'a '_) 'a) 
+              (make-word '_ 'a '_))
+
+(check-expect (reveal (make-word 't 'o 'o) (make-word '_ '_ '_) 'o)
+              (make-word '_ 'o 'o))
+
+(define (reveal chosen status guess)
+  (make-word
+   (compare (word-a chosen) (word-a status) guess)
+   (compare (word-b chosen) (word-b status) guess)
+   (compare (word-c chosen) (word-c status) guess)))
+
+;; -----------------------------------------------------------------------------
+;; Letter Letter Letter -&gt; Letter 
+;; if chosen letter is guess letter, produce it; otherwise chosen 
+
+(check-expect (compare 'a 'a 'c) 'a)
+(check-expect (compare 'c '_ 'c) 'c)
+(check-expect (compare 'c '_ 'd) '_)
+
+(define (compare chosen status guess)
+  (cond
+    [(symbol=? chosen guess) guess]
+    [else status]))
+</font></pre></div></div></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Tue Jun  9 22:21:18 EDT 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

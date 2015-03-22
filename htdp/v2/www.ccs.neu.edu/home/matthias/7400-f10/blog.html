@@ -1,0 +1,874 @@
+<html><head><title>Blog</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="../index.html">Home</a></td></tr><tr><td><a href="../teaching.html">Teaching</a></td></tr><tr><td><font color="black"><b>&nbsp;</b></font></td></tr><tr><td><a href="index.html">G7400 F'10</a></td></tr><tr><td><a href="general.html">General</a></td></tr><tr><td><font color="black"><b>Blog</b></font></td></tr><tr><td><a href="texts.html">Texts</a></td></tr><tr><td><a href="syllabus.html">Schedule</a></td></tr><tr><td><a href="presentations.html">Presentations</a></td></tr><tr><td><a href="Assignments/index.html">Assignments</a></td></tr><tr><td><a href="project.html">Project</a></td></tr><tr><td><a href="Lectures/index.html">Lectures</a></td></tr><tr><td><a href="http://www.drracket.org/"><ax>DrRacket</ax></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Blog</h3></td><td valign="top" align="right" rowspan="2"><img src="../Images/blog.jpg" alt="logo" /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><h3>Important Messages from the Instructors</h3><p><div><hr /><p><b>Sunday, November 28th, 2010</b></p><blockquote style="color:black"><div time="1290977570">
+
+<font color="red"><p>Your presentation must be a white board lecture.</p></font>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 23rd, 2010</b></p><blockquote style="color:black"><div time="1290542515">
+
+<h4>Preparing Your Presentation </h4>
+
+
+<p>
+ Your presentations should consist of two parts: a background section and a
+ work section. The former should bring across the essence of the chosen
+ paper; the latter is about your work, your model, and the insights you
+ derived from your work. The transition between the two sections is about
+ what questions the paper left you with and which parts of the paper you
+ decided not to include in your work/model and why. 
+</p>
+
+<p>
+ Your talk should fit into the normal 30-minute conference slot.  Do not
+ think of the two sections of your presentation as two halves, i.e., 15
+ minutes each. Indeed, it is unlikely that you will dedicate 15
+ minutes to each with a bridge segment of 0 seconds. Your challenge is to
+ figure out how to allocate the time on the two sections and the bridge. 
+</p>
+
+<p>
+ The key to organizing a talk is to develop a mental model of the
+ audience. You know what your classmates know about PL. Base your talk on
+ that. For some papers, you need to bring in additional background, e.g.,
+ how the http protocol works. To assume less background in your audience is
+ a better mistake to make than to assume too much. 
+</p>
+
+<p>
+ If you are presenting with a partner, you are welcome to split the
+ presentation in any way you want between the two of you. Each of you
+ should speak for half the time (some 15 minutes). 
+</p>
+
+<p>
+ Finally, when you give conference talks, you must answer questions.  In
+ PPL, the audience will be allowed to ask questions at any point, and you
+ will respond in turn. In other words, each of you must be ready to answer
+ all questions not just questions about your part.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 21st, 2010</b></p><blockquote style="color:black"><div time="1290386383">
+
+<p>
+ <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Assignments/9.html">Problem 9(1)</a> was overly ambitious for a
+ plain homework problem. I have simplified it.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 14th, 2010</b></p><blockquote style="color:black"><div time="1289793040">
+
+<p>
+ After grading the solutions to problem set 8, I thought I should explain
+ how you might have come up with a clean design (some did, some didn't). 
+</p>
+
+<p>
+ For problem 5/2, you added recursive functions to Iswim like this: 
+<font size="-1"><pre><code>  (rec x (lambda (x) e) in e)</code></pre></font>
+ Since problem 8/1 describes 
+<font size="-1"><pre><code>  (loop x_loop (x_init e_init) e_body)</code></pre></font>
+ as a construct that sets up a recursive function and calls it 
+ on <code>e_init</code>, it is possible to implement it
+ with<code>rec</code> like this: 
+<font size="-1"><pre><code>  (rec x_loop (lambda (x_init) e_body) (x_loop e_init))</code></pre></font>
+ Also in class I had described the solution for <code>rec</code> as a use
+ of <code>Y_v</code>, which would get you this much: 
+<font size="-1"><pre><code>  ((Y_v (lambda (x_loop) (lambda (x_init) e_body))) e_init)</code></pre></font>
+ Turning this last insight into an instruction for the CEK machine is
+ straightforward:
+<font size="-1"><pre><code>  &lt; (loop x_loop (x_init e_init) e_body), rho, k &gt;
+  --&gt;
+  &lt; ((Y_v (lambda (x_loop) (lambda (x_init) e_body))) e_init), rho, k &gt;
+</code></pre></font>
+ Alternatively, you could use the fixpoint equation for <code>Y_v</code>
+ and step-for-step derive CC, CK, and CEK instructions. Either way you come
+ up with a simple and elegant design for <code>loop</code> instructions on
+ the CEK machine.  
+</p>
+
+<p>
+ The questions concerning <code>loop</code> should have clarified that
+ <code>x_loop</code> is an explicitly named <code>continue</code>
+ statement. 
+</p>
+
+<p>
+ As for the introduction of the <code>break</code>, the minimum to
+ recognize is that it demands some way to mark the entrance to the
+ <code>loop</code> on the control stack. Popping the stack to that point
+ gives you dynamic breaks; creating a fresh marker for the stack and
+ associating it with the name of marker. The problem is that the name is
+ now used for both the recursive function <em>and</em> the marker on the
+ stack. Solving this problem required some creativity and was worth five
+ out of 40 points (or some 12%) on this set. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 12th, 2010</b></p><blockquote style="color:black"><div time="1289595343">
+
+<p> Problem set 10 is in final form. </p>
+
+<p>
+  The due date for problem set 9 is now 11/23 to give you some additional
+  time for the project. 
+</p>
+
+<p> Here is the promised sketch of a solution for the <code>break</code> feature:
+<font size="-1"><pre><code>   [--&gt; ((loop x_L (x e_0) e_L) rho k)
+        (e_0 rho (init x_L x e_L rho k))]
+   [--&gt; (v rho_v (init x_L x e_L rho k))
+        (e_L
+         (extend (extend rho x_L (LL x_tag (lambda (x) e_L) rho)) x (v rho_v))
+         (loop x_tag k))
+        (fresh x_tag)]
+   [--&gt; ((break x_L e_exn) rho k) (e_exn rho (cut k x_tag))
+        (where (LL x_tag v rho_v) (lookup rho x_L))]
+</code></pre></font>
+You should be able to guess at the modification to continuations and
+closure values. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 10th, 2010</b></p><blockquote style="color:black"><div time="1289420177">
+
+<p> 
+ The solutions for problem set 7 are graded. You may pick up your
+ assignment between 4:00pm and 5:30pm in case you need to see the
+ feedback before Friday.
+</p>
+
+<p>The interpreter for B seems to be a small problem for everyone, so I
+  wrote down two solutions: 
+<font size="-1"><pre><code>  ;; the basic B language
+  (define-language B
+    (e true
+       false
+       (* e e))
+    (v true 
+       false))
+</code></pre></font>
+Here is an interpreter in plain Racket: 
+<font size="-1"><pre><code>  ;; B/e -&gt; E/v
+  ;; evaluate programs from B according to rules 
+  (define (eval-b-racket t)
+    (cond
+      [(eq? 'true t) t]
+      [(eq? 'false t) t]
+      [else 
+       (define lft (eval-b-racket (second t)))
+       (cond
+	 [(eq? 'true lft) 'true]
+	 [(eq? 'false lft) (eval-b-racket (third t))])]))
+</code></pre></font>
+And here is one in mostly Redex:
+<font size="-1"><pre><code>  ;; B/e -&gt; E/v
+  ;; evaluate programs from B according to rules 
+  (define (eval-b-racket t)
+    (define-metafunction B
+      evalB : e -&gt; v 
+      [(evalB v) v]
+      [(evalB (* e_1 e_2)) true
+			   (side-condition (eq? (term (evalB e_1)) (term true)))]
+      [(evalB (* e_1 e_2)) (evalB e_2)])
+    (term (evalB ,t)))
+</code></pre></font>
+
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 2nd, 2010</b></p><blockquote style="color:black"><div time="1288746708">
+
+<p>
+ Here is my primary reaction to your project memos.
+</p>
+
+<p>
+ A project memo should consist of two distinct parts: a summary of the
+ background and a goal statement. Since the goal of the course project is
+ to digest the content of an existing research paper via the construction
+ of a Redex model, the background summary should recapitulate in your own
+ words what you currently think the paper reports. The goal statement
+ should specify with respect to this paper summary, what you wish to
+ understand in detail. 
+</p>
+
+<p>
+ The (boring but) safest way is to explicitly label the parts of your memo
+ as "summary" and as "goal" statement and to present them in that order. If
+ you are confident about your writing skills, you may naturally deviate
+ from this rudimentary presentation and mix-and-match pieces. 
+</p>
+
+<p>
+ Avoid "weasel words" and "weasel paragraphs" in both the summary and the
+ goal statement. They simply indicate that you are insecure or lack
+ understanding. Instead, express what you are insecure about and make it a
+ part of the goal. 
+</p>
+
+<p>
+ Use complete sentences for the summary and the goal statement. It is
+ acceptable to have an enumeration of phrases, but when you use this
+ technique make sure to connect the phrases to the context so that you get
+ complete sentences. 
+</p>
+
+<p>
+ For your project report, follow the same outline but replace the goal
+ statement with two parts: what you have learned and what you still fail to
+ grasp from the paper. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 30th, 2010</b></p><blockquote style="color:black"><div time="1288455708">
+
+<p>Most solutions for problem 6(1) suffer from basic organization
+  problems. Here is a Racket version in a syntax according to the first two
+  weeks of this course:  
+<font size="-1"><pre><code>  ;; ISWIM/e -&gt; ISWIM/answer
+  (define (evaluate program)
+    (unload-final-state 
+      (evaluate-according-to-machine 
+        (create-initial-state program)))
+
+  ;; ISWIM/C??State -&gt; ISWIM/C??State 
+  (define (evaluate-according-to-machine s)
+    (if (final? s) 
+         s
+         (evaluate-according-to-machine (transition-function s))))
+</code></pre></font>
+ (No an experienced Racketeer would not write quite this code.) 
+</p>
+
+<p>Here is a BraceLanguage-style piece of code: 
+<font size="-1"><pre><code> ISWIM/answer evaluate(ISWIM/e program) { 
+    State s = createInitialState(program); 
+    while !isFinalState(s) {
+       s = transitionFunction(s); 
+    }
+    return unloadFinalState(s); 
+  }
+</code></pre></font>
+ From here on, you just develop and present the transition function. 
+</p>
+
+<p>Of course, after an hour of covering random checking in Redex, I did
+  expect some attempt to relate the evaluator program to the Redex model
+  from which you started. 
+</p>
+
+<p>
+ Problem 6(2) called for a revision of a REDEX model. If you wrote an
+ evaluator in Racket instead, I reduced 10 points and graded out of these
+ 10 points, if there was an attempt to deal with full-fledged
+ <code>define</code> and the rest of the evaluator looked 'decent'. 
+</p>
+
+<p>Problem 6(3) must have stumped people in ways that I couldn't
+  foresee. Since only one pair got this 100% correct and all others failed
+  completely, I have graded the problem set on a 40-point basis and have
+  assigned the successful pair 10 extra points. 
+</p>
+
+<p>
+  (I am grateful that some people came to see me and asked me questions. BUT, 
+  I think I heard the question I wanted to hear and the answers I gave were
+  answers that you thought related to the questions that were asked.)
+</p>
+
+<p>
+  The lemma requested in problem 6(3) came up as a "simple" step during the
+  proof of consistency and Church-Rosser. After explaining why it should be
+  true (not provable) and seeing some doubts in your faces, I said "this is 
+  a good problem to add to the homework" and I did so. Given that the lemma
+  is needed to prove consistency and CR, you can't use the latter to prove
+  it. Keep the context in mind!
+</p>
+
+<p><strong>The Claim:</strong> 
+<font size="-1"><code><pre>
+
+        e       e_1     e_3     e_5                 e'
+         \     /  \    /  \    / ... .... ... \    /
+          \   /    \  /    \  /                \  /
+           e_0      e_2     e_4                 e_n
+
+             (where each pair of subsequent lines is 
+                 a pair of --&gt;&gt; and &lt;&lt;-- or 
+                 a pair of &lt;&lt;-- and --&gt;&gt; relations)
+
+</pre></code></font>
+</p>
+
+<p><strong>The Example:</strong> When you're stumped, make examples. The
+   design recipe tells you so. 
+<font size="-1"><code><pre>
+   \x.((\y.y)2+1)  =  \x.1+2 
+
+   Here is a bunch of proof steps: 
+    [1] (\x.(\y.y)2+1) = (\x.(\y.y)3) by -&gt; base
+    [2] (\x.(\y.y)3) = (\x.3) by -&gt; base 
+    [3] (\x.(\y.y)2+1) = (\x.3) by [1]/[2] transitivity 
+    [4] (\x.2+1) = (\x.3) by -&gt; base
+    [5] (\x.3) = (\x.2+1) by [4] symmetry 
+    [6] (\x.1+2) = (\x.3) by -&gt; base 
+    [7] (\x.3) = (\x.1+2) by [6] symmetry 
+    [8] (\x.(\y.y)2+1) = (\x.2+1) by [3]/[5] transitivity 
+    [9] (\x.(\y.y)2+1) = (\x.3) by [8]/[4] transitivity 
+    [A] (\x.(\y.y)2+1) = (\x.1+2) by [9]/[6] transitivity 
+   (now this is not the only possible way to use the def of =)
+
+   Here are the same proof steps arranged as the desired wave: 
+
+      (\x.(\y.y)2+1)       (\x.2+1)        (\x.1+2) 
+	   \ -&gt;          /       \        /
+	  (\x.(\y.y)3)  / &lt;-      \ -&gt;   / &lt;- 
+	       \ -&gt;    /           \    /
+		(\x.3)              (\x.3) 
+</pre></code></font>
+</p>
+
+<p><strong>The Proof:</strong> 
+<font size="-1"><code><pre>
+  Assume e = e'. 
+  Prove that there is a sequence e_0 .. e_n of terms/expressions that are
+  chained via a pair of --&gt;&gt; and &lt;&lt;-- or a pair of &lt;&lt;-- and --
+  -- --&gt;&gt; relations. 
+     
+  The = relation is the symmetric-transitive-reflexive closure of the
+  reduction relation --&gt;. 
+
+  We proceed by induction on the size of the argument that establishes e = e'
+  and by cases on the last step 
+
+  * reflexivity
+    e = e' because e is identical to e' 
+           pick the empty chain  
+
+  * transitivity 
+    e = e' because e = e" and e" = e'
+           by inductive hypothesis, there exist chains 
+	      e, ..., e_i, e"
+	      e",  e_j, ..., e'
+           that satisfy the desired 'wave' criteria
+	   if e_i --&gt;&gt; e" and e" --&gt;&gt; e_j, pick e_0, ..., e_i, e_j, ... e'
+	   if e_i --&gt;&gt; e" and e" &lt;&lt;-- e_j, pick e_0, ..., e_i, e", e_j, ..., e'
+           ditto for e_i &lt;&lt;-- e" and e" --&gt;&gt; e_j
+
+  * symmetry 
+    e = e' because e' = e"
+           by inductive hypothesis, there exists a chain; use it
+
+  * base
+    e = e' because e -&gt; e'
+           pick the chain e, e' (yes, degenerate chains are fine, too)
+</pre></code></font>
+</p>
+</div></blockquote></div><div><hr /><p><b>Friday, October 29th, 2010</b></p><blockquote style="color:black"><div time="1288389301">
+
+<p>
+ <font color="red">
+ The partner switch is effective as of today. 
+ </font>
+</p>
+
+
+<p>
+ Problem 7(2) calls for an evaluator for language B. Implement this
+ evaluator in RACKET. 
+</p>
+
+<p>
+ Problem 7(2) also calls for an evaluator based on the CK machine for
+ language B. Implement this evaluator in REDEX. 
+</p>
+
+<p>
+ Finally, problem 7(2) demands a thorough comparison between the two. Use
+ <code>redex-check</code> to implement this check. NOTE: random testing is
+ making an appearance in a wide spectrum of languages, and it is good for
+ you to explore it at least once in your grad student career. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 27th, 2010</b></p><blockquote style="color:black"><div time="1288205566">
+
+<p>
+ Jose points out that the pair of mutually recursive functions
+ <code>odddP</code> and <code>evenP</code> should be written like this: 
+
+ <pre><code>   (define evenP (lambda (x) (if0 x 1 (oddP (- x 1)))))
+   (define oddP (lambda (x) (if0 x 0 (evenP (- x 1)))))
+ </code></pre>
+
+ It avoids the infinite loop for <code>(oddP 0)</code>. 
+</p>
+
+<p>I will be happy if you get either version to work.</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 26th, 2010</b></p><blockquote style="color:black"><div time="1288116733">
+
+<p>
+ Someone asks: 
+<blockquote>
+ We don't know if we should model the first problem using Racket only
+ (i.e. without using Redex). Can we use a combination of Racket and Redex? 
+</blockquote>
+ The answer is <font color="red">no, the evaluator must be in plain Racket</font>.
+</p>
+
+<p>
+ Someone else asks: 
+<blockquote>
+ Is the transition relation for the CC machine really a total function? It
+ doesn't seem to work on states such as &lt; v , E &gt; ? 
+</blockquote>
+ I meant to say that the transition relation is a total function for proper
+ expressions, i.e., non-values. Since states such as the ones mentioned in
+ the question are <em>final</em> states, the relation should <em>not</em>
+ be defined on them. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 25th, 2010</b></p><blockquote style="color:black"><div time="1288018041">
+
+<p>
+ I have released a complete set of problems for the rest of the semester so
+ that you can calibrate how to allocate your efforts. 
+</p>
+
+<p>
+ Just in case you have already read ahead, I had to change the statements
+ for problem set 7 to fit into the overall plan.
+</p>
+
+<p>
+ Email me if you discover inconsistencies/typos/etc. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 23rd, 2010</b></p><blockquote style="color:black"><div time="1287883747">
+
+<p>
+<font color="purple">I have modified the project page, mostly to include a
+  grading guide. 
+</font>
+</p>
+
+<p>
+ I graded solutions for problem 5(4) liberally and the scores are all over
+ the map. The purpose of the problem was to figure out the essence of a
+ standardization theorem---that it is about an algorithm (a function) for
+ reducing programs to values. The goal here isn't to mimic and adapt proofs
+ as they are but to determine what is really needed. A proof follows. 
+</p>
+
+<p>
+<font size="-1">
+<pre>;; -----------------------------------------------------------------------------
+Problem 5.4: 
+
+Given: 
+
+def. language: 
+  b = tt | ff | b * b
+
+def. notion of reduction: 
+  tt * b r tt 
+  ff * b r b 
+
+def. general context: 
+  C = [] | C * b | b * C 
+  
+def. reduction relation: 
+  C[tt * b] -&gt; C[tt]
+  C[ff * b] -&gt; C[b]
+  -&gt;&gt; is the transitive reflexive closure of -&gt; 
+
+def. evaluation 
+  eval-b(b) = tt iff b -&gt;&gt; tt
+  eval-b(b) = ff iff b -&gt;&gt; ff
+
+theorem 2.6 (in book): eval is a total function, i.e., for all b, (b,*) in eval 
+
+;; -----------------------------------------------------------------------------
+The reduction relation is a proper relation, meaning for any given b, there are
+usually many different reduction sequences from b to tt or ff. The purpose of a 
+standard reduction theorem is to identify one of these paths as the canonical
+one and to provide an algorithm for detecting this path. 
+
+def. evaluation context 
+  E = [] | E * b 
+
+def. standard reduction 
+  E[tt * b] |--&gt; E[tt]
+  E[ff * b] |--&gt; E[b] 
+  |--&gt;&gt; is the transitive reflexive closure of |--&gt;  
+
+def. standard evaluation 
+  eval-s(b) = tt iff b |--&gt;&gt; tt
+  eval-s(b) = ff iff b |--&gt;&gt; ff
+
+THEOREM: eval-b = eval-s 
+Proof: Show that
+  (b,tt) in eval-b iff (b,tt) in eval-s [i]
+ and 
+  (b,ff) in eval-b iff (b,ff) in eval-s [ii]
+Wolg, pick [i] and show both directions. 
+;; -----------------------------------------------------------------------------
+ R2L: assume (b0,tt) in eval-s                             (in excessive detail)
+  .: b0 |--&gt;&gt; tt                                              (by def of eval-s)
+  .: b0 |--&gt; b1 |--&gt; b2 |--&gt; ... |--&gt; tt         (by def of trans-refl. closure)
+  .: E_0[b0_r] |--&gt; E_1[b1_r] |--&gt; E_2[b2_r] |--&gt; ... |--&gt; tt   (by def of |--&gt;)
+     for some E_i, bi_r 
+  .: E_0[b0_r]  --&gt; E_1[b1_r]  --&gt; E_2[b2_r]  --&gt; ...  --&gt; tt    (all Es are Cs)
+  .: b0  --&gt; b1  --&gt; b2  --&gt; ...  --&gt; tt                         (by def of --&gt;)
+  .: b0  --&gt;&gt; tt                                  (by def of trans-refl closure)
+  .: (b0,tt) in eval-b                                        (by def of eval-b)
+;; -----------------------------------------------------------------------------
+ L2R: assume (b0,tt) in eval-b
+  .: b0  --&gt;&gt; tt                                              (by def of eval-b)
+  .: b0 |--&gt;&gt; tt or b0 |--&gt;&gt; ff	      		                (by lemma below)
+  .: the second result is impossible, as we show by contradiction. 
+  assume b0 |--&gt;&gt; ff 
+  .: b0 --&gt;&gt; ff					     (by R2L direction of proof)
+  but this is a contradiction to the global assumption.
+  .: so this nested assumption can't work.
+  Hence, b0 |--&gt;&gt; tt, because it is the only possibility left
+  .: (b0,tt) in eval-s
+QED
+
+Lemma: for all b, b |--&gt;&gt; tt or b |--&gt;&gt; ff
+  proof: 
+     (1) by induction on the structure of b, b is either tt, ff, or |--&gt;
+         reducible. Assume b is b1 * b2. Either b1 is tt or ff, in which case 
+	 E = []. Or by induction hypothesis, there b1 |--&gt; b1_s. By definition 
+	 of E, b1 * b2 |--&gt; b1_s * b2. QED 
+     (2) by definition of |--&gt;, if b1 |--&gt; b2, then b2 has fewer *s than b1. 
+
+     Putting (1) and (2) together, every b starts a finite reduction sequence of
+     as many steps as there are *s in b and the end is either tt or ff. QED
+</pre></font></p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 22nd, 2010</b></p><blockquote style="color:black"><div time="1287777099">
+
+<p>
+ I have marked a part of problem 6(2) as <strong>challenge</strong> so that
+ you can allocate your time properly. 
+</p>
+
+<p>Rather than provide you with a library for your work, I decided to
+  supply source code that you can use for evaluation S-expressions as
+  Racket programs:  
+<pre><code>  ;; ISWIM/e -&gt; Any
+  ;; evaluate an S-expression that represents an ISWIM program in RACKET 
+  (define (eval-racket e)
+    (define raw-result
+      (with-handlers ((exn:fail? (lambda (x) 'STUCK)))
+	(eval e racket-ns)))
+    (if (procedure? raw-result) 'function raw-result))
+
+  ;; a name space for evaluating Racket programs
+  (define racket-ns
+    (parameterize ([current-namespace (make-base-empty-namespace)])
+      (namespace-require 'racket)
+      (current-namespace)))
+</code></pre>
+ The one serious problem left with this code is that it goes into an
+ infinite loop for ISWIM programs that have infinite reduction
+ sequences. You have seen how to limit reduction sequences in Redex; to
+ limit evaluations in Racekt, see
+<a href="http://docs.racket-lang.org/reference/Sandboxed_Evaluation.html?q=with-limits#(form._((lib._racket/sandbox..rkt)._with-limits))"><code>call-with-limits</code>
+  and <code>with-limits</code></a> in the Racket sandbox library.
+</p>
+
+<p>
+ Start looking for a partner with whom you will do problem sets 7 through 10. 
+</p>
+
+<p>
+ I will write up grading guidelines for the project over the weekend. 
+ These guidelines are <strong>not</strong> a checklist for getting a
+ perfect grade, but a tool for understanding what a research project is
+ like and how to allocate your time for the last six weeks of the
+ semester. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 19th, 2010</b></p><blockquote style="color:black"><div time="1287525048">
+
+<p>
+ Someone asked: 
+<blockquote>
+ Is the ISWIM0 term <code>(if0 ok (* 3 4) (^ 3 4))</code> considered stuck?
+</blockquote>
+ where <code>ok</code> is some variable name. The answer is that -- as 
+ defined in the text book -- programs are <em>closed</em> terms, i.e., 
+ terms without free variables. 
+</p>
+
+<p>
+ Upon request, I have slightly modified problems 2 and 3 for
+ <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Assignments/5.html">assignment 5</a> so that you may 
+ either extend Lambda0 or the preceding solutions. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 18th, 2010</b></p><blockquote style="color:black"><div time="1287438826">
+
+<p>
+ This week's lectures will use the ISWIM flavor of problem 4(3). 
+ I have therefore posted a <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/iswim.rkt">solution on-line</a> so
+ that you can explore the ideas from lecture interactively without having
+ to worry about accidental mistakes in your language and reduction
+ systems. 
+</p>
+
+<p>
+ Robby Findler just presented Redex to the FOOL Workshop co-located with
+ OOPSLA. His presentation is <a href="http://www.eecs.northwestern.edu/~robby/talks/">
+ on-line as a pdf</a> and I encourage you to flip through the slides over
+ the next week or so. His FOOL Keynote complements my lectures with a
+ slightly different and extended example. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 9th, 2010</b></p><blockquote style="color:black"><div time="1286646730">
+
+<p>Please stay on top of your readings.</p>
+
+<p>
+ After grading the third problem set, I realized that we introduced
+ 'contracts' for metafunctions <em>after</em> we published the book. So
+ here is a way to specify the <code>depth</code> function with a header
+ that ensures proper usage: 
+<pre><code>;; determine the depth of a context
+(define-metafunction L 
+  depth : C -&gt; number 
+  [(depth hole) 0]
+  [(depth (C * e)) ,(+ 1 (term (depth C)))]
+  [(depth (e * C)) ,(+ 1 (term (depth C)))])
+</code></pre>
+ Naturally, I did not subtract points for missing such a contract. An
+ informal contract suffices. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 6th, 2010</b></p><blockquote style="color:black"><div time="1286418133">
+
+<p>
+ Someone asks about problem 0, problem set 3: 
+  <blockquote>
+   this will not always return the first irreducible form of any arbitrary
+   t with respect to any arbitrary relation R.  If R applied to t leads in
+   ANY step to an infinite chain of computations, apply-reduction-relation*
+   will never return. 
+  </blockquote>
+ Consider the problem in the context of problem set 3 only. Use the purpose
+ statement to explain why your answer solves the problem or why it only
+ approximates a solution. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 5th, 2010</b></p><blockquote style="color:black"><div time="1286317315">
+
+<p>
+ Someone requested a posting of the Redex model of addition from Friday (1
+ Oct 2010). <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/A.rkt">It is now on-line.</a>
+</p>
+
+<p>
+ Some of you still haven't specified a project partner. 
+ Also don't forget the due date for choosing a paper. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Sunday, October 3rd, 2010</b></p><blockquote style="color:black"><div time="1286134418">
+
+<p>
+ A draft of problem set 4 is now available. 
+</p>
+
+<p>
+ The general information about the course has been revised to specify a
+ grade policy. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 2nd, 2010</b></p><blockquote style="color:black"><div time="1286038639">
+
+<p>
+ <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/2.2.ss">Here is a solution for problem 2 from the second
+ problem set.</a> Note that the problem statement contained the question
+ "how would you prove that your implementation is equivalent to the
+ specified semantics" and that truly called for a proof idea, not a full
+ proof (difficult!). The challenge of sketching a proof was also supposed
+ to make you experiment with alternative ways of designing this function. 
+</p>
+
+<p>
+ The idea of proving the correctness of a programming language
+ implementation is no longer far fetched. Indeed, some projects tackle the
+ entire implementation stack: hardware, os, compiler. The purpose of such
+ projects is to create highly reliable -- and especially easily defendable
+ -- systems that are neither prone to random crashes nor easy attacks. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 1st, 2010</b></p><blockquote style="color:black"><div time="1285968429">
+
+<p>
+ <strong>
+   Partners for course project:
+ </strong>
+ Choose a partner for your course project. One of you must send me an email by
+ <font color="blue">
+   Tuesday, October 5 (before class) 
+ </font>
+ and cc the other one to let me know of your choice. 
+</p>
+
+<p>
+ <strong>Choice of paper for course project:</strong>
+ Read the abstracts and introductions of PL papers that might interest
+ you. One of the partners must send me email to inform me of the chosen
+ paper (with a cc to the partner). The papers on the project web page will
+ be assigned on a first-come/first-serve basis. 
+</p>
+
+<p>
+ <strong>Partners for problem sets 3 and 4:</strong> 
+ Choose a partner for your next two problem sets. One of you must send me an email by
+ <font color="blue">
+   Tuesday, October 5 (before class) 
+ </font>
+ and cc the other one to let me know of your choice. 
+ <font color="red">This task is distinct from the first one.</font> 
+</p>
+
+<p>
+ <strong>Handing in solutions:</strong> 
+ Please hand in a paper copy of your complete solutions at the beginning of
+ class, and email me an attachment of Racket files for all problems that
+ call for programming. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 1st, 2010</b></p><blockquote style="color:black"><div time="1285967775">
+
+<p>
+ Most of you mangled problem 1.4 badly. <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/1.4.ss">Here is a
+ solution.</a> Read it, study it, experiment. You should understand this
+ solution properly. 
+</p>
+
+<p>
+ Just because someone shows you hashtables during a lecture does not mean
+ that you should use hashtables in your programs. My intention was to see
+ whether you thought through the problem or whether you are still in the
+ mode of copying existing programs and changing them until they (kind of)
+ do what you want; your use of hashtables informs the grader into which
+ class of program designer you fall. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, September 25th, 2010</b></p><blockquote style="color:black"><div time="1285425854">
+
+<p>
+ The first draft of problem set 3 has been posted. 
+</p>
+
+<p>
+ Please choose a new and distinct partner for problem set 3. 
+ If you can't find a new partner, speak up at the beginning of class on
+ 10/1. If you hand in solutions for problem set 3 with the same partner,
+ you will get no credit. 
+</p>
+
+<p>
+ It is also time to choose a project partner and topic. 
+ For the selection of a project topic, read the abstracts and introductions
+ of (some, all) papers (whose titles, looks, authors) you find intriguing. 
+ Ask yourself whether you understand the problem that the paper addresses
+ and whether you find the problem interesting. 
+
+ <br />
+ This is also how you select initial research topics and advisors;
+ eventually you end up with a dissertation topic that way. 
+</p>
+
+<p>
+   The schedule now comes with reading assignments so that you can prepare
+   yourself for the lectures. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 21st, 2010</b></p><blockquote style="color:black"><div time="1285109047">
+
+<p>
+ The lecture notes contain the source files for accumulator and
+ intermediate-data structure programming. I will add notes tomorrow. 
+</p>
+
+<p>
+ Homework #2 is final. If you're ready, tackle it. 
+</p>
+
+<p>
+ In lecture I used the notation 
+<center>
+  <tt>R<sup><tt>*</tt></sup></tt> 
+</center>
+ to denote the transitive closure. Someone reminded me after the lecture
+ that the conventional notation is
+<center>
+  <tt>R<sup><tt>+</tt></sup></tt> 
+</center>
+ (Even if the notation is just to say "this is a different relation",
+  I should stick to convention, because these conventions are used 
+  widely -- even in the Redex book.)
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 14th, 2010</b></p><blockquote style="color:black"><div time="1284508879">
+
+The first lecture is now available on-line. See tab on the left.
+
+</div></blockquote></div><div><hr /><p><b>Sunday, September 12th, 2010</b></p><blockquote style="color:black"><div time="1284302975">
+ The web pages are now set up. Most importantly, the first assignment is
+ released, and I urge you to get started immediately. It is extremely labor
+ intensive, making up for significant gaps in your undergraduate
+ education. Other assignments will be released in a timely fashion,
+ matching the progress we make in lecture. 
+
+<p>
+ Also, the description and instructions for the project are out. You should
+ immediately start reading abstracts and introduction to determine which
+ paper(s) appeal to you. I will explain some points in class again, and you
+ will have a chance to ask questions. 
+</p>
+
+<p>
+ Finally, check the schedule to get an idea of what we cover and how
+ quickly. Due to assignment 1, the reading load in this course will be
+ substantial. 
+</p> 
+</div></blockquote></div><div><hr /><p><b>Friday, September 10th, 2010</b></p><blockquote style="color:black"><div time="1284144669">
+
+<p>
+ I will share the results of the first quiz with you on Tuesday.  In the
+ meantime, I have posted a brief introduction to
+ <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/induction.pdf">proof by induction</a> from Matthew Flatt (UUtah).
+</p>
+
+<p>I have also written up two solutions of the programming problem,
+ <ul>
+  <li><a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/in.java">one in Java</a>, because several people tried to
+   solve the quiz problem in this language and failed;</li>
+  <li><a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Blog/in.rkt">another one in Typed Racket</a>, which is my
+  primary programming language. (Racket is derived from Lisp and Scheme.)</li>
+ </ul>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 7th, 2010</b></p><blockquote style="color:black"><div time="1283891521">
+
+Welcome to the PhD-level course on programming languages. 
+
+<p>
+ Our organizational meeting will take place on Friday 9/10 in WVH 166. 
+ Note that this is not the regular location.  If you cannot attend this
+ meeting, please send me email as soon as possible. 
+</p>
+
+<p>
+ In the meantime, here is an entertaining essay from the Wall Street
+ Journal weekend edition (30 Jul 2010) on (natural) language and thinking: 
+<blockquote>
+  <a href="http://www.ccs.neu.edu/home/matthias/7400-f10/Does&#32;Language&#32;Influence&#32;Culture.pdf">
+  Does Language Influence Culture
+ </a>
+</blockquote>
+ For the bi-lingual among you, this essay may be of particular interest. 
+  (A similar but longer piece appeared more recently in the NYT.)
+</p>
+
+</div></blockquote></div></p></div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Sun Nov 28 15:52:50 EST 2010</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

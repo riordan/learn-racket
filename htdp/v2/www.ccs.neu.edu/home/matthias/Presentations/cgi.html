@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Programming Interactive Scripts for the Web</title>
+<body bgcolor="white">
+<hr>
+<h2>
+<center>
+Programming Interactive Scripts for the Web
+<br><br>
+ Matthias Felleisen
+</center>
+</h2>
+
+<blockquote width=60%>
+
+<p>The programmer of an interactive CGI script (or servlet) faces a serious
+ design constraint. When a script needs to query a consumer, it must
+ produce a Web page and terminate. When the consumer submits a response,
+ the server will invoke another script. In addition, a consumer can
+ bookmark generated pages, switch back and forth between such pages, clone
+ browser windows, and submit responses repeatedly and simultaneously. All
+ of this requires the programmer to break a simple interactive program into
+ many separate scripts and to communicate data between these scripts in an
+ unnatural manner.
+
+<p>My team and I have developed two approaches to overcome this
+ problem. The first relies on the implementation of a special-purpose Web
+ server that supports a scripting language with constructs for consumer
+ interactions. Using these new constructs, a programmer can develop and
+ test an ordinary interactive program, and the server takes care of the
+ interactions between the program and the consumer. The second implements
+ these new constructs as extensions to existing programming languages using
+ well-established program transformation techniques from the functional
+ world. Programmers can also use this second approach directly, without any
+ tool support.
+
+<p>We have tested both approaches. In this talk, I will demonstrate the
+ problem, explain our two approaches, and discuss the advantages and
+ disadvantages of each.
+
+<p>Joint work with: Paul Graunke, Robert Findler, Shriram Krishnamurthi 
+</blockquote>
+
+<hr>
+
+<address>matthias@ccs.neu.edu</address>
+
+</body>
+</html>

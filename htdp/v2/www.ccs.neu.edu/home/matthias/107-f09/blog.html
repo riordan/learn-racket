@@ -1,0 +1,1575 @@
+<html><head><title>Blog</title><link rel="stylesheet" type="text/css" href="all.css" title="all" /></head><body bgcolor="white"><br /><hr width="80%" height="3" /><table align="center" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td width="15%" valign="top" align="left" rowspan="2"><table border="0"><tr><td><a href="index.html">CS 5010 F '09</a></td></tr><tr><td><a href="general.html">General</a></td></tr><tr><td><a href="http://www.ccs.neu.edu/home/wand/cs5010/"><ax>Lectures/Wand</ax></a></td></tr><tr><td><a href="syllabus.html">Syllabus</a></td></tr><tr><td><a href="classes.html">Classes</a></td></tr><tr><td><a href="Assignments/index.html">Assignments</a></td></tr><tr><td><a href="presentations.html">Presentations</a></td></tr><tr><td><a href="officehours.html">Drill Club</a></td></tr><tr><td><a href="communication.html">Communication</a></td></tr><tr><td><font color="black"><b>Blog</b></font></td></tr><tr><td><a href="readings.html">Texts</a></td></tr><tr><td><a href="faq.html">FAQ</a></td></tr><tr><td><a href="http://www.drscheme.org/"><ax>DrScheme</ax></a></td></tr></table></td><td width="3%" /><td valign="top" align="left"><h3>Blog</h3></td><td valign="top" align="right" rowspan="2"><img src="../Images/blog.jpg" alt="logo" /></td></tr><tr><td /><td valign="top" align="left" colspan="2"><table width="85%"><tr><td><div><h3>Important Messages from the Instructors</h3><p><div><hr /><p><b>Friday, December 11th, 2009</b></p><blockquote style="color:purple"><div time="1260568821">
+
+<h3>The End</h3>
+
+<p>
+ This is the end of Bootcamp. You struggled with the material, you lost
+ sleep over problem sets, you coped with a random partner, and you tried to
+ justify your design in front of harsh critics. You survived and,
+ hopefully, you learned something. Indeed, it is my sincere hope that you
+ will remember this time as a harsh but productive immersion into
+ techniques that can help you in many situations. I hope you do, and so do
+ we all from the Bootcamp staff. Good luck with the rest of the MS program
+ and your co-ops. 
+</p>
+
+<p>
+ The rest of the course works like this. Sometime over the weekend you will
+ receive your list of grades in your email. If you find that any of these
+ grades are wrong, please send email to Stephen Chang, who will discuss
+ change requests with the rest of the staff as appropriate. By Tuesday, we
+ will sit down and make up final grades (anonymously) and upload them into
+ the registrar's database by the end of the week. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Friday, December 11th, 2009</b></p><blockquote style="color:purple"><div time="1260568201">
+
+<p>
+ Just in case you wish to remember the 10 things you could have learned, I
+ have put <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/12/">the lecture notes from this last week on-line.</a>
+</p>
+
+<p>
+ In addition, you can find two distinct solutions for problem 12-1 on line: 
+<li><a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/12-1.ss">one</a>
+ that is squeezed into the abstraction schema for itemized data definitions
+  (see lecture 12) 
+</li>
+<li><a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/12-1-2.ss">another one</a>
+ that creates a wider hierarchy and makes intelligent use of abstract
+ classes. 
+</li>
+
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Monday, December 7th, 2009</b></p><blockquote style="color:purple"><div time="1260219043">
+
+<p>Tomorrow (Tuesday, 8 Dec 2009), Prof. Felleisen won't have office hours.</p>
+
+<p>Also tomorrow, only the 3:30-5:30 drill club will take place. The second
+  drill club (5:30-7:30) is canceled.</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, December 7th, 2009</b></p><blockquote style="color:purple"><div time="1260211385">
+
+A student asks 
+<blockquote>
+"Assignment 12 asks us to convert the solution into complete class-oriented solution.
+Does this imply that we have to implement the (listof X) also as a class?" 
+</blockquote>
+The answer is no. Just replace the global <code>main</code> function from
+problem set 11 with a call to the expression 
+<blockquote><pre><code>(send (new sis%) go)</code></pre></blockquote>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, December 5th, 2009</b></p><blockquote style="color:purple"><div time="1260053713">
+
+Here is one more comment from the panel. Suppose you need a method that
+ switches a traffic light from one color to another: 
+<blockquote><pre><code>(define traffic% 
+ (class object% 
+    ...
+    ;; String -&gt; Void 
+    ;; purpose and effect: change current-state to s
+    (define/public (switch-to s) ...)
+    ...)
+</code></pre></blockquote>
+ The use of <font color="red">built-in data definition</font>
+ <code>String</code> is, of course, wrong here. You must supply 
+ a data definition that restricts the input to <code>switch-to</code>
+ appropriately: 
+<blockquote><pre><code>
+;; A TC is one of: 
+;; -- "red"
+;; -- "green" 
+;; -- "orange"
+;; -- "blue"
+
+(define traffic% 
+ (class object% 
+    ...
+    ;; TC -&gt; Void 
+    ;; purpose and effect: change current-state to s
+    (define/public (switch-to s) ...)
+    ...)
+</code></pre></blockquote>
+ Otherwise a future reader will not know which strings are legitimate
+ inputs to <code>switch-to</code> and which ones aren't. 
+
+</div></blockquote></div><div><hr /><p><b>Friday, December 4th, 2009</b></p><blockquote style="color:purple"><div time="1259966654">
+
+Here are the key insights from this week's code walks: 
+<ol>
+ <li>
+  You must respect the design recipe, even though we have moved on to
+  classes (e.g., data definitions as classes need interpretations; examples
+  and tests are designed before methods; random methods need different kind
+  of testing). 
+ </li>
+
+ <li>
+  You must formulate two kinds of tests for imperative methods: concerning
+  things that change and concerning things that must remain the same. See
+  blog post from last week. 
+ </li>
+
+ <li>
+  You must allocate functionality appropriately. For example, when you
+  discuss a tank firing shots, you should immediately imagine a function
+  with this kind contract: 
+<blockquote><pre><code>;; Tank -&gt; Shot</code></pre></blockquote> 
+  And this kind of contract tells
+  you to which class the method belongs. If you instead add a method to the
+  "state of the world" class that uses selectors/getters, you clearly missed the
+  point of the course, which tells you to organize your data around problem
+  structures and to design your functions around these data definitions.
+ </li>
+</ol>
+ Finally, you must implement criticisms of your code from the panels. If
+ you don't, we know that you failed in another key aspect, namely, the goal
+ of learning to communicate (which includes listening) about code.
+
+<p>
+ You have one more chance to demonstrate that you can explain code and
+ listen to criticisms of your code. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, December 2nd, 2009</b></p><blockquote style="color:purple"><div time="1259794810">
+
+Problem set 12 had accidentally switched the order of problems. It is fixed
+now. Sorry for any inconveniences.
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, December 1st, 2009</b></p><blockquote style="color:purple"><div time="1259699082">
+
+<p>
+ Just to clarify, you are welcome to use <code>local</code> for computing
+ local variable bindings, e.g., 
+<blockquote>
+<pre><code>(define/public (distance x1 y1)
+  (local ((define xdelta (- x1 x))
+          (define ydelta (- y1 y)))
+   (sqrt (+ (* xdelta xdelta) (* ydelta ydelta)))))
+</code></pre></blockquote>
+ in my lecture notes. 
+</p>
+
+<p>
+ In case you need to do so, you may initialize super-variables as follows: 
+<blockquote><pre><code>
+(define a%
+ (class object% 
+   (init-field x)
+   (super-new)))
+
+(define b%
+ (class object% 
+   (init-field y)
+   (super-new [x (some-function y)])))
+</code></pre></blockquote>
+ This is perfectly legitimate. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, December 1st, 2009</b></p><blockquote style="color:purple"><div time="1259683782">
+
+<p>
+ The lecture notes from Monday night are now available <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/11/index.html">on-line</a>.
+</p>
+
+<p>
+ When you design object-oriented programs in the Module language, do not
+ use <code>local</code> to define functions. Even if you succeed to process
+ objects in such functions, these definitions are unjustifiable and will
+ therefore result in <em>huge</em> point losses during code walks. -- You
+ may of course use <code>lambda</code> to create functions for processing
+ lists.
+</p>
+
+<p>
+ When you develop examples/tests for imperative methods in stateful
+ classes, you must create each test so that it stands on its own. It must
+ not rely on the execution of previous tests and it must not affect
+ subsequent tests. Here is a skeleton example: 
+<blockquote>
+<pre><code>(check-expect (local ((define o (new some-class% ...)))
+		(begin
+		  (send o change-yourself)
+		  (send o reveal-something-about-yourself)))
+              expected-values-possibly-lists)
+</code></pre></blockquote>
+ And don't forget to formulate tests for the <em>same</em> sequence of
+ commands that shows that no unintended properties of the object change. 
+ (With lists you could formulate a single test for this, but it is
+ acceptable to use two unit tests instead to separate the concerns.)
+</p>
+
+<p>
+ The topic of tail-call optimization was recently discussed by Guy Steele
+ on
+ <a href="http://projectfortress.sun.com/Projects/Community/blog/ObjectOrientedTailRecursion">Sun's
+ Fortress blog</a>. Recall that Steele is the person who developed 
+ Scheme and co-specified Java. His latest language, Fortress, is an attempt
+ to create a highly parallel successor to Fortran with modern OO features
+ and lessons learned from decades of language design. Enjoy! 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 30th, 2009</b></p><blockquote style="color:purple"><div time="1259620577">
+
+The 12th and last problem set has been released.
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 25th, 2009</b></p><blockquote style="color:purple"><div time="1259166907">
+
+<p>
+ I have corrected a small typo in problem 10-1. 
+</p>
+
+<p>
+ Problem set 11 has been released. 
+</p>
+
+<p>
+ Happy Thanksgiving! 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 24th, 2009</b></p><blockquote style="color:purple"><div time="1259121775">
+
+Prof. Wand writes: The working version of 10-worm-imp-wand.ss is now up on
+the examples directory (Lectures/Wand).  There were just a few changes
+after class, which are clearly marked.  You should look at these carefully
+to understand what went wrong and how it was fixed.
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 24th, 2009</b></p><blockquote style="color:purple"><div time="1259106476">
+
+Christos asked me to respond to some questions from the drill club on the
+blog. Here we go: 
+
+<ol>
+
+<li> 
+  You may continue to assume the existence of built-in data definitions
+  such as Number, String, Boolean, and those from the Universe teachpack
+  (KeyEvent, MouseEvent, etc). If you happen to need sub-collections of
+  those, make a special-purpose data definition and use as before. -- 
+  You may even use <code>[Listof X]</code> for a defined <code>X</code>
+  in your code. -- For everything else, you will need a class-base data 
+  representation.  
+</li>
+
+<li>
+  You should not need any plain functions for problem set 10, except for
+  local (lambda) functions in case you use a <code>list</code> iterator
+  (e.g., <code>map</code>, <code>fold</code>, etc.). In case you need a
+  novel operations on lists, break the rules. (I can't think of such an
+  operation.) 
+</li>
+
+<li>
+  You may define global constants and global graphical constants. You may
+  also define local fields that are constant, which is preferable. 
+</li>
+
+<li>
+  You must not use any other superclasses than <code>object%</code>. This
+  topic hasn't been covered yet, though we will do so on Monday. 
+</li>
+
+<li>
+  Don't even think of changing code that we provided.  So yes, this leaves
+  you with one global function in your program, which we provide. 
+</li>
+
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 24th, 2009</b></p><blockquote style="color:purple"><div time="1259080255">
+
+<p>
+ My notes for lecture 10 are <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/10/">on-line</a> in raw
+ form. Read with caution, experiment especially with the list code for
+ Scheme/Java classes. Design an accumulator-version of <code>length</code>
+ and stress-test it, too. 
+</p>
+
+<p>
+ For problem sets 10 and 11 (to be posted tomorrow), you must use a
+ class-oriented design. Packaging your functional solution in one big and
+ single class isn't it. You will get a 0 for that, even if your functional
+ solution got a perfect grade. Also, don't use other features than those
+ mentioned in the tutorial on Classes (see tab) and the lectures. For
+ example, if you need access to a field, add a selector method to the
+ class. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 22nd, 2009</b></p><blockquote style="color:purple"><div time="1258932990">
+
+Problem set 10 is a preliminary version of problem set 11. We will neither
+collect nor code-walk the results. 
+
+</div></blockquote></div><div><hr /><p><b>Saturday, November 21st, 2009</b></p><blockquote style="color:purple"><div time="1258843174">
+
+While HtDC uses the ProfessorJ programming language(s) to present design
+concepts in an object-oriented world, you <strong>must</strong> solve all
+homework problems in the Module language using its class system and you 
+<strong>should</strong> solve all drill problems in this language, too. 
+(If you have written acceptable solution in "applicative" ProfessorJ/Java
+for the drill problems, we may accept you for drill club this week.) 
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 20th, 2009</b></p><blockquote style="color:purple"><div time="1258768981">
+
+Ms. Raafia found out that I had once again used DrScheme v4.2.3 (svn head)
+instead of v4.2.1 to prepare the homework assignment. See corrections in
+10-2. 
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 20th, 2009</b></p><blockquote style="color:purple"><div time="1258743440">
+
+<p>
+ Several people have asked about "letter grades". At this point, it is
+ simply too difficult to give you an accurate estimate of your letter
+ grade, especially since the last three assignments carry a relatively
+ heavy "point weight". Recall though the general guideline for grades in
+ this kind of course (briefly discussed in the first lecture): the cut-of
+ for A-level grades is somewhere between 85% and 90%; for B-level grades it
+ is between 70% and 75%; for a C you will need at least 60%. Also keep in
+ mind that we will drop the score that affects your grade most
+ negatively. You may wish to design a program to determine this grade,
+ because it isn't necessarily the lowest score (in absolute numbers). 
+ <strong>There will be no other discussion of final grades.</strong>
+</p>
+
+<p>
+ Others have sent inquiries concerning the final schedule. As you can see
+ from university's schedule and previous blog post, there will be 12
+ (twelve) homework assignments and the last code walks will take place on
+ December 10 and 11. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 17th, 2009</b></p><blockquote style="color:purple"><div time="1258502158">
+
+An email exchange from today: 
+<blockquote>
+On Nov 17, 2009, at 4:38 PM, someone wrote:<br />
+<br />
+Dear prof.,<br />
+<br />
+The protocol review before the assignment really helped us to get
+stared with the assignment. I would totally recommend this kind of
+practice for all the assignments. It gives us the initial view of how
+to proceed with the assignment in right direction.<br />
+<br />
+Thank you.
+</blockquote>
+
+Here is the reply: 
+<blockquote>
+Thanks but you realize that one goal of this course is to empower you to
+develop such data representations on your own. In principle, you should
+learn this at the undergraduate level and we teach this in the first year
+courses and reinforce it later. If we reviewed all of these definitions you
+wouldn't appreciate the difficulties and you wouldn't learn to do things on
+your own. <br />
+<br />
+Pain is sometimes needed to learn things, and only people who can take pain
+can learn. -- Matthias 
+</blockquote>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 17th, 2009</b></p><blockquote style="color:purple"><div time="1258498325">
+
+Some of you have asked whether paper-and-pencil art is appropriate in lieu
+ of ascii art for the interaction diagram. I must admit that drawing the
+ diagram for the "chat room" assignment in my favorite text editor (Emacs)
+ took me some five to ten minutes and didn't pose any serious problem. So
+ here is the deal:
+<blockquote>
+ You are welcome to bring along a hand-drawn interaction protocol. It will
+ cost you one (1) point out of a total of 40 to 45 points. 
+</blockquote>
+ Note though that if we find a violation of the interaction diagram by your
+ code, it will cost you a lot more one point. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 17th, 2009</b></p><blockquote style="color:purple"><div time="1258485280">
+
+Last night, I demoed the <code>state</code> feature in universe for
+monitoring the changes to the state that your client and/or server program
+experiences. This feature is only available in DrScheme v4.2.2 and
+up. Since your solution <strong>must run in DrScheme v4.2.1</strong>, I
+recommend that you upgrade only if you encounter a mistake that you simply
+cannot cope with other than using <code>state</code>. If you do upgrade
+temporarily, you will also have to change calls to error to take one string
+only. (I use the cutting edge non-released version so that someone
+exercises everything all the time.)
+
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 17th, 2009</b></p><blockquote style="color:purple"><div time="1258483602">
+
+Ms. Raafia discovered another flaw in the docs for the universe teachpack,
+which was eliminated quite a while back. (We release every two months, and
+we build the software, including the docs, every night.) It is probably
+best if you use 
+
+<blockquote>
+<a href="http://pre.plt-scheme.org/docs/html/teachpack/2htdpuniverse.html">
+the online pre-release documentation
+</a>
+</blockquote>
+Doing so guarantees that you get to see all the fixes and you don't have to
+guess what's right or wrong. (Typos, like errors, happen; it's critical
+that you deal with them quickly.) 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 17th, 2009</b></p><blockquote style="color:purple"><div time="1258474790">
+
+<p>
+ My notes for lecture 9 are <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/9/">on-line</a> in raw form. Read
+ with caution, experiment with gusto. As you will see, I skipped the
+ non-essential 'design2.ss' exercise. It's boxed in the lecture notes. Try
+ it for yourself, then read my solution. 
+</p>
+
+<p>
+ To fit with the actual assignment schedule, I have swapped the reading
+ assignments for the last two weeks of the lecture schedule. Since nobody
+ has read anything so far anyway, this won't be an imposition. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 16th, 2009</b></p><blockquote style="color:purple"><div time="1258398471">
+
+Ms. Pratibah and Mr. Baturalp discovered a bug in the documentation for the
+universe teachpack. The text accompanying <code>on-disconnect</code> was
+wrong. Here is the improved version: 
+
+<blockquote>
+<code>(on-disconnect dis-expr)</code>
+<br />&nbsp; &nbsp; &nbsp; <code>dis-expr : (-&gt; UniverseState iworld? bundle?)</code>
+<br />tell DrScheme to invoke dis-expr every time a participating world drops its
+connection to the server. The first argument is the current state of the
+universe server, while the second argument is the (representation of the)
+world that got disconnected. The resulting bundle usually includes this
+second argument in the third field, telling drscheme not to wait for
+messages from this world anymore. 
+</blockquote>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 16th, 2009</b></p><blockquote style="color:purple"><div time="1258377604">
+
+<p>
+ You are welcome to change your protocol (interaction diagram, message
+ representation, server and client data definition) if you encounter
+ difficulties with the chosen protocol and/or if you realize that a 
+ change may improve your design. 
+</p>
+
+<p>
+ The purpose of the protocol review was to ensure that you got started in
+ the proper direction. If you believe you can benefit from a second review,
+ feel free to check with a TA. It is unnecessary, however, to get the
+ changes approved.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, November 14th, 2009</b></p><blockquote style="color:purple"><div time="1258234963">
+
+Your solution for homework 9 should be a single file, placed into the
+appropriate directory and named accordingly. You should organize your file
+like this: 
+
+<ol>
+ <li>
+   section 1 (labeled "protocol") should contain the interactions diagram in
+   ascii art, plus the data definitions for your server-to-client and
+   client-to-server messages;
+  </li>
+
+ <li>
+   section 2 (labeled "server") should contain all definitions for the
+   server code, including a function for starting up the server; and 
+ </li>
+
+ <li>
+   section 3 (labeled "client") should contain all definitions for the
+   client code, including a function for starting up the client. 
+ </li>
+</ol>
+ Use 'large letters' to label the sections so that we can use the contour
+ view to navigate the solution. Use <strong>at least two</strong> instances
+ of drscheme to <strong>run</strong> the program <strong>after you have
+ completed the design.</strong> (By now you should know that this sentence
+ means "tested without access to the network".) One drscheme runs the
+ server code from the above file, the others run client codes. For fun, you
+ may also consider running the program across the NEU/CCIS network or a
+ network in your apartment. 
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 13th, 2009</b></p><blockquote style="color:purple"><div time="1258128504">
+
+<p>See revised problem statement for 9.1. </p>
+
+<p>A <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/8-2.ss">solution for problem 8.2</a> is now available,
+  and we urge you to study it carefully.</p>
+
+<p>
+ On <strong>recursion</strong>: during the last lecture, someone
+ stated that a program was slow because it was recursive. In response I
+ gave you a "lecture" on the lack of basic knowledge on the connection
+ between proper program design and the implementation of function
+ calls. Just in case it isn't clear, this lecture was directed at your
+ undergraduate programs in computer science not at you personally. 
+</p>
+
+<p>
+ As you should know by now, recursion in functions exists because the data
+ definition is self-referential or because you had an algorithm idea
+ (generative recursion). Since this connection cannot possibly disappear if
+ we wish to design systematically, you need an explanation of recursive
+ function calls. You already know what to tell a recruiter who asks why you
+ would want to use recursion.
+</p>
+
+<p>
+ In order to provide you with a proper understanding of this topic, we will
+ insert two short lectures on the nature of function calls and recursion.
+ These lectures should help you overcome the wide-spread preconception that
+ "recursion is slow". They will also equip you with the knowledge to argue
+ with recruiters, just in case they don't know their basic cs history
+ either. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 11th, 2009</b></p><blockquote style="color:purple"><div time="1257961047">
+
+FAQ 8-2: All external urls are missing urls because "the creator of a site
+doesn't have control over the rest of the Web". Do keep in mind that this
+could be considered an ambiguity and <strong>any</strong> non-trivial
+resolution would be considered perfectly correct. 
+
+<p>
+ Messrs. Shah and Mehta requested a new feature for more-io.ss--stripping
+ unnecessary white space from href specifications--and I have added 
+ it. This will make your program a bit more useful, but it won't affect
+ code walks of course. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 10th, 2009</b></p><blockquote style="color:purple"><div time="1257874945">
+
+<p>
+Armin Galliker discovered an error in the more-io teachpack. Specifically
+the function <code>url-html-neighbors</code> did not analyze the entirety
+of ill-formatted (non-XHTML) HTML pages. I have released a new version of
+the teachpack. 
+</p>
+
+<p>
+Naturally, the error in the teachpack cannot affect your program
+design. First, you are testing it without access to the web, and 
+Mr. Galliker's discovery is perfect proof of why you wish to do so. 
+Second, the revised teachpack simply delivers longer lists of URIs on some
+occasions. This does not affect the correctness of your code nor its
+design. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 10th, 2009</b></p><blockquote style="color:purple"><div time="1257867559">
+
+Problem set 9 requires the design of a protocol, which consists of an
+interactions diagram plus data definitions for message exchanges, server
+state, and client (world) state. You must have a TA check your
+paper-and-pencil for problem 9-1 by <font color="red">Thursday November 12,
+4pm.</font> Bring the "blessed" protocol to your code walk of problem 9-1.
+If you proceed without a the blessing of a TA, we will impose a 20% penalty
+on your code walk.
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 9th, 2009</b></p><blockquote style="color:purple"><div time="1257800803">
+
+I have made two minor corrections to problem 8-2. They are marked up. 
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 8th, 2009</b></p><blockquote style="color:purple"><div time="1257696560">
+
+<p>
+ As several of you have noticed, the example in problem 8-2 was flawed. I
+ have fixed it. <font color="red">Never mind, it was correct the first time around!</font>
+</p>
+
+<p>
+ Also, when you are looking for a closed site, specify the site not its index
+ file. That is, use "http:foo.com/bar/" not "http:foo.com/bar/index.html"
+ as the starting point. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, November 7th, 2009</b></p><blockquote style="color:purple"><div time="1257612457">
+
+<p>
+  As several of you have noticed, the <code>geo-code</code> function may
+  produce more than one result. My response is that your program may take
+  the first, the last, or all of them. Indeed, you may even wish to let the
+  user of the code (as opposed to its designer) choose what to do. 
+</p>
+
+<p>
+ Christos will run Felix's drill on Monday, and he will code-walk a
+ solution to the n queens problem to reinforce generative recursion. 
+</p>
+
+<p>
+ Also on Monday, Stephen will post sign-up sheets for the remaining code
+ walks (8, 9, 10, and 11). 
+</p>
+
+<p>
+ Some of you have inquired about the schedule for the Thanksgiving
+ week. The lectures will take place as normal. You will also receive a
+ problem set that is conceptually due on Wednesday before Thanksgiving. We
+ will not conduct code walks for these solutions, however. Instead, you
+ will receive a supplement to the homework assignment and we will code-walk
+ the combined solution. In other words, if you don't design properly, you
+ will be in trouble over Thanksgiving; if you do design properly, the
+ changes will be straightforward. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 6th, 2009</b></p><blockquote style="color:purple"><div time="1257549591">
+
+<p>
+ Two comments on today's code walks: 
+<ol>
+ <li>
+  A <strong>termination argument</strong> explains why a generative
+  recursive function (or nest of generative recursive functions) reaches
+  its <strong>termination condition</strong> for all possible inputs. It is
+  <strong>not</strong> a description of the termination conditions. 
+ </li>
+
+ <li>
+  While it is technically true that a <strong>structural design</strong> 
+  is a special case of a <strong>generative recursion</strong>, we consider
+  it <strong>wrong</strong> in this course to refer to a structural design
+  as a generative one. Unless you have a clear idea that you are going to
+  use a generative recursive strategy--which immediately means that you 
+  should pay attention to termination--try structural design first. 
+ </li>
+</ol>
+ See the following notes.  
+</p>
+
+<p>
+ The problem of rendering expressions (a poem of a program of rendering
+ things for the web browser and/or text production) will come up at least
+ two more times this year. I therefore urge you to take the comments from
+ your code walk to heart and to fix it up before you move on. Here are some
+ hints: 
+<ol>
+ <li> 
+  Use a structural design, even if the problem statement uses words
+  that make it sound like you should use generative recursion. 
+ </li>
+
+ <li>
+  Find the tasks in the problem statement. Design functions for those. If
+  they share auxiliary functions, make those global. 
+ </li>
+
+ <li>
+  We generally recommend that you develop <strong>everything</strong>
+  globally, including accumulator functions. That helps you develop
+  examples and test cases for all of your functions. Once you have
+  completed the design, re-arrange your program and make things local that
+  deserve to be local (at least all accumulator functions). 
+ </li>
+</ol>
+ If you do try to respond to the code-walk panels, I also urge you to go to
+ next week's drill club and present your revised solution. 
+</p>
+
+<p>
+ On Monday, Felix's drill club will re-examine "generative recursion", a
+ topic that many of you need to revisit. He will present an alternative
+ solution to the "n queens" problem and demonstrate with a concrete example
+ how to think about problem generation. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, November 6th, 2009</b></p><blockquote style="color:purple"><div time="1257531117">
+
+<p>
+ It is time to start reading "How to Design Classes." The book is available
+ from the bookstore (either classified as "CS 2510" or "CS 5010"). If they
+ don't have it, the NEU Repro store (around the corner) should be able to
+ produce additional copies. -- While we will not follow the book per se and
+ instead use the full PLT language with classes, the principles of the book
+ apply. Also, seeing the ideas in PLT and Java syntax will be beneficial
+ for you. 
+</p>
+
+<p>
+ There will be class during Thanksgiving week and there will be a problem
+ set (part 1 of problem set 10). But, there will not be code walks for this
+ part of the problem set. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, November 4th, 2009</b></p><blockquote style="color:purple"><div time="1257347935">
+
+Problem set 9 is released. I also clarified a point in problem set 7. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 3rd, 2009</b></p><blockquote style="color:purple"><div time="1257279426">
+
+I posted a small (obvious) fix to problem 7-2. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, November 3rd, 2009</b></p><blockquote style="color:purple"><div time="1257265155">
+
+<p>
+ This time around I have posted lecture notes on: 
+ <ol>
+  <li><a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/7-1.txt">the first part of last night's lecture</a></li>
+  <li><a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/7-3.txt">the third part of last night's lecture</a></li>
+ </ol>
+</p>
+
+<p>
+ In addition, I have posted <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/foomble-accu.ss">my accumulator
+ solution</a> and <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/foomble-direct.ss">my direct solution</a>
+ to the "foomble depth" problem. I consider the latter part extremely
+ challenging and I personally wrote it in full Scheme due to a lack of time
+ to write it in ISL with weaker tools. -- For your information, the problem
+ is known in programming languages and compilers courses as "the
+ static distance" or the "de Bruijn index" problem.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 2nd, 2009</b></p><blockquote style="color:purple"><div time="1257200637">
+
+<p>
+Drill problem 31.3.1 is messed up due to a change to drscheme that happened
+a couple of years after we released the book but before the latest version
+of the book was released to the web. Specifically, drscheme now understands 
+all real numbers (and complex) as <strong>exact numbers</strong> not as
+floating points (like in other languages). 
+</p>
+
+<p>If you want inexact numbers, your program must compute them (say
+  <code>(sqrt 2)</code>) or you must write them into your program. For this
+  drill, create an inexact coefficient in <code>g-series</code> like this: 
+<font size="-1"><pre><code>(define (g-series n)
+    (cond
+      [(zero? n) empty]
+      [else (cons (expt #i-0.99 n) (g-series (sub1 n)))]))
+
+  (* 10e15 (apply + (g-series 1000)))
+
+  (* 10e15 (apply + (reverse (g-series 1000))))
+</code></pre></font>
+ See what these computations of the "same" sums produce. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 2nd, 2009</b></p><blockquote style="color:purple"><div time="1257181676">
+
+Please send me your solutions to the depth problem for the Foomble
+language. I have two solutions so far, and the lucky winner(s) get 
+to conduct a public code walk (which as you can imagine, comes with 
+large benefits). 
+
+</div></blockquote></div><div><hr /><p><b>Monday, November 2nd, 2009</b></p><blockquote style="color:purple"><div time="1257169592">
+
+<p>
+It is time for the last partner switch. This time you may choose to work
+with the partner of your choice -- as long as you have not worked with this 
+person before. That is, neither your current partner nor your first partner 
+are candidates for the third round. 
+</p>
+
+<p>
+By Wednesday NOON, you and your future partner must hand in a signed joint
+statement to Stephen Chang. If you do not hand in such a statement at that
+deadline, we will assign you a <strong>random partner.</strong> Everyone
+will get notice (confirmation) about the new partner and pair number
+assignment by Friday NOON latest.
+</p>
+
+<p>
+Until then, you must continue to work with your current partner, and of
+course, you must not work with anyone else, including your future partner. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Sunday, November 1st, 2009</b></p><blockquote style="color:purple"><div time="1257127684">
+
+The original "image-ops.ss" teachpack was developed on a newer drscheme. I
+have modified it so that it now runs on drscheme v4.2.1, the required
+version. Please download this new version. (Sun Nov  1 20:30)
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 31st, 2009</b></p><blockquote style="color:purple"><div time="1257010732">
+
+<p>See problem set 7 for small improvements (typos, language). Nothing essential changed.</p>
+
+<p>I have also release problem set 8.</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 29th, 2009</b></p><blockquote style="color:purple"><div time="1256833737">
+
+For the code walks starting tonight, please bring along an encoding of the
+ following Perthon program in your data representation: 
+<pre><code>(
+ (def T(X) ret ((? X : (T $$ "a") , (X ++ "b")) ++ "c"))
+ ((T $$ "") ++ "d"))
+)
+</code></pre>
+ If you have a USB stick, put it on there so that the TAs can quickly test
+ your submission with this example.
+ 
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 28th, 2009</b></p><blockquote style="color:purple"><div time="1256765721">
+
+Someone asked whether it is acceptable to produce a complete solution for
+the n-queens problem first and to animate it afterward. This is a perfectly
+acceptable solution (even though it may not be in the original spirit of
+the question). 
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, October 28th, 2009</b></p><blockquote style="color:purple"><div time="1256758467">
+
+Problem set 7 is out. I have eliminated one problem to reduce your work
+load a bit. To compensate, we will inspect your code more closely than we
+have in the past. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 27th, 2009</b></p><blockquote style="color:purple"><div time="1256678115">
+
+Like with ISL, Java, and C, Perthon's syntax comes with names for the
+ various pieces. In  
+<blockquote>
+<code>(def FVariable (PVariable) ret Expression)</code>
+</blockquote>
+ <code>FVariable</code> is the name of the function, <code>PVariable</code>
+ is the function's parameters, and <code>Expression</code> is the
+ function's body. 
+
+<p>
+ Also, you should read 
+<blockquote>
+Second, the only variable names that may occur in the body of the function
+are the name of the function and the name of the function's parameter
+</blockquote>
+ as follows: 
+<blockquote>
+Second, the only variable names that may occur in the body of the function
+are the function name in the first position of a function call and the name
+of the function's parameter. 
+</blockquote>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 27th, 2009</b></p><blockquote style="color:purple"><div time="1256658680">
+
+Here is a summary of the in-class 'homework problem from last night's
+lecture: 
+
+<blockquote>
+ Design the function <code>db</code>, which consumes and produces 
+ 'Foomble' expressions. Its purpose is to replace all occurrences of
+ parameters in <code>lambda</code> bodies with names that indicate how far
+ away the binding <code>lambda</code> is. Here are some examples from the
+ information domain: 
+<ol>
+ <li><code>(lambda (x) x)</code> becomes <code>(lambda (x) zero)</code>;
+ </li>
+
+ <li>for <code>(lambda (x) (lambda (y) (lambda (z) x)))</code>, the
+ function returns <code>(lambda (x) (lambda (y) (lambda (z) three)))</code>; 
+ </li>
+
+ <li>and for <code>(x (lambda (x) (lambda (y) (lambda (z) x))))</code>, the
+ result is <code>(x (lambda (x) (lambda (y) (lambda (z) three)))</code>. 
+ </li>
+</ol>
+ Also recall last night's instructive example. In order to turn numbers
+ into symbols, use 
+<pre><code>;; Number -&gt; Symbol
+;; convert the given number into a symbol
+(define (number-&gt;symbol n)
+  (cond
+    [(= n 0) 'zero]
+    [(= n 1) 'one]
+    [(= n 2) 'two]
+    [(= n 3) 'three]
+    [(= n 4) 'four]
+    [else 'etc]))</code></pre>
+ and don't nest your parameters deeper than five levels. (A real compiler
+ pass uses a parameterized data description and replaces symbols with
+ natural numbers.)
+</blockquote>
+ Send me your solutions before the next lecture. We will code-walk some in
+ public. 
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 24th, 2009</b></p><blockquote style="color:purple"><div time="1256396266">
+
+<p>Felix would like you to know: 
+<ol>
+<li>The descriptions provided (for Perthon's Program, Definition,
+  Expression, Constant, Variable) are *not* Student Language data
+  definitions.
+</li> 
+
+<li>Corollary of above: the first task *cannot* be the (trivial) act of
+ cut-and-pasting the provided descriptions of Perthon's Program,
+ Definition, Expression, Constant, Variable. Something more significant is
+ required.
+</li>
+</ol>
+ If you believe Felix is wrong, present a justification to Professors Wand
+ and/or Felleisen in person, and we may just let you work with the given
+ definitions. 
+</p>
+
+<p>
+ Someone asked "Is it allowed to use Vectors in Problem 2?". The answer is: 
+<blockquote>
+Yes, but only immutable vectors, for which you may create a teachpack
+called vectors-for-isl.ss, which you may then check into SVN. 
+The required language for this problem is Intermediate Student Language
+with Lambda. 
+</blockquote>
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 23rd, 2009</b></p><blockquote style="color:purple"><div time="1256319705">
+
+Here are comments in response to the code walks for week 5: 
+<ol>
+<li>
+ <p>
+ In the past we have repeatedly insisted on two points, which appear to be
+  in contradiction to each other. On one hand, we have said that data
+  definitions should describe sets of values. On the other hand, we have
+  said that functions are first-class values, just like any other
+  function. Put together, the two ideas suggest that <font color="red">a
+  valid data definition may just enumerate a bunch of functions.</font>
+ </p>
+
+ <p>
+  <font color="red">This is wrong, however.</font> You should only use
+  clauses in data definitions for which you can formulate conditions from
+  (constant-time) predicates. Since it is impossible to compute whether two
+  functions are equal or not (in ISL+ and all other full-fledged
+  programming languages), <font color="red">your data definitions may not
+  enumerate function values.</font> Instead read the book's chapter on
+  abstraction and learn to use the <code>-&gt;</code> data collection
+  constructor with which you can describe function spaces.
+ </p>
+
+ <p>
+  In addition, it is also a bad idea to enumerate specific functions from a
+  design perspective. Just recall our discovery of <code>foldr</code>. We
+  abstracted from <code>sum</code> and <code>product</code>. If we had used
+  the contract "the argument must be either + or *", it would then be
+  impossible to use <code>foldr</code> with any other arguments than those
+  two. Now that you have seen numerous uses of <code>fold</code>, you
+  should appreciate why the proper way to abstract is to use function
+  spaces. 
+ </p>
+</li>
+
+ 
+
+<li>
+ <p>
+  We deducted points from missing attributions of code to previous
+  partnerships. While this requirement has always been marked up in red in
+  problem set 5, you won't find such nice warning labels in the real
+  world. Instead, <font color="red">you will be fired</font> if you use
+  code from somewhere else and don't inform your manager; if you are
+  running your own company and do something like this,
+  <font color="red">you will be sued</font> and that is even more costly.
+ </p>
+</li>
+
+<li>
+ <p>
+  Also, last week's blogged solution explicitly stated that you must not
+  abstract out recursive or cross-function calls. Some of you did so anyway
+  for the X-expression problems. Don't. 
+ </p>
+</li>
+
+<li>
+ <p>
+  We saw many misuses of <code>local</code> for mutually recursive nests of
+  functions. Here is the proper pattern:  
+<pre>
+ <code>
+   (define (main-f x-changing0 x-always-same)
+     (local ((define (lcl-f x-changing)
+                 ... x-always-same ...
+                 ... (lcl-ggg ... x-changing ...) ...)
+             (define (lcl-ggg x-changing)
+                 ... x-always-same ...
+                 ... (lcl-ggg ... x-changing ...) ...
+                 ... (lcl-ggg ... x-changing ...) ...))
+       (lclf x-changing0)))
+ </code>
+</pre>
+  <font color="red">Note that <code>main-f</code> is not called from
+  within the local nest of functions.</font> Why? For design reasons, it
+  would be impossible to re-use the 
+  constant arguments (the ones that don't change) without always passing it
+  around. You can thus clarify to any reader that
+  <code>x-always-same</code> really remains the same throughout the
+  computation. For performance reasons, you need to understand that
+  <emph>every</emph> call to <code>main-f</code> re-creates all these
+  localized functions. This costs time and money. Although the primary
+  focus in this course is on proper design and the justification of design,
+  you must always develop a sense for the cost of your chosen language and
+  you must factor this cost into your design as appropriate. See the book's
+  intermezzo on <code>local</code> for details. 
+ </p>
+</li>
+
+<li>
+ <p>
+  No program---especially world programs---should be
+  run from the Definitions Window. <font color="red">You are to write a
+  main function and apply it in the Interactions window to run the
+  program.</font> In the future, we will deduct points if you run programs
+  from the Definitions Window. 
+ </p>
+</li>
+
+<li>
+ <p>
+  <font color="red">Attend drill cub. Use the resources that we
+  offer.</font> Many people have made the claim that they don't have the
+  time to do the drill problems because they are spending so much time on
+  the problem sets. Based 20 years of teaching experience, be advised that
+  the opposite is true. <font color="red">You are spending so much time on
+  homework problems because you don't solve the drill problems.</font>
+ </p>
+</li>
+
+</ol>
+ You may have noticed that the base score differs from week to week. Over
+ the next few weeks, the score will gradually increase. The increases
+ reflect the increased complexity of the problem sets as well as the idea 
+ that we reward those students who can demonstrate that they learned their
+ lessons from previous code walks. 
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 17th, 2009</b></p><blockquote style="color:purple"><div time="1255814178">
+
+<p>
+Correction on the report from code walks: The reviewers report that many of
+ you use undefined terms in <font color="red">contracts, especially
+ "List"</font>. They have asked for permission and have received it to
+ deduct 10 points for the meaningless use of "List" and similar terms.
+</p>
+
+<p>
+On Monday afternoon we will post a sign-up sheet for code walk slots for
+the new pairs. Please sign up by Tuesday afternoon. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Friday, October 16th, 2009</b></p><blockquote style="color:purple"><div time="1255729454">
+
+Three comments from today's code walks: 
+
+<ol>
+
+<li><p>
+ We have jointly decided that all of you need exercise in correcting code
+ and presenting corrected code to code walkers. We will release a revised
+ version of homework set 5 this evening still. </p>
+</li>
+
+<li><p>
+ The reviewers report that many of you use undefined terms in data
+ definitions, such as "List" or "X". They have asked for permission and
+ have received it to deduct 10 points for the meaningless use of "List" and
+ similar terms. </p>
+</li>
+
+<li><p>
+ All of us have observed that you are still not taking notes properly.
+ When Partner A is presenting, Partner B should be seated, with a copy of
+ the code in his or her hand, taking notes on the reviewers' comments as
+ they are made.</p>
+
+<p>
+ At the end of the session, both partners should be seated, and should take
+ notes on the reviewers' end-of-session comments.</p>
+ 
+<p>
+ If you don't take notes, you will walk away from the session and remember
+ nothing of what was said.</p>
+
+<p>
+ Again, reviewers will deduct points in the future if partners fail to take
+ notes. </p>
+</li>
+</ol>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 16th, 2009</b></p><blockquote style="color:purple"><div time="1255707354">
+
+<p>
+ See updates to <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Assignments/5.html">problem set 5</a> concerning
+ the problem statement and the re-use of code. 
+</p>
+
+<p>
+ Most importantly, any attempt to work with your old partner is now
+ considered code theft, and we will prosecute it like any other form of
+ theft. For details, see the problem set. 
+</p>
+
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 15th, 2009</b></p><blockquote style="color:purple"><div time="1255659127">
+
+<p>
+ This night you will receive an email with the name and email address of
+ your new partner. As of Friday 4pm, you will no longer work with your old
+ partner on anything. Instead, you will contact your new partner to arrange
+ a first meeting as soon as possible. 
+</p>
+
+<p>
+ Homework set 5 is now available. You <font color="red">must work</font> on
+ this homework set with your new partner. The two of you should start by
+ presenting to each other the solutions for problems 4.1, 4.3, and 3.4. You
+ should choose whatever old solution you think is the best starting
+ point. Do <font color="red">not choose</font> the code from the partner
+ with the higher score, unless the score is (near-) perfect. Keep in mind
+ that a score reflects a combination of presentation skills, justified
+ design, and various other aspects. Do use the chance to practice your code
+ walking skills so that both of you understand the code base equally well.
+</p>
+
+<p>
+ The new homework set is a relatively light load compared to previous
+ homework sets---if you have a decent solution to the problems. Keep in
+ mind that when you "edit", you must have a good test suite so that you can
+ quickly re-establish that nothing essential changed. If things change
+ unexpectedly, backtrack to the last point that worked (svn is good for
+ that). 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 13th, 2009</b></p><blockquote style="color:purple"><div time="1255442172">
+
+The staff discussed the needs of the students. We decided to hold drill
+clubs today (four hours worth!) and <emph>not</emph> to hold a question and
+answer session. Please do take advantage of the drill clubs. 
+
+</div></blockquote></div><div><hr /><p><b>Sunday, October 11th, 2009</b></p><blockquote style="color:purple"><div time="1255275445">
+
+Problem 4.1 now comes with instructions on how to deal with the additional
+teachpack. Make sure to check in your program from one computer and to
+check it out on a different computer to ensure that the SVN commit works. 
+
+<p>Also note the small addition of an emphasis to problem 2.</p>
+
+</div></blockquote></div><div><hr /><p><b>Saturday, October 10th, 2009</b></p><blockquote style="color:purple"><div time="1255210643">
+
+Concerning problem 4.1: Prof. Wand's class used the name "XElements"
+instead of "Xexpr". Also see Prof. Wand's lecture notes. Finally, although
+Prof. Wand's class did not cover the entire refinement chain of XML
+representations, the material -- together with the book's file system 
+examples -- suffice for solving this problem. 
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 9th, 2009</b></p><blockquote style="color:purple"><div time="1255119813">
+
+<p>
+ <font color="red">I have edited two of the problems for problem set 4. 
+ </font>
+</p>
+
+<p>
+ Since the rule about testing auxiliary functions was obviously
+ misunderstood, <font color="red">you must supply tests for all
+ functions.</font> 
+</p>
+
+<p>
+ From now on, Christos Dimoulas will hold drill-club hours on Tuesdays from
+ 3:30 to 5:30pm, followed by Stephen Chang's drill club from 5:30 to
+ 7:30pm. They will both use room WVH 166. 
+</p>
+
+<p>
+ We know that Systems will have a make-up lecture on Thursday. If you are
+ in Systems and you have a conflict with your code walk appointment, send
+ email to Stephen Chang by Tuesday NOON. 
+</p>
+
+<p>
+ Solutions for today's code walk problems (<a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/3-2.ss">3.2</a>
+ and <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/3-3.ss">3.3</a>) are on-line again. Do not count on
+ getting solutions for every week.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, October 8th, 2009</b></p><blockquote style="color:purple"><div time="1255012696">
+
+Friday morning's code walks will take place in WVH 166 and the upstairs
+computer lab. The TAs will post a schedule at both places and will manage
+the distribution of pairs. Watch and listen for announcements. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, October 6th, 2009</b></p><blockquote style="color:purple"><div time="1254853306">
+
+<p>Due to ``copy and paste'' -- something that we teach you not to do --
+  the syllabus was messed up. In particular, it mistakenly specified a
+  summary session for this week when we really planned on covering Part IV
+  of HtDP. I have fixed and released a new syllabus.
+</p>
+
+<p>
+ Also in response to some questions, I have clarified problem set 3. The
+ additions are type set in red so that you can easily spot them. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, October 5th, 2009</b></p><blockquote style="color:purple"><div time="1254778599">
+
+<p>
+ We have created a second drill club. Stephen will run the drill club in WVH
+ 166 in lieu of his office hours. 
+</p>
+
+<p>
+ Also, for some reason, a flawed version of homework set 3 made it to the
+ web server. Please make sure to read the released version from Sunday or
+ later. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 2nd, 2009</b></p><blockquote style="color:purple"><div time="1254526673">
+
+The <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/2-2.ss">solution to problem 2.2</a> is now
+available. Please download it, study it, and experiment with the code.
+
+</div></blockquote></div><div><hr /><p><b>Friday, October 2nd, 2009</b></p><blockquote style="color:purple"><div time="1254520879">
+
+<p>Office hours: As of this week, you may no longer ask the TAs any direct
+  questions about the homework problems. If you need clarification, send
+  email to the staff mailing list (see blog); we promise prompt responses
+  throughout the week. You will not get any answers about code that you
+  wrote. 
+</p>
+
+<p>Drill club II: Also as of this coming week, Stephen's office hours on
+  Tuesday will be turned into a second drill club. All drill problems and
+  all homework problems from weeks past are legitimate topics for the drill
+  clubs. No questions concerning current or future homework will be
+  answered. 
+</p>
+
+<p>
+ Christos's Wednesday office hours will serve for last minute questions
+ concerning general topics (lectures, functions in BSL or ISL, drscheme
+ questions, svn questions). He will not answer any questions concerning the
+ homework problems per se. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 30th, 2009</b></p><blockquote style="color:purple"><div time="1254346285">
+
+There is no need for a new sign-up sheet. The schedule remains the same
+while you are with the same partner. 
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 30th, 2009</b></p><blockquote style="color:purple"><div time="1254324050">
+
+Professor Wand has put up the examples for his section in the usual place
+(see tab).  The folder has been reorganized a little, so it no longer has a
+nice landing page, but it will be easier for you to find and download the
+examples.
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 30th, 2009</b></p><blockquote style="color:purple"><div time="1254312499">
+
+Last night's lecture received the following hint concerning Problem 2.4: 
+<blockquote>
+I take it that what was meant was to replace
+
+<code>(make-editor String String)</code>
+
+by
+
+<code>(make-editor LOS1 LOS1)</code>
+
+where LOS is a list of 1Strings (1-character strings).
+</blockquote>
+We wish to ensure that everyone is aware of this hint before the deadline. 
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 29th, 2009</b></p><blockquote style="color:purple"><div time="1254270995">
+
+Today's office hours repeatedly brought up three questions: 
+<ol>
+<li>
+  Q: "where should we write down the answer to the questions which is
+  been asked in the problem set 2?" A: Write them down as comments in 
+  the solution file for the corresponding question. 
+</li>
+
+<li>
+  Q: What is non-standard about the conditions in question 2.1? A: Let's
+  try again: 
+<blockquote>
+  "The design recipe demands the use of the same predicate in
+   both cond clauses for the main function. Why? How could you simplify the
+   design?" 
+</blockquote>
+</li>
+
+<li>
+  Q: Should I use a list of two strings for problem 2.4? A: Of course not!
+  That's totally silly. Think about the string operations you had to design
+  for problem 1.4 and how much easier it is to define these operations
+  using lists (of what?). 
+</li>
+
+</ol>
+
+
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 29th, 2009</b></p><blockquote style="color:purple"><div time="1254270995">
+
+Prof. Wand sent us the following recommendation: 
+<blockquote>
+Bring paper and a writing implement to the code review.  During the head
+panelist's response you should sit down, remain quiet and take notes.    If
+you do not bring paper and writing implement to the review, you will have
+points taken off your score.
+</blockquote>
+ We all full-heartedly agree with this statement. 
+
+
+</div></blockquote></div><div><hr /><p><b>Monday, September 28th, 2009</b></p><blockquote style="color:purple"><div time="1254156940">
+
+Remember to bring a print-out of today's drill problems for drill club. In
+addition, you should either email your solutions to Felix (pnkfelix at
+ccs.neu.edu) or bring them along on a memory stick. Today's password is
+"heaven". 
+
+<p>
+On a different note: the course now has its own mailing list, which should
+make it easier to get responses than individual emails: 
+<blockquote>
+<code>cs5010staff@ccs.neu.edu</code>
+</blockquote>
+The mailing list includes both instructors and the graduate TAs listed on
+the course web pages. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Friday, September 25th, 2009</b></p><blockquote style="color:purple"><div time="1253910710">
+
+<p>
+ The head panelists requested that for problem set 2 you provide templates
+ for all functions via comments: 
+
+<font size="-1">
+<blockquote><pre><code>#| TEMPLATE FOR FUNCTIONS THAT PROCESS elements from DD:  
+
+(define (f an-dd) 
+  (cond 
+    [(alternative1? an-dd) ... (selector-1-1 an-dd) ...]
+    [(alternative2? an-dd) ... (selector-2-1 an-dd) ...
+                           ... (selector-2-2 an-dd) ...]
+    ...))
+|#
+</code></pre></blockquote></font>
+
+If you need one and the same template for several functions, writing it
+down <strong>once</strong> suffices. Indeed, writing it down several times
+shows that you do not understand the nature of templates. 
+</p>
+
+<p>Some comments on your code walk performance: 
+<ol>
+<li>
+ Just a reminder that we do not grade on a curve. The grades are assigned
+ on an <emph>absolute</emph> scale. 
+</li>
+
+<li>
+ Almost half of the class received 10 or fewer points out of 20. This score
+ corresponds to a <emph>failing</emph> grade. That's the bad news. 
+</li>
+
+<li>
+ The good news is that the worst code walk doesn't count against your final
+ grade and, based on our experience, that most of you will learn quickly
+ and improve. To improve, however, means you must <font color="red">sit
+ down and study (!= read)</font> the materials that we provide.
+</li>
+
+<li>
+ The use of "C style braces/parentheses" issue upset one panel so much that
+ they deducted points. I have requested that these points are returned to
+ you. But, I have amended the  <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Assignments/style.html">style
+ sheet</a> and <font color="red">you must use proper parenthesis style or
+ face deductions</font> in the future. 
+</li>
+</ol>
+</p>
+
+<p>Solutions for <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/1/1-2.ss">problem 1/2</a> and
+  <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/1/1-3.ss">problem 1/3</a> are now available. Study them well. 
+</p>
+
+<p>I have also put the <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/1/1.txt">grading guidelines</a> for
+  problem 1 on line. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, September 25th, 2009</b></p><blockquote style="color:purple"><div time="1253891540">
+
+<p>
+  See <a href="presentations.html">the web page on code reviews</a> for a
+  general on what we look for in your presentations and how we evaluate
+  your 'package.' 
+</p>
+
+<p>
+ In addition, please understand that the code review functions according to
+ the following pattern: 
+<ol>
+
+<li>
+ The panelists check out your solutions from svn (saved at midnight on the
+ preceding Wednesday), check whether your svn arrangements satisfy the
+ required protocol, run a solution, and check some basic
+ <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Assignments/style.html">stylistic properties</a>. 
+</li>
+
+<li>Each of you gets around 10 minutes to present a program to the
+  panel. During this time, we will ask clarifying questions, 'pointed'
+  questions (hints that your code and/or your presentation of the code is
+  lacking), and questions to direct your presentations. 
+</li>
+
+<li>
+  The remaining 10 minutes belong to the head panelist. He will diagnose
+  each of your code presentations (including the code) and you
+  <font color="red">must listen and remain quiet</font> so that you hear what went
+  wrong. Ideally you should take notes. Discuss the diagnosis
+  <emph>after</emph> you leave the room. 
+</li>
+</ol>
+ If you have questions concerning the diagnosis or if you do not understand
+ how to eliminate the weaknesses that the panel diagnosed, see the teaching
+ assistants and the instructors during <a href="officehours.html">office
+ hours</a>. 
+</p>
+
+<p>
+On an unrelated note, see 
+  <a href="http://en.wikipedia.org/wiki/Hollywood_Principle">the Hollywood
+  principle</a> to get an idea why we introduce you to world programming
+  first. 
+</p>
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 22nd, 2009</b></p><blockquote style="color:purple"><div time="1253620822">
+
+<p>Office hours postponed! 
+
+<p>Felleisen: today at 3:00-5:00pm instead of the regular times.</p>
+
+The password is "Faust!" and the code for last night's lecture will appear
+here soon.
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Monday, September 21st, 2009</b></p><blockquote style="color:purple"><div time="1253540183">
+
+<p>Today's password: "good bye world"</p>
+
+<p>
+ Now that you have experienced pair programming for 20 minutes, you should
+ read up on it and how it benefits companies and academia alike. The 
+ <a href="Assignments/index.html">assignments page</a> now has an
+ additional tab, which explains pair programming and which points to a
+ widely popular article on the technique. We urge you to read it,
+ especially if you have doubts, or if you are tempted to split the projects
+ after all and to just do things as you have always done them---all by yourself. 
+</p>
+
+<p>
+ Hot of the press:
+ <a href="http://www.nytimes.com/2009/09/20/jobs/20pre.html?ref=todayspaper">an
+ article in yesterday's NYT</a> on pair programming.  
+</p>
+
+<p>
+ The last day of classes is December 12, as defined by the registrar's
+ calendar. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, September 18th, 2009</b></p><blockquote style="color:purple"><div time="1253302693">
+
+<p>We have now specified how each and every SVN homework submission must be
+  organized. See <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Assignments/svn.html">the Assignments tab</a> on the
+  left. 
+</p>
+
+<p>The "last day of classes" is a technical term in US colleges; see 
+  <a href="http://www.northeastern.edu/registrar/cal0910-all-3.pdf">NEU's
+  on-line calendar</a> and find out what the last day of classes for this
+  year's fall semester is. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Friday, September 18th, 2009</b></p><blockquote style="color:purple"><div time="1253277605">
+
+Stephen Chang has prepared a <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/svndemo.pdf">detailed svn
+ demo</a> for your off-line perusal. If your lab was a bit fast and you
+ have never seen anything like svn (trac, csv, etc.), we urge you to spend
+ 15 minutes going through this worksheet carefully. 
+
+<p>Remember: Use 
+ <blockquote><code>svn ci -m"problem N.M"</code> </blockquote>
+ every time you end a session.</p>
+
+</div></blockquote></div><div><hr /><p><b>Thursday, September 17th, 2009</b></p><blockquote style="color:purple"><div time="1253201059">
+
+<p>Today's password: "hello world"</p>
+
+<p>Once again, today's (and tomorrow's) lab is
+  <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/lab1.html">on-line</a>, and you should read it in
+  preparation of your lab sessions. 
+</p>
+
+<p>The current version of HtDP/2e refers to a function called
+  <code>animate</code>. Like all other functions, it is hyper-linked to its
+  (draft) documentation. By following the hyper-link, you will see that it
+  is just a new name for the function <code>run-simulation</code>. So use
+  the latter instead of the former if you wish to run the programs in the
+  <a href="http://www.ccs.neu.edu/home/matthias/HtDP2e/prologue.html">Prologue</a>.
+</p>
+
+<p>Our current plan is to make the last day of classes the last day of
+  Bootcamp. See the campus calendar for details. 
+</p>
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 16th, 2009</b></p><blockquote style="color:purple"><div time="1253124835">
+
+Professor Wand's lecture notes are now available from his web page. See new
+tab on the left. 
+
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 16th, 2009</b></p><blockquote style="color:purple"><div time="1253110241">
+
+One of your co-students writes: 
+<blockquote>
+There's a neat spider service called Page2RSS that periodically scans a
+given URL for updates and delivers them as an RSS feed.  I was able to use
+it to check the CS5010 class blog.  Hopefully it will work well. 
+
+<li>Page2RSS site: <a href="http://page2rss.com/">http://page2rss.com/</a></li>
+
+<li>CS5010 class blog feed: 
+ <a href="http://page2rss.com/rss/e6be6b5b36385e5ec4034e13ad4acc7e">
+  http://page2rss.com/rss/e6be6b5b36385e5ec4034e13ad4acc7e
+ </a></li>
+</blockquote>
+If you find this service useful, fine by us. No warranties. 
+
+</div></blockquote></div><div><hr /><p><b>Tuesday, September 15th, 2009</b></p><blockquote style="color:purple"><div time="1253024105">
+
+<p>
+ <a href="http://www.ccs.neu.edu/home/matthias/107-f09/Blog/lab1.html">Lab 1</a> is now available. You can start thinking
+ about it early. 
+</p>
+
+Some important points concerning the course, the labs, and the web pages: 
+<ul>
+<li>The labs will take place in <strong>WVH 212</strong> this Thursday and
+  Friday. 
+</li>
+
+<li>Remember to get a CCIS systems account before you come to lab. See
+  FAQ. 
+</li>
+
+<li>The web pages are still evolving, while we are eliminating typos and
+  adding a few details here and there. Check back often. 
+</li>
+
+</ul>
+</div></blockquote></div><div><hr /><p><b>Wednesday, September 9th, 2009</b></p><blockquote style="color:purple"><div time="1252511429">
+
+Welcome to Bootcamp. 
+
+<p>It is time to get started, and this means for you that you must begin to
+  study <a href="../HtDP2e/index.html">How to Design Programs/2nd edition</a>. Notice
+  that we didn't use 'read' but 'study' in the preceding sentence. To study
+  a text book means to work through the examples (with drscheme in this
+  case) and to solve some of the exercises to test your knowledge. Any
+  other interaction with a text book is a waste of time. 
+</p>
+
+
+
+</div></blockquote></div></p></div></td></tr></table></td></tr></table><hr width="80%" height="3" /><table width="80%" align="center"><tr><td align="left"><font size="-2">last updated on Fri Dec 11 17:00:21 EST 2009</font></td><td align="right"><font size="-2">generated with <a href="http://www.plt-scheme.org/">PLT Scheme</a></font></td></tr></table></body></html>

@@ -1,0 +1,884 @@
+<html>
+<title>Components and Types</title>
+<body>
+<!-- --------------------------------------------------------------- -->
+<center><h1>Components and Types</h1></center>
+<center><h3>Matthias Felleisen</h3></center>
+
+<p><center><small>
+<a href="index.html#Components">Components</a>
+|
+<a href="index.html#Blitz">A Blitz Course</a>
+|
+<a href="index.html#Functors">Functors</a>
+|
+<a href="index.html#Critique">Critique</a>
+|
+<a href="index.html#Warning">Warning</a>
+|
+<a href="index.html#References">References</a>
+</small></center></p>
+
+<a name=Components>
+<p><h2>Programs Consist of Components</h2>
+
+Small programs are collections of type, function, and value definitions. 
+In the past, we have produced large programs by organizing groups of such 
+definitions into files and "gluing" them together in some form. This
+method of producing large programs, however, is inefficient and does not
+encourage the re-use of functions beyond basic libraries. 
+
+One solution to overcome this problem is to use an object-oriented
+language. In an object-oriented languages, programmers group together
+some of these definitions in classes. Each class represents a collection
+of data; the "functions" in a class represent those actions that are
+naturally associated with this data. To re-use definitions, a programmer
+can extend a class, override some of its existing functionality, and add
+new types, functions, and data components as desired. For a more complete
+description, see Batory's work, especially his referenced talk on Product
+Line Architectures and its type equations. 
+
+ML is a typed functional programming languages that offers an alternative
+to these dominant approaches. It provides a linguistic tool for grouping
+definitions: modules. In contrast to a class, a module is simply a group
+of definitions with no other associations. One can view modules as a
+middle ground between highly structured classes (data) and unstructured
+groups in files. 
+
+The design of ML recognizes that a typical program consists of layers of
+interconnected components: 
+
+<p><center><img src="compound.jpg" alt="[Program Structure]"></center></p>
+
+<p>Each component implements some services. Many also require the
+services of other components. The design of ML also reflects the belief
+that the components and connections form a dag-like hierarchy (i.e. a
+graph without cycles).
+
+<br><br><br>
+
+<p><strong>Manufacturing Components</strong>
+
+<p>The design of ML also recognizes that program components should be
+manufactured for re-use. In particular, when a programmer puts together
+a new component, the component should specify what kind of things it
+expects from the layer underneath, not the specific components.  Dually,
+the component will only specify what kind of things it provides to the
+layer above: 
+
+<p><center><img src="functor.jpg" alt="[Functors]"></center></p>
+
+<p>The ellipses in this sketch are <em>interfaces</em>; the box is a
+component. 
+
+<p>Given a collection of such components, a programmer can create systems
+by linking together appropriate boxes. If the boxes are programmed to
+their interfaces, they are easily interchangeable and re-usable. 
+
+<a name=Blitz>
+<p><h2>An ML Blitz Course</h2>
+
+For readers who need a quick refresher, <a href = "http://www.ccs.neu.edu/home/matthias/BTML/SML/1">here</a> is a
+quick and dirty summary by example of the first eight chapters. 
+
+<a name=Functors>
+<p><h2>Functors, Signatures, and Structures</h2>
+
+Our description suggests that the templates for components are functions
+that map components to components. More generally, the "programming
+language of components" is a functional language whose values are
+structures and whose types are signatures.  In ML, these "functions" are
+called <em>functors</em>; their interfaces are referred to as
+<em>signatures.</em> The result of a functor application is a
+<em>structure,</em> which, of course, also play the role of inputs to
+other functors. The next few sections explain the precise role of
+functors, signatures, and structures.
+
+<p><strong>Functors and Signatures</strong> 
+
+<p>Here is the syntax of a functor declaration: 
+<pre>
+functor F(structure s1: SIG1; ...; structure s2: SIG2) 
+  :> SIG 
+  = 
+  struct 
+    ...
+  end
+</pre>
+The header specifies three parts: 
+<ul>
+<li> the name of the functor: F; 
+<li> its imported structures as formal parameters (names): s1 ... s2;
+<li> the signatures of the imports: SIG1 ... SIG2 (which are typically
+names);
+<li> and the export signature of the functor: SIG. 
+</ul>
+The functor body is roughly a sequence of type, function, and value
+definitions. These definitions may refer to the imported structures (see
+below). They must define all those things promised in the export
+signature SIG. 
+
+A signature is defined as follows: 
+<pre>
+signature SIG 
+  = 
+  sig
+    ...
+  end
+</pre>
+It introduces a name that stands for a bundle of type and value
+specifications. When the ML type checker checks the type correctness 
+of a modular program, it uses the information in signatures to verify 
+that everything works out. 
+
+<p><strong>A Simple Example</strong> 
+
+<p>Consider the following concrete example of a signature and a functor
+definition: 
+<pre>
+signature VARIABLES 
+  = 
+  sig 
+    type var
+    val equal : var * var -> bool
+  end
+
+functor Variables() 
+  :> VARIABLES
+  = 
+  struct 
+    type var = string 
+    fun equal(v1,v2) = (v1 = v2)
+  end
+</pre>
+
+The header of the functor definition states that <code>Variables</code>
+ imports nothing and creates a structure with signature
+ <code>VARIABLES.</code> According to this signature, the functor exports
+ the type <code>var</code> and a function named equal that consumes a pair
+ of <code>var</code>s and produces a <code>bool</code>. It is easy to see
+ that the functor body indeed introduces these definitions. Indeed, from
+ the functor definition we can also deduce that <code>var</code> stands
+ for <code>string</code>, but of course the signature does not reveal
+ this fact. 
+
+Now let us take a look at the following definitions: 
+<pre>
+signature SD 
+  = 
+  sig
+    type term
+  end 
+
+functor StaticDistance(structure v : VARIABLES) 
+  :> SD
+  = 
+  struct 
+    ...
+  end
+</pre>
+
+It sketches a functor whose single import is a structure with signature
+<code>VARIABLES</code>. Inside of the functor's definition, we can only 
+assume that <code>v</code> specifies some type <code>var</code>, but
+nothing else. In other words, we have completely hidden how variables are
+implemented. 
+
+<p><strong>Using Values from Structures</strong>
+
+<p>Inside of a functor we can refer to the pieces of an imported
+structure in two ways: 
+<ol>
+
+<li> With <pre>s.name</pre> we refer to the entity called
+<code>name</code> in import <code>s</code>. The notation only makes sense
+if the signature for <code>s</code> specifies <code>name</code>.
+
+<li> If the functor's body contains the statement <pre>open s</pre>, all
+definitions specified in the signature of <code>s</code> become lexically
+bound. Adding this statement is dangerous if we don't know the entire
+signature because it may shadow some other binding. Use it with care. 
+
+</ol>
+
+<p><strong>Linking and Computing</strong>
+
+<p>After all the signatures and functors are defined, we can link the
+components together. We start with the bottom layer, that is, with those
+components that do not import other components: 
+<pre>
+(* Layer 0 *)
+(* ------- *)
+structure s1 = F1()
+structure s2 = F2()
+</pre>
+These definitions create two structures s1 and s2 from the functors F1
+and F2. Neither F1 nor F2 import any other components. 
+
+<p>Now that we have the 0th or bottom layer, we can create those components
+that link to the bottom layer: 
+<pre>
+(* Layer 1 *)
+(* ------- *)
+structure s3 = F3(structure s = s1; structure t = s2)
+structure s4 = F4(structure a = s3; structure t = s2)
+...
+</pre>
+
+This example assumes that both functors consume two components. Both
+components are "passed by label" to the functors, i.e., the formal
+parameter is explicitly connected to the argument.  The first functor
+imports <code>s1</code> and <code>s2</code>; the second one is linked to
+<code>s3</code> (the result of applying F3 a first time) and
+<code>s1</code>. 
+
+<p>Since the language of components is a functional language, we can also
+use nested function application to link the components together:
+
+<pre>
+(* Layer 0 *)
+(* ------- *)
+structure s2 = F2() (* retains name because used more than once *)
+
+(* Layer 1 *)
+(* ------- *)
+structure s4 = F4(structure a = F3(structure s = F1(); structure t = s2); 
+                  structure t = s2)
+...
+</pre>
+
+The structure resulting from F2() remains named because it is used
+twice. 
+
+<p>[Note: The application of a functor can have a side-effect for both type
+checking and evaluation. It is therefore not just an option, but a
+necessity to consider whether F2 should be applied once or twice.  The
+precise nature of the problem is beyond the scope of these notes.]
+
+<p><strong>A Simple Example: Tables</strong>
+
+<p>Let us design a functor that creates environments for interpreters, i.e.,
+tables that associate some form of variable with some form of value. An 
+interpreter for a statically typed programming language requires at least 
+two kinds of environments: one for mapping variables to run-time values 
+and another one for mapping type variables to types. So being able to
+create environments several times, for different kinds of variables, is a
+natural desire. 
+
+<p>When we design functors, we start by considering its export
+signature. An environment table supports two kinds of actions: 
+<ol>
+<li>the extension of an existing environment with a variable and a value,
+and 
+<li>the lookup of a variable in an existing environment.
+</ol>
+Since an extension already assumes an environment, the environment 
+component should also provide a basic environment: the empty
+environment. 
+
+<p>This sketch suggests the following outline of a signature: 
+<pre>
+signature TABLE = 
+    sig
+	type table 
+
+	val empty : table
+	val extend : table * a-variable * a-value -> table
+	val lookup : table * a-variable -> a-value
+    end
+</pre>
+
+The signature is incomplete because it doesn't specify what kind of types
+<code>a-variable</code> and <code>a-value</code> are. For that part, we
+need to think ahead and see whether these types are constrained in any
+way or whether they can be arbitrary. 
+
+<p>The answer is straightforward in both cases. On one hand, to lookup a
+variable in an environment table, we need to compare two variables, that
+is, we need a comparison operation. In other words, to describe the
+"domain" of a table we need a type and an operation. This means the
+functor for creating tables imports a structure that specifies these two
+things.  On the other hand, the kind of values we can store in a table is
+arbitrary. Thus we can use a <em>type variable</em> to stand for 
+<code>a-value</code>. Here is the final signature for tables: 
+
+<a name = sigTABLE><pre>
+signature TABLE = 
+    sig
+	type domain
+	type 'a table 
+
+	val empty : 'a table
+	val extend : 'a table * domain * 'a -> 'a table
+
+	exception NotFound of domain
+	val lookup : 'a table * domain -> 'a
+    end
+</pre>
+
+It says that a table is a parametric type.  The parameter <code>'a</code>
+of the table type stands in for the kinds of values that a table can
+store. Furthermore, 
+<code>empty</code>,
+<code>extend</code>,
+and
+<code>lookup</code>
+are polymorphic operations on this type. Finally, the signature includes
+an exception NotFound because looking up a variable does not succeed if
+the table is empty or, more generally, if the table does not contain an
+association for the variable. 
+
+<p>Next we write down what kind of structures we expect as imports to the
+functor. As mentioned already, the table functor must import a structure
+that describes the domain elements. We also agreed that this structure
+must specify a type and an equality operation on the type: 
+
+<pre>
+signature DOMAIN =
+    sig
+	type var
+	val equal : var * var -> bool
+    end
+</pre>
+
+<p>Now we are ready to specify the header of the functor for environment
+tables: 
+
+<pre>
+functor Table(structure domain : DOMAIN) :> TABLE 
+</pre>
+
+That is, the functor inputs a DOMAIN structure and creates a TABLE
+structure, or, it imports items according to the DOMAIN specification and
+exports items as specified by TABLE. 
+
+<p>Coding the definitions in the functor is a straightforward exercise: 
+
+<pre>
+functor Table(structure d : DOMAIN) 
+    :> TABLE 
+    =
+    struct 
+	type domain = d.var
+	type 'a table = domain -> 'a
+
+	exception NotFound of domain
+	val empty = 
+	    (fn n => raise NotFound(n))
+
+	fun extend(t,n,m) = 
+	    (fn i => 
+	     if d.equal(n,i) then m
+	     else t(i))
+
+	fun lookup(t,n) = t(n)
+    end
+</pre>
+
+<p>Here are two functors for creating DOMAIN structures:
+
+<pre>
+functor Var() :> DOMAIN 
+    = 
+    struct 
+	type var = int
+	val equal = (op =)
+    end
+
+functor TypeVar() :> DOMAIN
+    = 
+    struct 
+	type var = string
+	val equal = (op =)
+    end
+</pre>
+
+The first one implements variables as integers ("static distance
+coordinates"), the second as strings. In both case, the equality 
+operation is just equality.
+
+<p>Linking functors together means to write down the intended functor
+applications. In this example, the Var and TypeVar functors make up layer
+0: 
+<pre>
+structure var = Var()
+
+structure type_var = TypeVar()
+</pre>
+Layer 1 is created with two applications of the Table functor: 
+
+<pre>
+structure run_time = Table(structure domain = var);
+
+structure tck_time = Table(structure domain = type_var);
+</pre>
+
+<p>After linking, we are ready to evaluate some simple examples, e.g.,
+extending an environment with a variable and a value and looking up the
+same variable: 
+
+<pre>
+run_time1.extend(run_time1.empty,1,true) 
+</pre>
+
+or
+
+<pre>
+open run_time1;
+
+extend(empty,1,true) 
+</pre>
+
+Both expressions should create a <code>bool table</code>. Unfortunately,
+the type checking fails (in both both cases). To understand this problem, 
+we need to discuss the rules of typing components and propagating types
+through functor applications. 
+
+<p><strong>Refining Signatures, Propagating Types</strong>
+
+<p>The expression 
+
+<pre>
+run_time1.extend(run_time1.empty,1,true) 
+</pre>
+
+is type-checked according to the type information specified in the
+signatures. The signature of <code>run_time1.extend</code> is <a href =
+"index.html#sigTABLE">TABLE</a> and specifies the type of <code>extend</code> as
+
+<pre>
+'a table * domain * 'a -> 'a table
+</pre>
+
+The type checker can obviously set <code>'a</code> to <code>bool</code>
+but it cannot verify that 1 is of type <code>domain</code>. After all, 
+the signature only specifies that the type exists, it doesn't say what it
+is. 
+
+<p>From the functor <em>definition</em> we know that the type
+<code>domain</code> is the same as the type <code>var</code> in the
+functor's argument. From the functor <em>applications</em> we know that the
+type <code>var</code> might be <code>int</code> or <code>string</code>.
+And, of course, we can imagine other applications of <code>Table</code>
+with yet more implementations of the type var. The type checker, however,
+cannot infer this knowledge from just the signature of Table. Worse, it
+can't even type check an expression like 
+
+<pre>
+var.equal(1,1)
+</pre>
+
+because the signature of DOMAIN specifies only that <code>var</code>
+exports a type <code>var</code> but not what it is. In short, our
+signatures introduce a completely abstract type <code>var</code>, and it is
+impossible for us at the moment to create any elements of that type.
+
+<p>The first step towards a solution is to reveal the nature of the
+<code>var</code> types in the functors Var and TypeVar. Since programmers
+also want to specify the kernel of their signature <code>DOMAIN</code> only
+once, ML provides the construct <code>where</code> for the refinement of
+existing signatures. Here is how we can use it: 
+
+<pre>
+functor Var() 
+    :> DOMAIN where type var = int
+    = 
+    struct
+      ... as above ...
+    end
+
+functor TypeVar() 
+    :> DOMAIN where type var = string
+    = 
+    struct 
+      ... as above ...
+    end
+</pre>
+
+Now the type checker can type <code>var.equal(1,1)</code> but it still
+can't type expressions over runtime1. 
+
+<p>To solve this last problem, we need to add a <code>where</code>-clause
+to <code>Table</code>'s signature:
+
+<pre>
+functor Table(structure d : DOMAIN) 
+    :> TABLE where type domain = d.var 
+    =
+    struct 
+     ... as above ...
+    end
+</pre>
+
+It reveals that the exported type <code>domain</code> and the imported type
+<code>var</code> (from structure d) are identical. The type checker
+verifies this specification (by inspecting the functor body) and uses the
+information to check expressions over the structure that results from
+applying the functor. That is, we propagate types with where-clause
+propagates as necessary. 
+
+<p><strong>Changing Components</strong>
+
+<p>At first glance, the problem seems to stem from our desire to hide the
+exact nature of types. For the types <code>var</code> in DOMAIN and <code>
+domain</code> in DOMAIN it is already obvious why we want to hide their
+nature. They differ from case to case. 
+
+Although less obvious, the same is true for <code>'a table</code> in
+TABLE. Suppose we wish to implement tables via lists, not functions.
+Because we didn't reveal anything about the implementation of tables, 
+we can actually do this without changing anything else in the program: 
+
+<pre>
+functor Table_via_list(structure d : DOMAIN) 
+    :> TABLE where type domain = d.var 
+    =
+    struct 
+	type domain = d.var
+	type 'a table = (domain * 'a) list
+
+	val empty = []
+
+	fun extend(t,i,m) = (i,m)::t
+
+	exception NotFound of domain
+	fun lookup((i,m)::t,n) 
+	    = if d.equal(n,i) 
+	         then m 
+	         else lookup(t,i)
+	  | lookup([],n) = raise NotFound(n)
+    end
+</pre>
+
+
+We simply program a functor with the imports and exports, but a new body. 
+We can use the same name if we wish to replace all uses of the original 
+functor. Or we can use a new name if we wish to use both forms of tables, 
+say, for efficiency reasons, in the program. 
+
+<p>In general, Opaque types increase re-usability. Keeping types opaque in
+signatures forces programmers to use the published operations, not their
+own functions on these types. Hence, we can easily change the
+implementation of structures <em>without</em> affecting (not even
+re-type-checking) those modules that import the modified structure.
+
+<p><strong>The "Diamond Problem"</strong>
+
+<p>Consider the following situation: 
+
+<center><img src="diamond.jpg" alt="[Diamond Structure]"></center></p>
+
+Component A uses services from two other components: B and C.  In general,
+<code>makeA</code> will use functions from b to produce inputs for
+functions in c (and possibly vice versa). Indeed, this is often desirable
+and necessary but to do this properly a programmer may have to specify
+additional constraints on the relationship between imports. 
+
+<p>The problem is best explained with a concrete example, let us study the
+design of a binary search tree component. Recall that a binary search tree
+is a binary tree that stores information in a sorted manner. More
+specifically, each node contains a <code>key</code> and each leaf contains
+some piece of information, which includes a key</code>. Given some node,
+all leafs to the left have a key that is less than the key in the node; all
+leafs to the right have a key that is larger or equal than the key in the
+node. Here is the definition of the appropriate datatype:
+
+<pre>
+type key  = ... some type with an order ...
+type info = ... some compound type, with keys ...
+
+datatype bst = Leaf of info | Node of bst * key * bst
+</pre>
+
+The basic operations on binary search trees are creating a tree from some
+information, searching a tree for information that contains a specific
+tree, and inserting nodes into the tree: 
+
+<pre>
+fun create(i) = Leaf(i)
+fun insert(i,b) = ...
+fun lookup(k,b) = ... 
+</pre>
+
+<p>The description suggests that the Bst functor imports two structures:
+one concerning information and another concerning ordered keys:
+
+<ul>
+<li>An ordered structure must introduce a type, an equality predicate, and an
+ordering predicate. 
+
+<a name = sigORDERED><pre>
+signature ORDERED = 
+    sig 
+	type ord 
+	val equal : ord * ord -> bool
+	val less  : ord * ord -> bool
+    end
+</pre>
+
+<li>An information structure must contain keys and values proper. It must
+also provide functions for combining the two and for extracting them: 
+
+<pre>
+signature INFO
+    = 
+    sig
+	type info
+	type key 
+	type values
+	val make : key * values -> info
+	val info_key : info -> key
+	val info_val : info -> values
+    end
+</pre>
+
+<li>The signature for binary search trees and the functor header are now
+obvious: 
+
+<pre>
+signature BST 
+    =
+    sig
+	type info
+	type key 
+	type bst
+	val create : info -> bst
+	val insert : info * bst -> bst
+	val lookup : key * bst -> info
+    end
+
+functor Bst_F(structure i : INFO;
+	      structure o : ORDERED)
+    :> BST where type info = i.info and type key = i.key
+    = ...
+</pre>
+</ul>
+
+<p>Based on this outline, we can refine the code for, say,
+<code>lookup</code>. When <code>lookup</code> encounters a leaf, it must
+check whether the information contains the key we are looking for. If yes,
+it return the information; otherwise it raises an exception:
+
+<pre>
+	exception NotFound
+	fun lookup(k,Leaf(x)) = 
+	    if o.equal(k,i.info_key(x)) then x else raise NotFound 
+	  | lookup(k,Node(l,i,r)) =
+	    if o.less(k,i) then lookup(k,l) else lookup(k,r)
+</pre>
+
+The code for a node is equally straightforward. 
+
+<p>The key to the function definition is that what <code>i.info_key</code>
+returns is fed into <code>o.equal</code>, that is, the underlying type of 
+the ordered structure and the keys in an information structure must be
+identical. If they aren't, we have a type conflict. 
+
+<p>We could again use a <code>where</code>-clause to specify the desired
+constraint for the type checker: 
+
+<pre>
+functor Bst_F(structure i : INFO;
+	      structure o : ORDERED 
+	      where type o.ord = i.key)
+</pre>
+
+Of course, we could also swap the equation and demand <code>i.key =
+o.ord</code>. In either case, the type checker will ensure that the two
+types are equal as it attempts to type check the functor. 
+
+<p>In general, a functor might import many structures and three or more may
+need to agree on a type. For this quite common situation, ML provides a
+<code>sharing</code>-clause, which permits programmers to specify the
+constraint in a succinct fashion. For the running example, the
+specification is 
+
+<pre>
+functor Bst_F(structure i : INFO;
+	      structure o : ORDERED 
+	      sharing type i.key = o.ord)
+</pre>
+
+In general, <code>sharing type</code> might be followed by many equations,
+e.g., 
+
+<p><center><code>a.atype = b.btype = c.ctype = ...</code></center>
+
+<p>[Note: The generativity of datatype makes it necessary to speak of type
+identity (in the sense of Scheme's eq? rather than type equality (in the
+sense of Scheme's equal? but, as mentioned above, this topic is beyond the
+scope of the notes here.]
+
+<a name = Critique>
+<p><h2>A Critique of ML's Perspective</h2>
+
+<p>ML's designer clearly showed a lot of foresight in the early 1980s with
+their careful design of program components and a language for linking
+them. Software engineers only now re-discover these ideas, typically called
+architectures or product lines (see Batory's talk). However, ML's module
+language still does not accommodate re-use as much as "product line
+programming" demands.  There are three specific problems. First, ML makes
+it difficult to re-use functors with signatures that weren't designed
+together. Second, linking enforces a program organization that adheres to a
+strictly hierarchical schema; as practice has shown, systems are often
+cyclic graphs of components, not just dags. Finally, the language of
+linking is a restrictive first-order functional language. Again, practice
+suggests that on occasion "component programmers" want more power. 
+
+<p><strong>Renaming at Module Boundaries</strong>
+
+<p>Suppose some ML programmer has created a functor for integers: 
+
+<pre comment="to be tested">
+signature INTS
+    = 
+    sig
+	type my_int
+
+	val zero : my_int
+
+	val succ : my_int -> my_int
+	val is_zero : my_int -> bool
+
+	val equal : my_int * my_int -> bool
+	val less : my_int * my_int -> bool 
+    end
+
+functor Ints() :> INTS 
+    = 
+    struct 
+	datatype my_int = zero | succ of my_int 
+	    
+	fun is_zero(zero) = true
+	  | is_zero(succ(x)) = false
+
+	...
+    end 
+</pre>
+
+The functor's exports clearly implements values that semantically satisfies
+the axioms for <a href = "index.html#sigORDERED">ORDERED</a> -- except that the name of
+the relevant type in INTS is <code>my_int</code> and that in ORDERED is
+<code>ord</code>. Hence, we cannot directly use the structure created by
+Ints where an ORDERED structure is needed. Instead, we must implement a
+functor that adapts the Ints() structure to ORDERED: 
+
+<pre>
+functor Ints_to_Ord(structure i : INTS) 
+    :> ORDERED 
+    =
+    struct 
+	open i
+	type ord = my_ints
+    end
+
+structure ints = Ints() 
+
+structure ord_ints = Ints_to_ord(ints) 
+</pre>
+
+The functor imports an INTS structure, opens it, adds a type definition for
+ord, and thus creates a structure that implementes ORDERED.
+
+<p>[Note 1: ML's full module language slightly simplifies this step, but
+the problem exists nevertheless.]
+
+<p>[Note 2: This functor implements the ML-equivalent of a GoF adapter pattern.]
+
+<p><strong>Mutual References among Collections of Structures</strong>
+
+<p>In many cases, it is natural for a programmer to divide up type and
+function definitions among components so that they form a cyclic graph. 
+ML does not accommodate mutual references during linking and thus forces 
+programmer to merge all components with mutual references into one large
+module. 
+
+<p>Let us briefly return to the realm of interpreters again. For a
+dynamically typed language, we only need one form of environment table. We
+might therefore specify tables with an explicit range type: 
+
+<pre>
+signature TABLE = 
+    sig
+	type domain
+	type value
+    	type table 
+
+	val empty : table
+	val extend : table * domain * value -> table
+	val lookup : table * domain -> value
+    end
+
+functor Table_F(...) :> TABLE = ...
+</pre>
+
+<p>Similarly, we might specify closures in a separate package: 
+
+<pre>
+signature CLOSURE = 
+    sig
+      
+      type code
+      type environment 
+      type closure 
+
+      make_closure : code * environment -> closure 
+
+      type value 
+      apply_closure : closure * value -> value
+    end
+
+functor Closure(...) :> CLOSURE = ...
+</pre>
+
+But clearly, a closure is one of many kinds of values and an environment is
+a part of a closure. Thus, to create a <code>closure</code> structure, we
+need a <code>environment</code> structure and vice versa. ML's rules
+disallow this kind of natural division of labor. 
+
+<p><strong>A Full-Fledged Language for "Component Programming"</strong>
+
+<p>In many system development situations, it is necessary to link in a
+conditional manner. While a GUI is still under development, a programmer
+may wish to link a component to a text-based i/o module; indeed, for
+maintenance reasons, this capability should be maintained beyond the first
+phase. Hence, we should be able to write the following kind of expression: 
+
+<pre>
+structure foo = if gui_exist() then Foo_with_gui_sig(gui) else Foo_with_txt(txt)
+</pre>
+
+More generally, we might wish to program with components in a language that
+is pretty much a full-fledged programming language, perhaps even core ML
+itself. This would also mean that the programmer has to learn fewer
+syntactic constructs and has more liberties in composing systems.
+
+<a name=Warning>
+<p><h2>Warning</h2>
+
+<p>This essay does not represent the (complete) viewpoint of traditional
+MLers. For this story, you may wish to read Bob Harper's presentations on
+SML and its Module Language. 
+
+<a name=References>
+<p><h2>References</h2>
+
+<p>Batory, <a href = http://www.cs.utexas.edu/users/schwartz/ppt.htm>
+Product Line Architectures (PPT)</a>
+
+<p>Felleisen and Flatt, 
+<a href = "http://www.ccs.neu.edu/home/matthias/Units/">Component Programming with MzScheme (Draft)</a>
+</p>
+
+<p>Harper, 
+<a href = http://www.cs.cmu.edu/~rwh/introsml/contents.htm>
+Programming in Standard ML
+</a>
+
+<p>Harper, 
+<a href = http://www.cs.cmu.edu/~rwh/introsml/modules.htm>
+Module Language</a>
+
+<!-- --------------------------------------------------------------- -->
+</body>
+</html>

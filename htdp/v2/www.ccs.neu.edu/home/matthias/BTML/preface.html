@@ -1,0 +1,123 @@
+<html>
+<title>Preface (ML)</title>
+<body>
+     <strong>Preface</strong>
+<p>
+     Programs consume data and produce data; designing a program requires a
+     thorough understanding of data. In ML, programmers can express their
+     understanding of the data using the sublanguage of types. Once the
+     types are formulated, the design of the program follows naturally. Its
+     shape will reflect the shape of the types and type definitions. Most
+     collections of data, and hence most type specifications, are
+     inductive, that is, they are defined in terms of themselves. Hence,
+     most programs are recursive; again, they are defined in terms of
+     themselves.
+</p><p>
+     The first and primary goal of this book is to teach you to think
+     recursively about types and programs.  Perhaps the best programming
+     language for understanding types and recursive thinking is ML. It has
+     a rich, practical type language, and recursion is its natural
+     computational mechanism.  Since our primary concern is the idea of
+     recursion, our treatment of ML in the first eight chapters is limited
+     to the whys and wherefores of just a few features: types, datatypes,
+     and functions.
+</p><p>
+     The second goal of this book is to expose you to two important topics
+     concerning large programs: dealing with exceptional situations and
+     composing program components.  Managing exceptional situtations is
+     possible, but awkward, with recursive functions. Consequently, ML
+     provides a small and pragmatic sublanguage, , exception , raise , and
+     handle , for dealing with such situations. The exception mechanism can
+     also be used as a control tool to simplify recursive definitions when
+     appropriate.
+</p><p>
+     Typically, programs consist of many collections of many types and
+     functions. Each collection is a progam component or module.
+     Constructing large programs means combining modules but also requires
+     understanding the dependencies among the components.  ML supports a
+     powerful sublanguage for that purpose. In the last chapter, we
+     introduce you to this language and the art of combining program
+     components. The module sublanguage is again a functional programming
+     language, just like the one we present in the first eight chapters,
+     but its basic values are modules (called structures) not integers or
+     booleans.
+</p><p>
+     While provides an introduction to the principles of types,
+     computation, and program construction, you should also know that ML
+     itself is more general and incorporates more than we could
+     intelligibly cover in an introductory text.  After you have mastered
+     this book, you can read and understand more advanced and comprehensive
+     books on ML.
+</p><p>
+     Acknowledgments
+</p><p>
+     We are indebted to Benjamin Pierce for numerous readings and
+     insightful suggestions on improving the presentation and to Robert
+     Harper for criticisms of the book and guidance concerning the new
+     module system of ML.  Michael Ashley, Cynthia Brown, Robby Findler,
+     Matthew Flatt, Jeremy Frens, Steve Ganz, Daniel Grossman, Erik
+     Hilsdale, Julia Lawall, Shinn-Der Lee, Michael Levin, David MacQueen,
+     Kevin Millikin, Jon Riecke, George Springer, and Mitchell Wand read
+     the book at various stages of development and their comments helped
+     produce the final result.  We also wish to thank Robert Prior at MIT
+     Press who loyally supported us for many years.  The book greatly
+     benefited from Dorai Sitaram's incredibly clever Scheme typesetting
+     program SLaTeX.  Finally, we would like to thank the National Science
+     Foundation for its continued support and especially for the
+     Educational Innovation Grant that provided us with the opportunity to
+     collaborate for the past year.
+</p><p>
+     What You Need to Know to Read This Book 
+</p><p>
+     You must be comfortable reading English and performing
+     rudimentary arithmetic. A willingness to use paper and pencil to ensure
+     understanding is absolutely necessary.
+</p><p>
+     Reading Guidelines  
+</p><p>
+     Do not rush through this book.  Read carefully; valuable hints are
+     scattered through out the text.  Do not read the first eight chapters
+     in fewer than three sittings.  Allow one sitting at least for each of
+     the last two chapters.  Read systematically.  If you do not fully
+     understand one chapter, you will understand the next one even less.
+</p><p>
+     The book is a dialogue about interesting examples of ML programs. If
+     you can, try the examples while you read. Since ML implementations are
+     predominantly interactive, the programmer can immediately participate
+     in and observe the behavior of expressions.  We encourage you to use
+     this interactive read-evaluate-and-print loop to experiment with our
+     definitions and examples. Some hints concerning experimentation are
+     provided below.
+</p><p>
+     We do not give any formal definitions in this book.  We believe that
+     you can form your own definitions and thus remember and understand
+     them better than if we had written them out for you.  But be sure you
+     know and understand the morals that appear at the end of each chapter.
+</p><p>
+     We use a few notational conventions throughout the text, primarily
+     changes in typeface for different classes of symbols. Variables are in
+     italic . Basic data, including numbers, booleans, constructors
+     introduced via datatypes, are set in sans serif . Keywords, e.g.,
+     datatype , of , and , fun , are in boldface . When you experiment with
+     the programs, you may ignore the typefaces but not the related
+     framenotes.  To highlight this role of typefaces, the ML fragments in
+     framenotes are set in a typewriter face.
+</p><p>
+     Food appears in many of our examples for two reasons.  First, food is
+     easier to visualize than abstract ideas.  (This is not a good book to
+     read while dieting.)  We hope the choice of food will help you
+     understand the examples and concepts we use.  Second, we want to
+     provide you with a little distraction.  We know how frustrating the
+     subject matter can be, and a little distraction will help you keep
+     your sanity.
+</p><p>
+     You are now ready to start.  Good luck!  We hope you will enjoy the
+     experiences waiting for you on the following pages.
+</p><p>
+     Bon appetit! <br>
+</p><p>
+     Matthias Felleisen <br>
+     Daniel P. Friedman
+</p>
+</body>
+</html>

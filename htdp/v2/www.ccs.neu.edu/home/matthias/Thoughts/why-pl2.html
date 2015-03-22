@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><title>Why teach PhD core courses, with programming languages</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9660;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Thoughts</a></td></tr></table></div><div class="tocviewsublistonly" style="display: block;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right"></td><td><a href="How_do_I_get_a_PhD.html" class="tocviewlink" data-pltdoc="x">How do I get a Ph<span class="mywbr"> &nbsp;</span>D</a></td></tr><tr><td align="right"></td><td><a href="Racket_is____.html" class="tocviewlink" data-pltdoc="x"><span style="font-style: italic">Racket</span> is ...</a></td></tr><tr><td align="right"></td><td><a href="why-pl2.html" class="tocviewselflink" data-pltdoc="x">Why teach Ph<span class="mywbr"> &nbsp;</span>D core courses, with programming languages</a></td></tr><tr><td align="right"></td><td><a href="Danger__unsafe_languages.html" class="tocviewlink" data-pltdoc="x">Danger:<span class="mywbr"> &nbsp;</span> unsafe languages</a></td></tr><tr><td align="right"></td><td><a href="What_should_the_core_achieve_.html" class="tocviewlink" data-pltdoc="x">What should the core achieve?</a></td></tr><tr><td align="right"></td><td><a href="python.html" class="tocviewlink" data-pltdoc="x">Python for asset-<wbr></wbr>backed securities</a></td></tr><tr><td align="right"></td><td><a href="Measuring_education.html" class="tocviewlink" data-pltdoc="x">Measuring education</a></td></tr><tr><td align="right"></td><td><a href="More_on_conferences.html" class="tocviewlink" data-pltdoc="x">More on conferences</a></td></tr><tr><td align="right"></td><td><a href="_Non_refereed_conferences.html" class="tocviewlink" data-pltdoc="x">(Non)refereed conferences</a></td></tr><tr><td align="right"></td><td><a href="what-is-pl.html" class="tocviewlink" data-pltdoc="x">Why teach programming languages</a></td></tr></table></div></div></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="Racket_is____.html" title="backward to &quot;Racket is ...&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Danger__unsafe_languages.html" title="forward to &quot;Danger: unsafe languages&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3><a name="(part._why-pl2)"></a>Why teach PhD core courses, with programming languages</h3><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>17 Jan 2012</p></blockquote></blockquote></blockquote><p>In early 2010, a <a href="what-is-pl.html" data-pltdoc="x">senior colleague challenged the
+idea of teaching a required course on programming languages in the PhD core
+curriculum</a>. Now said senior colleague is beginning to challenge the very
+idea of a core curriculum.</p><p><div class="SIntrapara">This raises the question whether
+</div><div class="SIntrapara"><blockquote><p>intellectual disciplines, such as CS, have a core
+and, if so, how to define it.</p></blockquote></div><div class="SIntrapara">I will rephrase this question as follows to make the answer obvious:
+</div><div class="SIntrapara"><blockquote><p>Is there fundamental knowledge in CS that, in
+principle, is needed in every other field.</p></blockquote></div><div class="SIntrapara">Conversely, such collections of knowledge make up the core of the
+discipline. Once we ask the question this way, we have a simple test for
+core knowledge. We point at another field within CS, say graphics or
+security, and question how some candidate for &rsquo;core&rsquo;ness may
+contribute.</div></p><p>For programming languages, in particular, this procedure shows how deeply
+it is connected to almost everything we do. Take security and
+languages. For decades, many programmers and researchers have failed to
+understand type safety and memory safety, and, as a result, we have
+suffered exploits due to out-of-bounds errors and <span class="stt">null</span> pointer
+accesses. <span class="refelem"><span class="refcolumn"><span class="refcontent">Safety follows from the main theorem of PL, also
+called the type soundness theorem. Any self-respecting PL course should
+introduce the theorem and sketch a proof.</span></span></span> How about graphics and
+languages?  Years ago I sat through a colloquium talk at Rice where
+<a href="http://www.maa.org/news/101509deroseint.html">Tony DeRose</a>
+explained the design of a small language for describing geometric
+surfaces. From what I understand DeRose went to Hollywood and turned his
+research into award-winning animations at Pixar. Program verification? If
+you don&rsquo;t understand the semantics of languages, how are you going to
+verify the behavior of programs in this language? Hardware anyone? A wide
+spectrum of programming languages ideas, especially ideas from the
+functional world, have been turned into hardware description languages and
+some became the basis for successful companies. Go on, pick your field and
+you will see that knowledge from programming languages can help.</p><p>For algorithms, systems, and theory, we can obviously make similar
+arguments. No need to waste space on these.</p><p>For other fields, say graphics, it is impossible to show such universal
+usefulness to other areas in CS. On occasion, however, researchers in
+graphics encounter problems that challenge people in core areas. It would
+be foolish of programming language researchers to ignore such application
+problems.  They re-prove how important a core area is and how many
+contributions it can make. Quite the opposite, the day application areas no
+longer pose problems for a core area, the latter is doomed to the dustbin
+of history.</p><p><div class="SIntrapara">Now that we can distinguish core areas from others, we may raise the more
+important question of
+</div><div class="SIntrapara"><blockquote><p>whether the common PhD curriculum should focus on
+core areas.</p></blockquote></div><div class="SIntrapara">In <span style="font-weight: bold">theory</span>, the answer is obviously affirmative. A discipline that
+doesn&rsquo;t expect its PhD students to know the basics of the common core is
+intellectually bankrupt. How else can a graduate of a PhD program defend
+the integrity of CS itself? Good core courses will enable our PhD students
+to articulate the scientific nature of our discipline. The opposite is to
+short-sell CS as a random collection of hacks and tricks that make nice
+little entertaining machines work smoothly and securely. This is a goal
+worth working for, and a core is what is needed.</div></p><p>Even in theory, teaching the basics of the core also has practical
+value. Given that (almost) every other field can benefit from knowledge of
+a core area, it is likely that, over the course of a career, a researcher
+will encounter a situation where this core knowledge helps solve a
+domain-specific problem. While it is unlikely that a core course teaches
+exactly the needed knowledge, a well-trained researcher knows where to
+start the search from a shred of a cross connection.</p><p>In <span style="font-weight: bold">practice</span>, the answer is a function of many different variables
+and depends on the individual department. &#8212;<wbr></wbr> If the department has capable
+and inspiring researchers in the agreed-upon core areas, the theoretical
+answer is the practical answer. I&rsquo;d rather not address the problem for a
+context where the antecedent isn&rsquo;t true. &#8212;<wbr></wbr> If the department is
+particularly strong in an application area, say robotics, the question
+should not become whether students should see robotics <span style="font-style: italic">in lieu</span> of a
+core area but whether there should be room for a required course in a
+specific application area. As I have argued above, application areas keep
+core areas honest by challenging them with fundamental problems, and I
+consider it obvious that PhD students should therefore be exposed to
+application areas. When the department has strong application areas,
+students should probably give a choice of application area courses.</p><p>An alternative practical answer is that PhD students should always come
+from sufficiently strong undergraduate programs. In other words, whatever
+undergraduate programs teach in a core area is good enough, and when
+students arrive at their new program, we might as well get on with the
+business of training them in our favorite fields. This answer overlooks a
+major problem, however. Many undergraduate programs cannot teach core areas
+at the research level, because they lack suitable faculty. Let&rsquo;s make this
+concrete. <span class="refelem"><span class="refcolumn"><span class="refcontent">No, this situation is not ideal. It places
+under-prepared PhD students along side well-prepared students and thus
+creates tension within a class of PhD students. But life isn&rsquo;t fair. We can
+only try to give people a chance.</span></span></span>  A typical ACM-style undergraduate
+course teaches a "survey of programming language" course. In such a course,
+students get to see a smattering of programming languages and write a few
+hundred lines of code in languages that are not taught in the introductory
+course. Sadly this kind of course is completely inadequate to convey the
+underlying principles of PL; it&rsquo;s as if we were to teach
+engineering-calculus to math majors and say that&rsquo;s good enough for an
+understanding of topology.  In short, if we do not wish to reject the
+graduates of such programs out of hand, we must offer them courses on the
+core of CS once they arrive in our PhD programs.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="Racket_is____.html" title="backward to &quot;Racket is ...&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Thoughts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Danger__unsafe_languages.html" title="forward to &quot;Danger: unsafe languages&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

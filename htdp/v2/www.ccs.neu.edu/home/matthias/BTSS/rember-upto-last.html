@@ -1,0 +1,27 @@
+<HEAD>
+<TITLE>Rember Up To Last (No Cons)</TITLE>
+</HEAD>
+<BODY>
+
+Contributed by Hayo Thielecke (ht@dcs.ed.ac.uk):
+
+<pre>
+(define rember-upto-last
+  (lambda (a lat) ; Look Ma, no cons   
+    (letcc skip
+      (letrec 
+	((R
+	   (lambda (l)
+	     (cond
+	       ((null? l) (void))
+	       (else (let ()
+		       (R (cdr l))
+		       (cond
+			 ((eq? a (car l))
+			  (skip (cdr l)))
+			 (else (void)))))))))
+	(R lat)
+	lat))))
+</pre>
+
+</html>
